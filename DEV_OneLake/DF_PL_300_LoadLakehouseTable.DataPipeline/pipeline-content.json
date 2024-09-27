@@ -1,0 +1,540 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "SetVariable",
+        "typeProperties": {
+          "variableName": "pipelinestarttime",
+          "value": {
+            "value": "@utcNow()",
+            "type": "Expression"
+          }
+        },
+        "policy": {
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Set PipelineStartTime",
+        "dependsOn": []
+      },
+      {
+        "type": "IfCondition",
+        "typeProperties": {
+          "expression": {
+            "value": "@equals(pipeline().parameters.loadtype,'full')",
+            "type": "Expression"
+          },
+          "ifTrueActivities": [
+            {
+              "type": "Copy",
+              "typeProperties": {
+                "source": {
+                  "type": "DataWarehouseSource",
+                  "partitionOption": "None",
+                  "queryTimeout": "02:00:00",
+                  "datasetSettings": {
+                    "type": "DataWarehouseTable",
+                    "typeProperties": {
+                      "schema": {
+                        "value": "@pipeline().parameters.sourceschema",
+                        "type": "Expression"
+                      },
+                      "table": {
+                        "value": "@pipeline().parameters.sourcetable",
+                        "type": "Expression"
+                      }
+                    },
+                    "schema": [],
+                    "linkedService": {
+                      "properties": {
+                        "type": "DataWarehouse",
+                        "typeProperties": {
+                          "artifactId": "a2a367c2-554f-4acd-ad0a-71b93ea0c133",
+                          "endpoint": "n6bdj4tqpecefcf2bmwmfdw3ae-oyymr74b424uxk5tdupgbsrk7u.datawarehouse.fabric.microsoft.com",
+                          "workspaceId": "ffc83076-e681-4bb9-abb3-1d1e60ca2afd"
+                        },
+                        "annotations": []
+                      },
+                      "name": "Silver"
+                    },
+                    "annotations": []
+                  }
+                },
+                "sink": {
+                  "type": "LakehouseTableSink",
+                  "tableActionOption": "OverwriteSchema",
+                  "partitionOption": "None",
+                  "datasetSettings": {
+                    "type": "LakehouseTable",
+                    "typeProperties": {
+                      "table": {
+                        "value": "@pipeline().parameters.sinktable",
+                        "type": "Expression"
+                      }
+                    },
+                    "schema": [],
+                    "linkedService": {
+                      "properties": {
+                        "type": "Lakehouse",
+                        "typeProperties": {
+                          "artifactId": "30553cee-1f29-4e90-b63e-52455cb208cd",
+                          "workspaceId": "00000000-0000-0000-0000-000000000000",
+                          "rootFolder": "Tables"
+                        },
+                        "annotations": []
+                      },
+                      "name": "Gold"
+                    },
+                    "annotations": []
+                  }
+                },
+                "translator": {
+                  "type": "TabularTranslator",
+                  "typeConversion": true,
+                  "typeConversionSettings": {
+                    "allowDataTruncation": true,
+                    "treatBooleanAsNumber": false
+                  }
+                },
+                "enableStaging": false
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "Copy Data to Gold Lakehouse",
+              "dependsOn": []
+            },
+            {
+              "type": "SetVariable",
+              "typeProperties": {
+                "variableName": "pipelineendtime",
+                "value": {
+                  "value": "@utcNow()",
+                  "type": "Expression"
+                }
+              },
+              "policy": {
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "Set PipelineEndTime",
+              "dependsOn": [
+                {
+                  "activity": "Set Full Rows Copied",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "SetVariable",
+              "typeProperties": {
+                "variableName": "pipelineReturnValue",
+                "value": [
+                  {
+                    "key": "childstats",
+                    "value": {
+                      "type": "Expression",
+                      "content": "{\"loadstatus\" : \"@{variables('loadstatus')}\", \"rowsread\" : \"@{variables('rowsread')}\", \"rowscopied\" : \"@{variables('rowscopied')}\", \"deltalakeinserted\" : \"@{variables('rowscopied')}\", \"pipelinestarttime\" : \"@{variables('pipelinestarttime')}\", \"pipelineendtime\" : \"@{variables('pipelineendtime')}\"}"
+                    }
+                  }
+                ],
+                "setSystemVariable": true
+              },
+              "policy": {
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "Set Child Full Pipeline Stats",
+              "dependsOn": [
+                {
+                  "activity": "Set PipelineEndTime",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "SetVariable",
+              "typeProperties": {
+                "variableName": "loadstatus",
+                "value": {
+                  "value": "@{activity('Copy Data to Gold Lakehouse').output.executionDetails[0].status}",
+                  "type": "Expression"
+                }
+              },
+              "policy": {
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "Set Full Load Status",
+              "dependsOn": [
+                {
+                  "activity": "Copy Data to Gold Lakehouse",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "SetVariable",
+              "typeProperties": {
+                "variableName": "rowsread",
+                "value": {
+                  "value": "@{activity('Copy Data to Gold Lakehouse').output.rowsRead}",
+                  "type": "Expression"
+                }
+              },
+              "policy": {
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "Set Full Rows Read",
+              "dependsOn": [
+                {
+                  "activity": "Set Full Load Status",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "SetVariable",
+              "typeProperties": {
+                "variableName": "rowscopied",
+                "value": {
+                  "value": "@{activity('Copy Data to Gold Lakehouse').output.rowsCopied}",
+                  "type": "Expression"
+                }
+              },
+              "policy": {
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "Set Full Rows Copied",
+              "dependsOn": [
+                {
+                  "activity": "Set Full Rows Read",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
+            }
+          ],
+          "ifFalseActivities": [
+            {
+              "type": "SetVariable",
+              "typeProperties": {
+                "variableName": "datepredicate",
+                "value": {
+                  "value": "@if(\n    equals(\n        pipeline().parameters.sourceenddate,null\n    ),\n    if(\n        equals(\n            pipeline().parameters.sourcestartdate,null\n        ),\n        '',\n        concat(\n            'LastUpdated >= ''',\n            pipeline().parameters.sourcestartdate,\n            ''''\n        )\n    ),\n    concat(\n        'LastUpdated >= ''',\n        pipeline().parameters.sourcestartdate,\n        ''' and LastUpdated < ''',\n        pipeline().parameters.sourceenddate,\n        ''''\n    )\n)",
+                  "type": "Expression"
+                }
+              },
+              "policy": {
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "Set DatePredicate",
+              "dependsOn": []
+            },
+            {
+              "type": "Copy",
+              "typeProperties": {
+                "source": {
+                  "type": "DataWarehouseSource",
+                  "sqlReaderQuery": {
+                    "value": "SELECT \n    *\nFROM\n    @{pipeline().parameters.sourceschema}.@{pipeline().parameters.sourcetable}\n@{if(\n    equals(\n        pipeline().parameters.sourcestartdate,null\n    ), \n    '',\n    concat(\n        ' WHERE ',\n        variables('datepredicate')\n    )\n)}",
+                    "type": "Expression"
+                  },
+                  "partitionOption": "None",
+                  "queryTimeout": "02:00:00",
+                  "datasetSettings": {
+                    "type": "DataWarehouseTable",
+                    "schema": [],
+                    "linkedService": {
+                      "properties": {
+                        "type": "DataWarehouse",
+                        "typeProperties": {
+                          "artifactId": "a2a367c2-554f-4acd-ad0a-71b93ea0c133",
+                          "endpoint": "n6bdj4tqpecefcf2bmwmfdw3ae-oyymr74b424uxk5tdupgbsrk7u.datawarehouse.fabric.microsoft.com",
+                          "workspaceId": "ffc83076-e681-4bb9-abb3-1d1e60ca2afd"
+                        },
+                        "annotations": []
+                      },
+                      "name": "Silver"
+                    },
+                    "annotations": []
+                  }
+                },
+                "sink": {
+                  "type": "ParquetSink",
+                  "storeSettings": {
+                    "type": "LakehouseWriteSettings"
+                  },
+                  "formatSettings": {
+                    "type": "ParquetWriteSettings",
+                    "enableVertiParquet": true
+                  },
+                  "datasetSettings": {
+                    "type": "Parquet",
+                    "typeProperties": {
+                      "location": {
+                        "type": "LakehouseLocation",
+                        "folderPath": {
+                          "value": "incremental/@{pipeline().parameters.sinktable}",
+                          "type": "Expression"
+                        },
+                        "fileName": {
+                          "value": "@{pipeline().parameters.sinktable}.parquet",
+                          "type": "Expression"
+                        }
+                      },
+                      "compressionCodec": "snappy"
+                    },
+                    "schema": [],
+                    "linkedService": {
+                      "properties": {
+                        "type": "Lakehouse",
+                        "typeProperties": {
+                          "artifactId": "30553cee-1f29-4e90-b63e-52455cb208cd",
+                          "workspaceId": "00000000-0000-0000-0000-000000000000",
+                          "rootFolder": "Files"
+                        },
+                        "annotations": []
+                      },
+                      "name": "Gold"
+                    },
+                    "annotations": []
+                  }
+                },
+                "translator": {
+                  "type": "TabularTranslator",
+                  "typeConversion": true,
+                  "typeConversionSettings": {
+                    "allowDataTruncation": true,
+                    "treatBooleanAsNumber": false
+                  }
+                },
+                "enableStaging": false
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "Get Incremental Data",
+              "dependsOn": [
+                {
+                  "activity": "Set DatePredicate",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "SetVariable",
+              "typeProperties": {
+                "variableName": "pipelineReturnValue",
+                "value": [
+                  {
+                    "key": "childstats",
+                    "value": {
+                      "type": "Expression",
+                      "content": "{\"loadstatus\" : \"@{variables('loadstatus')}\", \"rowsread\" : \"@{variables('rowsread')}\", \"rowscopied\" : \"@{variables('rowscopied')}\", \"pipelinestarttime\" : \"@{variables('pipelinestarttime')}\", \"pipelineendtime\" : \"@{variables('pipelineendtime')}\"}"
+                    }
+                  }
+                ],
+                "setSystemVariable": true
+              },
+              "policy": {
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "Set Child Incr Pipeline Stats",
+              "dependsOn": [
+                {
+                  "activity": "Set Incr Pipeline EndTime",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "SetVariable",
+              "typeProperties": {
+                "variableName": "loadstatus",
+                "value": {
+                  "value": "@{activity('Get Incremental Data').output.executionDetails[0].status}",
+                  "type": "Expression"
+                }
+              },
+              "policy": {
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "Set Incr Load Status",
+              "dependsOn": [
+                {
+                  "activity": "Get Incremental Data",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "SetVariable",
+              "typeProperties": {
+                "variableName": "rowsread",
+                "value": {
+                  "value": "@{activity('Get Incremental Data').output.rowsRead}",
+                  "type": "Expression"
+                }
+              },
+              "policy": {
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "Set Incr Rows Read",
+              "dependsOn": [
+                {
+                  "activity": "Set Incr Load Status",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "SetVariable",
+              "typeProperties": {
+                "variableName": "rowscopied",
+                "value": {
+                  "value": "@{activity('Get Incremental Data').output.rowsCopied}",
+                  "type": "Expression"
+                }
+              },
+              "policy": {
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "Set Incr Rows Copied",
+              "dependsOn": [
+                {
+                  "activity": "Set Incr Rows Read",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "SetVariable",
+              "typeProperties": {
+                "variableName": "pipelineendtime",
+                "value": {
+                  "value": "@utcNow()",
+                  "type": "Expression"
+                }
+              },
+              "policy": {
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "Set Incr Pipeline EndTime",
+              "dependsOn": [
+                {
+                  "activity": "Set Incr Rows Copied",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "name": "Check LoadType",
+        "dependsOn": [
+          {
+            "activity": "Set PipelineStartTime",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      }
+    ],
+    "parameters": {
+      "sourcestartdate": {
+        "type": "string"
+      },
+      "sourceenddate": {
+        "type": "string"
+      },
+      "sourceschema": {
+        "type": "string"
+      },
+      "sourcetable": {
+        "type": "string"
+      },
+      "loadtype": {
+        "type": "string"
+      },
+      "batchloaddatetime": {
+        "type": "string"
+      },
+      "sinktable": {
+        "type": "string"
+      },
+      "tablekey": {
+        "type": "string"
+      },
+      "tablekey2": {
+        "type": "string"
+      }
+    },
+    "variables": {
+      "datepredicate": {
+        "type": "String"
+      },
+      "maxdate": {
+        "type": "String"
+      },
+      "rowsinserted": {
+        "type": "String"
+      },
+      "rowsupdated": {
+        "type": "String"
+      },
+      "pipelinestarttime": {
+        "type": "String"
+      },
+      "pipelineendtime": {
+        "type": "String"
+      },
+      "loadstatus": {
+        "type": "String"
+      },
+      "rowsread": {
+        "type": "String"
+      },
+      "rowscopied": {
+        "type": "String"
+      }
+    }
+  }
+}

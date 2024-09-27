@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Warehouse",
+    "displayName": "DW_WH_200_SILVER_WoodlandMills"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "c8d77311-7161-4c4c-bd6e-a34f5ca111a1"
+  }
+}

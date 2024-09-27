@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "DF_PL_300_LoadLakehouseTable"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "c02da533-2139-4b5f-9633-99f36585e37d"
+  }
+}
