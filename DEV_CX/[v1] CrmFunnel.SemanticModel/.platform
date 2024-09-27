@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "[v1] CrmFunnel"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "d7084872-7cc2-449a-baf3-7b05c20e8aca"
+  }
+}

@@ -1,0 +1,1389 @@
+{
+  "compatibilityLevel": 1604,
+  "model": {
+    "annotations": [
+      {
+        "name": "__PBI_TimeIntelligenceEnabled",
+        "value": "0"
+      },
+      {
+        "name": "PBIDesktopVersion",
+        "value": "2.134.7426.7 (Main)"
+      },
+      {
+        "name": "PBI_QueryOrder",
+        "value": "[\"DatabaseQuery\"]"
+      },
+      {
+        "name": "PBI_ProTooling",
+        "value": "[\"WebModelingEdit\"]"
+      },
+      {
+        "name": "__TEdtr",
+        "value": "1"
+      }
+    ],
+    "collation": "Latin1_General_100_BIN2_UTF8",
+    "culture": "en-US",
+    "cultures": [
+      {
+        "name": "en-US",
+        "linguisticMetadata": {
+          "content": {
+            "Language": "en-US",
+            "Version": "1.0.0"
+          },
+          "contentType": "json"
+        }
+      }
+    ],
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": true
+    },
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "discourageImplicitMeasures": true,
+    "expressions": [
+      {
+        "name": "DatabaseQuery",
+        "annotations": [
+          {
+            "name": "PBI_IncludeFutureArtifacts",
+            "value": "False"
+          }
+        ],
+        "expression": [
+          "let",
+          "    database = Sql.Database(\"N6BDJ4TQPECEFCF2BMWMFDW3AE-OYYMR74B424UXK5TDUPGBSRK7U.datawarehouse.fabric.microsoft.com\", \"eb83f5b4-733a-498b-9627-bd6bec100aab\")",
+          "in",
+          "    database"
+        ],
+        "kind": "m",
+        "lineageTag": "ed9bad00-734a-4864-9197-a0752cd68f87"
+      }
+    ],
+    "relationships": [
+      {
+        "name": "3bae5c8d-a038-5a31-69af-454f4dc45a69",
+        "fromColumn": "ownerid",
+        "fromTable": "fact_productadvisors_performance",
+        "toColumn": "ownerid",
+        "toTable": "dim_productadvisors_owners"
+      },
+      {
+        "name": "040adb31-0037-c5c1-34fe-d58c2115c19a",
+        "fromColumn": "createdbyuserid",
+        "fromTable": "fact_productadvisors_performance",
+        "toColumn": "createdbyuserid",
+        "toTable": "dim_productadvisors_creators"
+      },
+      {
+        "name": "002a668a-086d-47cb-6f7c-8605ce6fe805",
+        "fromColumn": "activeagentid",
+        "fromTable": "fact_productadvisors_performance",
+        "toColumn": "activeagentid",
+        "toTable": "dim_productadvisors_agents"
+      },
+      {
+        "name": "90ad263c-ef1c-be1d-98d4-45e6219ac18f",
+        "fromColumn": "createdondate",
+        "fromTable": "fact_productadvisors_performance",
+        "toColumn": "Date",
+        "toTable": "Calendar"
+      }
+    ],
+    "sourceQueryCulture": "en-US",
+    "tables": [
+      {
+        "name": "Calendar",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Date",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "SummarizeBy"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "General Date",
+            "lineageTag": "cf64c15a-40a4-4424-8461-c65a4ca5f68b",
+            "sourceColumn": "Date",
+            "sourceLineageTag": "Date",
+            "sourceProviderType": "date",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "DayNum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "SummarizeBy"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "0e008fae-147c-4905-9558-e67bca5e8f42",
+            "sourceColumn": "DayNum",
+            "sourceLineageTag": "DayNum",
+            "sourceProviderType": "int",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "DayOfWeek",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "SummarizeBy"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "ca5da896-875f-40a0-901a-fcb9930bf2f5",
+            "sourceColumn": "DayOfWeek",
+            "sourceLineageTag": "DayOfWeek",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "DayOfWeekNum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "SummarizeBy"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "94d829b0-dfbf-4176-8cbc-c3a5b8c91469",
+            "sourceColumn": "DayOfWeekNum",
+            "sourceLineageTag": "DayOfWeekNum",
+            "sourceProviderType": "int",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Month",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "SummarizeBy"
+              },
+              {
+                "property": "SortByColumn"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "c338fd29-4639-4ed3-852b-7f61609cc27e",
+            "sortByColumn": "MonthNum",
+            "sourceColumn": "Month",
+            "sourceLineageTag": "Month",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "MonthNum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "SummarizeBy"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "f98794fe-d153-43ce-a106-1fa38004838d",
+            "sourceColumn": "MonthNum",
+            "sourceLineageTag": "MonthNum",
+            "sourceProviderType": "int",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "MonthYear",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "SummarizeBy"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "b9f5f879-8943-43c9-9b80-01370039f61a",
+            "sourceColumn": "MonthYear",
+            "sourceLineageTag": "MonthYear",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Quarter",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "SummarizeBy"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "8f92b4ce-4744-43e1-bf51-8b3943456e50",
+            "sourceColumn": "Quarter",
+            "sourceLineageTag": "Quarter",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "QuarterNum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "SummarizeBy"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "7a403e17-33ee-47ba-96a8-69c8cd566cdb",
+            "sourceColumn": "QuarterNum",
+            "sourceLineageTag": "QuarterNum",
+            "sourceProviderType": "int",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Year",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "SummarizeBy"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "0d808e2a-1025-40e8-ba95-7cb87bf1c768",
+            "sourceColumn": "Year",
+            "sourceLineageTag": "Year",
+            "sourceProviderType": "int",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "f1112d05-4a2e-4118-b356-436b58d60493",
+        "partitions": [
+          {
+            "name": "Calendar",
+            "mode": "directLake",
+            "source": {
+              "entityName": "Calendar",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo",
+              "type": "entity"
+            }
+          }
+        ],
+        "sourceLineageTag": "[dbo].[Calendar]"
+      },
+      {
+        "name": "fact_productadvisors_performance",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "eventid",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "string",
+            "isHidden": true,
+            "lineageTag": "c3b48956-bd98-42f1-bdc6-4e5a1a80a526",
+            "sourceColumn": "eventid",
+            "sourceLineageTag": "eventid",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "eventtype",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "36e175aa-4790-45de-b2e1-2a9740ca1648",
+            "sourceColumn": "eventtype",
+            "sourceLineageTag": "eventtype",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "createdondate",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "General Date",
+            "isHidden": true,
+            "lineageTag": "107b5252-1eb9-457f-8357-7afa8018e5a5",
+            "sourceColumn": "createdondate",
+            "sourceLineageTag": "createdondate",
+            "sourceProviderType": "date",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ownerid",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "string",
+            "isHidden": true,
+            "lineageTag": "9646a687-0872-467f-8051-ebfb17fdb23d",
+            "sourceColumn": "ownerid",
+            "sourceLineageTag": "ownerid",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "createdbyuserid",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "string",
+            "isHidden": true,
+            "lineageTag": "fd497f71-f46b-43d4-8021-5adc9ebeab0b",
+            "sourceColumn": "createdbyuserid",
+            "sourceLineageTag": "createdbyuserid",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "activeagentid",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "string",
+            "isHidden": true,
+            "lineageTag": "211a8eb6-fa13-4b75-93b4-8ef78a4d094e",
+            "sourceColumn": "activeagentid",
+            "sourceLineageTag": "activeagentid",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "eventsubtype",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "3f0b5507-c4cd-4f96-9c77-b026d5dacae2",
+            "sourceColumn": "eventsubtype",
+            "sourceLineageTag": "eventsubtype",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "LastUpdated",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "General Date",
+            "isHidden": true,
+            "lineageTag": "aee4dabe-fb06-4c3a-a3b6-6620ea75c442",
+            "sourceColumn": "LastUpdated",
+            "sourceLineageTag": "LastUpdated",
+            "sourceProviderType": "datetime2",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "07f5ff02-9450-41e4-b637-613eb915bf23",
+        "measures": [
+          {
+            "name": "_Count Exclusively Owner",
+            "changedProperties": [
+              {
+                "property": "Name"
+              },
+              {
+                "property": "DisplayFolder"
+              }
+            ],
+            "displayFolder": "_Measures",
+            "expression": [
+              "",
+              "CALCULATE(",
+              "    COUNTROWS('fact_productadvisors_performance'),",
+              "    FILTER(",
+              "        'fact_productadvisors_performance',",
+              "        'fact_productadvisors_performance'[ownerid] <> 'fact_productadvisors_performance'[activeagentid] &&",
+              "        'fact_productadvisors_performance'[ownerid] <> 'fact_productadvisors_performance'[createdbyuserid] &&",
+              "        'fact_productadvisors_performance'[activeagentid] <> 'fact_productadvisors_performance'[createdbyuserid] &&",
+              "        NOT(ISBLANK('fact_productadvisors_performance'[ownerid]))",
+              "    )",
+              ")"
+            ],
+            "formatString": "0",
+            "lineageTag": "0668416c-5972-4fc6-8c9c-9cca66639c3e"
+          },
+          {
+            "name": "_Count Exclusively Creator",
+            "changedProperties": [
+              {
+                "property": "Name"
+              },
+              {
+                "property": "DisplayFolder"
+              }
+            ],
+            "displayFolder": "_Measures",
+            "expression": [
+              "",
+              "CALCULATE(",
+              "    COUNTROWS('fact_productadvisors_performance'),",
+              "    FILTER(",
+              "        'fact_productadvisors_performance',",
+              "        'fact_productadvisors_performance'[createdbyuserid] <> 'fact_productadvisors_performance'[activeagentid] &&",
+              "        'fact_productadvisors_performance'[createdbyuserid] <> 'fact_productadvisors_performance'[ownerid] &&",
+              "        'fact_productadvisors_performance'[activeagentid] <> 'fact_productadvisors_performance'[ownerid] &&",
+              "        NOT(ISBLANK('fact_productadvisors_performance'[createdbyuserid]))",
+              "    )",
+              ")"
+            ],
+            "formatString": "0",
+            "lineageTag": "fddd1392-20df-4de9-8943-cd2d814483fc"
+          },
+          {
+            "name": "_Count Both Owner and Creator",
+            "changedProperties": [
+              {
+                "property": "Name"
+              },
+              {
+                "property": "DisplayFolder"
+              }
+            ],
+            "displayFolder": "_Measures",
+            "expression": [
+              "",
+              "CALCULATE(",
+              "    COUNTROWS('fact_productadvisors_performance'),",
+              "    FILTER(",
+              "        'fact_productadvisors_performance',",
+              "        'fact_productadvisors_performance'[ownerid] = 'fact_productadvisors_performance'[createdbyuserid] &&",
+              "        NOT(ISBLANK('fact_productadvisors_performance'[ownerid]))",
+              "    )",
+              ")"
+            ],
+            "formatString": "0",
+            "lineageTag": "f1236a7f-3bd1-497d-9d27-cf945997cb2e"
+          },
+          {
+            "name": "_Count Exclusively Agent",
+            "changedProperties": [
+              {
+                "property": "Name"
+              },
+              {
+                "property": "DisplayFolder"
+              }
+            ],
+            "displayFolder": "_Measures",
+            "expression": [
+              "",
+              "CALCULATE(",
+              "    COUNTROWS('fact_productadvisors_performance'),",
+              "    FILTER(",
+              "        'fact_productadvisors_performance',",
+              "        'fact_productadvisors_performance'[activeagentid] <> 'fact_productadvisors_performance'[createdbyuserid] &&",
+              "        'fact_productadvisors_performance'[activeagentid] <> 'fact_productadvisors_performance'[ownerid] &&",
+              "        'fact_productadvisors_performance'[createdbyuserid] <> 'fact_productadvisors_performance'[ownerid] &&",
+              "        NOT(ISBLANK('fact_productadvisors_performance'[activeagentid]))",
+              "    )",
+              ")"
+            ],
+            "formatString": "0",
+            "lineageTag": "75eb23a6-359b-44b5-b8e1-1f722a19d20e"
+          },
+          {
+            "name": "_Count Both Owner and Agent",
+            "changedProperties": [
+              {
+                "property": "Name"
+              },
+              {
+                "property": "DisplayFolder"
+              }
+            ],
+            "displayFolder": "_Measures",
+            "expression": [
+              "",
+              "CALCULATE(",
+              "    COUNTROWS('fact_productadvisors_performance'),",
+              "    FILTER(",
+              "        'fact_productadvisors_performance',",
+              "        'fact_productadvisors_performance'[ownerid] = 'fact_productadvisors_performance'[activeagentid] &&",
+              "        NOT(ISBLANK('fact_productadvisors_performance'[ownerid]))",
+              "    )",
+              ")"
+            ],
+            "formatString": "0",
+            "lineageTag": "6ea80433-dbe3-4cb5-b1fb-299ff01ff6b6"
+          },
+          {
+            "name": "_Count All",
+            "changedProperties": [
+              {
+                "property": "Name"
+              },
+              {
+                "property": "DisplayFolder"
+              }
+            ],
+            "displayFolder": "_Measures",
+            "expression": [
+              "",
+              "CALCULATE(",
+              "    COUNTROWS('fact_productadvisors_performance'),",
+              "    FILTER(",
+              "        'fact_productadvisors_performance',",
+              "        'fact_productadvisors_performance'[ownerid] = 'fact_productadvisors_performance'[createdbyuserid] &&",
+              "        'fact_productadvisors_performance'[ownerid] = 'fact_productadvisors_performance'[activeagentid] &&",
+              "        NOT(ISBLANK('fact_productadvisors_performance'[ownerid])) &&",
+              "        NOT(ISBLANK('fact_productadvisors_performance'[createdbyuserid])) &&",
+              "        NOT(ISBLANK('fact_productadvisors_performance'[activeagentid]))",
+              "    )",
+              ")"
+            ],
+            "formatString": "0",
+            "lineageTag": "9362d01d-2150-4e73-a2fd-9bc0b8ebe79b"
+          },
+          {
+            "name": "_EventsCounter",
+            "changedProperties": [
+              {
+                "property": "Name"
+              },
+              {
+                "property": "DisplayFolder"
+              }
+            ],
+            "displayFolder": "_Measures",
+            "expression": [
+              "",
+              "    CALCULATE(",
+              "        COUNT('fact_productadvisors_performance'[eventid])",
+              "    )"
+            ],
+            "formatString": "0",
+            "lineageTag": "af17cbcc-bd1f-4f89-afe3-9e9e134e7c81"
+          },
+          {
+            "name": "_EventsCreatedAndOwned",
+            "changedProperties": [
+              {
+                "property": "Name"
+              },
+              {
+                "property": "DisplayFolder"
+              }
+            ],
+            "displayFolder": "_Measures",
+            "expression": [
+              "",
+              "    CALCULATE(",
+              "        COUNT('fact_productadvisors_performance'[eventid]),",
+              "        'fact_productadvisors_performance'[createdbyuserid] = 'fact_productadvisors_performance'[ownerid]",
+              "    )"
+            ],
+            "formatString": "0",
+            "lineageTag": "840fbe58-4bcb-459c-9879-dbab202fb97d"
+          },
+          {
+            "name": "_EventsOwnedButNotCreated",
+            "changedProperties": [
+              {
+                "property": "Name"
+              },
+              {
+                "property": "DisplayFolder"
+              }
+            ],
+            "displayFolder": "_Measures",
+            "expression": [
+              "",
+              "CALCULATE(",
+              "    COUNT('fact_productadvisors_performance'[eventid]),",
+              "    'fact_productadvisors_performance'[ownerid] = 'fact_productadvisors_performance'[createdbyuserid] && ",
+              "    'fact_productadvisors_performance'[createdbyuserid] <> 'fact_productadvisors_performance'[createdbyuserid]",
+              ")",
+              ""
+            ],
+            "formatString": "0",
+            "lineageTag": "01df773e-1c21-400b-a84f-a786520a71f5"
+          },
+          {
+            "name": "_EventsYTD",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "Name"
+              },
+              {
+                "property": "DisplayFolder"
+              }
+            ],
+            "displayFolder": "_Measures",
+            "expression": [
+              "",
+              "    CALCULATE(",
+              "        [_EventsCounter],",
+              "        'Time Intelligence'[Time Calculation] = \"YTD\"",
+              "    )"
+            ],
+            "lineageTag": "69647adb-f87f-445a-b14a-07d8a43b59a4"
+          },
+          {
+            "name": "_EventsYOY%",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "Name"
+              },
+              {
+                "property": "DisplayFolder"
+              }
+            ],
+            "displayFolder": "_Measures",
+            "expression": [
+              "",
+              "    CALCULATE(",
+              "        [_EventsCounter],",
+              "        'Time Intelligence'[Time Calculation] = \"YOY%\"",
+              "    )"
+            ],
+            "lineageTag": "913b4881-6438-4a3d-bd35-f38cf5d50e90"
+          },
+          {
+            "name": "_EventsCreatedByCX",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "Name"
+              },
+              {
+                "property": "DisplayFolder"
+              }
+            ],
+            "displayFolder": "_Measures",
+            "expression": [
+              "",
+              "CALCULATE(",
+              "    [_EventsCounter],",
+              "    'dim_productadvisors_creators'[teamposition] <> \"Others\"",
+              ")"
+            ],
+            "lineageTag": "a9025582-669e-43fb-8c99-feaa27250f08"
+          },
+          {
+            "name": "_EventsCreatedByOthers",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "Name"
+              },
+              {
+                "property": "DisplayFolder"
+              }
+            ],
+            "displayFolder": "_Measures",
+            "expression": [
+              "",
+              "CALCULATE(",
+              "    [_EventsCounter],",
+              "    'dim_productadvisors_creators'[teamposition] = \"Others\"",
+              ")"
+            ],
+            "lineageTag": "90c79e7c-8dcd-4d3c-94ed-367dcc862426"
+          },
+          {
+            "name": "_EventsOwnedByCX",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "Name"
+              },
+              {
+                "property": "DisplayFolder"
+              }
+            ],
+            "displayFolder": "_Measures",
+            "expression": [
+              "",
+              "CALCULATE(",
+              "    [_EventsCounter],",
+              "    'dim_productadvisors_owners'[teamposition] <> \"Others\"",
+              ")"
+            ],
+            "lineageTag": "1f689ad9-d58a-40e6-8c22-a7de18b5a7a9"
+          },
+          {
+            "name": "_EventsOwnedByOthers",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "Name"
+              },
+              {
+                "property": "DisplayFolder"
+              }
+            ],
+            "displayFolder": "_Measures",
+            "expression": [
+              "",
+              "CALCULATE(",
+              "    [_EventsCounter],",
+              "    'dim_productadvisors_owners'[teamposition] = \"Others\"",
+              ")"
+            ],
+            "lineageTag": "cb651c30-cabe-482b-baf4-b4b81d4467cc"
+          },
+          {
+            "name": "_EventsAgentedByCX",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "Name"
+              },
+              {
+                "property": "DisplayFolder"
+              }
+            ],
+            "displayFolder": "_Measures",
+            "expression": [
+              "",
+              "CALCULATE(",
+              "    [_EventsCounter],",
+              "    'dim_productadvisors_agents'[teamposition] <> \"Others\"",
+              ")"
+            ],
+            "lineageTag": "ba5370a8-dad8-4127-a3e6-8a9b3e59b46b"
+          },
+          {
+            "name": "_EventsAgentedByOthers",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "Name"
+              },
+              {
+                "property": "DisplayFolder"
+              }
+            ],
+            "displayFolder": "_Measures",
+            "expression": [
+              "",
+              "CALCULATE(",
+              "    [_EventsCounter],",
+              "    'dim_productadvisors_agents'[teamposition] = \"Others\"",
+              ")"
+            ],
+            "lineageTag": "28c47df9-5247-4037-8300-647b1073898a"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "fact_productadvisors_performance",
+            "mode": "directLake",
+            "source": {
+              "entityName": "fact_productadvisors_performance",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo",
+              "type": "entity"
+            }
+          }
+        ],
+        "sourceLineageTag": "[dbo].[fact_productadvisors_performance]"
+      },
+      {
+        "name": "dim_productadvisors_owners",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "ownerid",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "string",
+            "isHidden": true,
+            "lineageTag": "2cc256b4-f148-4f9b-8349-8cf861ceacc4",
+            "sourceColumn": "ownerid",
+            "sourceLineageTag": "ownerid",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ownername",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "c84ce490-fb5c-4697-9e40-c588e46810b5",
+            "sourceColumn": "ownername",
+            "sourceLineageTag": "ownername",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "teamposition",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "5b03c684-640e-45a7-a1f2-9a322a868354",
+            "sourceColumn": "teamposition",
+            "sourceLineageTag": "teamposition",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "604fdd92-64c0-43a0-a129-9b2c1c2a0fec",
+        "partitions": [
+          {
+            "name": "dim_productadvisors_owners",
+            "mode": "directLake",
+            "source": {
+              "entityName": "dim_productadvisors_owners",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo",
+              "type": "entity"
+            }
+          }
+        ],
+        "sourceLineageTag": "[dbo].[dim_productadvisors_owners]"
+      },
+      {
+        "name": "dim_productadvisors_agents",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "activeagentid",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "string",
+            "isHidden": true,
+            "lineageTag": "51eef8e8-a09c-4aa8-a854-b66cf47f4c70",
+            "sourceColumn": "activeagentid",
+            "sourceLineageTag": "activeagentid",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "teamposition",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "85395702-94e1-4ab4-9931-8b47e5954c96",
+            "sourceColumn": "teamposition",
+            "sourceLineageTag": "teamposition",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "agentname",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "59e0ff62-fc8e-48e7-99ac-1e66614ac360",
+            "sourceColumn": "agentname",
+            "sourceLineageTag": "agentname",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "4e4a2b8c-37e3-46e7-9bb6-5d96ca094835",
+        "partitions": [
+          {
+            "name": "dim_productadvisors_agents",
+            "mode": "directLake",
+            "source": {
+              "entityName": "dim_productadvisors_agents",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo",
+              "type": "entity"
+            }
+          }
+        ],
+        "sourceLineageTag": "[dbo].[dim_productadvisors_agents]"
+      },
+      {
+        "name": "dim_productadvisors_creators",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "createdbyuserid",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "string",
+            "isHidden": true,
+            "lineageTag": "6ddd7a95-88e0-42e4-9d12-03bcef523f3d",
+            "sourceColumn": "createdbyuserid",
+            "sourceLineageTag": "createdbyuserid",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "teamposition",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "d5938a8f-4afc-4741-8c6f-265a71a5995f",
+            "sourceColumn": "teamposition",
+            "sourceLineageTag": "teamposition",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "creatorname",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "e5ad0def-504c-4dba-8c5d-dd06369ba83d",
+            "sourceColumn": "creatorname",
+            "sourceLineageTag": "creatorname",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "fb67b2bd-2bd6-46e0-86e0-17bb4b4784ca",
+        "partitions": [
+          {
+            "name": "dim_productadvisors_creators",
+            "mode": "directLake",
+            "source": {
+              "entityName": "dim_productadvisors_creators",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo",
+              "type": "entity"
+            }
+          }
+        ],
+        "sourceLineageTag": "[dbo].[dim_productadvisors_creators]"
+      },
+      {
+        "name": "Time Intelligence",
+        "calculationGroup": {
+          "calculationItems": [
+            {
+              "name": "Current",
+              "expression": [
+                "",
+                "    SELECTEDMEASURE()"
+              ],
+              "ordinal": 0
+            },
+            {
+              "name": "MTD",
+              "expression": [
+                "",
+                "    CALCULATE(",
+                "        SELECTEDMEASURE(),",
+                "        DATESMTD('Calendar'[Date])",
+                "    )"
+              ],
+              "ordinal": 1
+            },
+            {
+              "name": "QTD",
+              "expression": [
+                "",
+                "    CALCULATE(",
+                "        SELECTEDMEASURE(),",
+                "        DATESQTD('Calendar'[Date])",
+                "    )"
+              ],
+              "ordinal": 2
+            },
+            {
+              "name": "YTD",
+              "expression": [
+                "",
+                "    CALCULATE(",
+                "        SELECTEDMEASURE(),",
+                "        DATESYTD('Calendar'[Date])",
+                "    )"
+              ],
+              "ordinal": 3
+            },
+            {
+              "name": "PY",
+              "expression": [
+                "",
+                "    CALCULATE(",
+                "        SELECTEDMEASURE(),",
+                "        SAMEPERIODLASTYEAR('Calendar'[Date])",
+                "    )"
+              ],
+              "ordinal": 7
+            },
+            {
+              "name": "PY MTD",
+              "expression": [
+                "",
+                "    CALCULATE(",
+                "        SELECTEDMEASURE(),",
+                "        SAMEPERIODLASTYEAR('Calendar'[Date]),",
+                "        'Time Intelligence'[Time Calculation] = \"MTD\"",
+                "    )"
+              ],
+              "ordinal": 8
+            },
+            {
+              "name": "PY QTD",
+              "expression": [
+                "",
+                "    CALCULATE(",
+                "        SELECTEDMEASURE(),",
+                "        SAMEPERIODLASTYEAR('Calendar'[Date]),",
+                "        'Time Intelligence'[Time Calculation] = \"QTD\"",
+                "    )"
+              ],
+              "ordinal": 9
+            },
+            {
+              "name": "PY YTD",
+              "expression": [
+                "",
+                "    CALCULATE(",
+                "        SELECTEDMEASURE(),",
+                "        SAMEPERIODLASTYEAR('Calendar'[Date]),",
+                "        'Time Intelligence'[Time Calculation] = \"YTD\"",
+                "    )"
+              ],
+              "ordinal": 10
+            },
+            {
+              "name": "YOY",
+              "expression": [
+                "",
+                "    SELECTEDMEASURE() -",
+                "    CALCULATE(",
+                "        SELECTEDMEASURE(),",
+                "        'Time Intelligence'[Time Calculation] = \"PY\"",
+                "    )"
+              ],
+              "ordinal": 11
+            },
+            {
+              "name": "YOY%",
+              "expression": [
+                "",
+                "    DIVIDE(",
+                "        CALCULATE(",
+                "            SELECTEDMEASURE(),",
+                "            'Time Intelligence'[Time Calculation]=\"YOY\"",
+                "        ),",
+                "        CALCULATE(",
+                "            SELECTEDMEASURE(),",
+                "            'Time Intelligence'[Time Calculation]=\"PY\"",
+                "        )",
+                "    )"
+              ],
+              "formatStringDefinition": {
+                "expression": "\"#,##0.00%\""
+              },
+              "ordinal": 12
+            },
+            {
+              "name": "PM",
+              "expression": [
+                "",
+                "    CALCULATE(",
+                "        SELECTEDMEASURE(),",
+                "        PREVIOUSMONTH('Calendar'[Date])",
+                "    )"
+              ],
+              "ordinal": 4
+            },
+            {
+              "name": "MOM",
+              "expression": [
+                "",
+                "    SELECTEDMEASURE() -",
+                "    CALCULATE(",
+                "        SELECTEDMEASURE(),",
+                "        'Time Intelligence'[Time Calculation] = \"PM\"",
+                "    )"
+              ],
+              "ordinal": 5
+            },
+            {
+              "name": "MOM%",
+              "expression": [
+                "",
+                "    DIVIDE(",
+                "        CALCULATE(",
+                "            SELECTEDMEASURE(),",
+                "            'Time Intelligence'[Time Calculation]=\"MOM\"",
+                "        ),",
+                "        CALCULATE(",
+                "            SELECTEDMEASURE(),",
+                "            'Time Intelligence'[Time Calculation]=\"PM\"",
+                "        )",
+                "    )"
+              ],
+              "formatStringDefinition": {
+                "expression": "\"#,##0.00%\""
+              },
+              "ordinal": 6
+            }
+          ],
+          "precedence": 20
+        },
+        "columns": [
+          {
+            "name": "Time Calculation",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "e67fc8c8-08e0-491b-b7b7-5398124c6e93",
+            "sortByColumn": "Ordinal",
+            "sourceColumn": "Name",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Ordinal",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "4cfd8da1-a250-47de-a142-68c22e889501",
+            "sourceColumn": "Ordinal",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "77a28b2c-51b5-44a9-b562-9eb5cf35d07a",
+        "partitions": [
+          {
+            "name": "Time Intelligence",
+            "mode": "import",
+            "source": {
+              "type": "calculationGroup"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

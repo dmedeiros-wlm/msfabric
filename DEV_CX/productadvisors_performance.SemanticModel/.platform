@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "productadvisors_performance"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "48f31e5e-bdf1-4aba-baf7-a05062a13800"
+  }
+}
