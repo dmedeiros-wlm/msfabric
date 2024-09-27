@@ -1,0 +1,9 @@
+{
+  "version": "4.0",
+  "datasetReference": {
+    "byPath": {
+      "path": "../PBI_SM_Tickets.SemanticModel"
+    },
+    "byConnection": null
+  }
+}
