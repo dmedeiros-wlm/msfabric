@@ -1,0 +1,1028 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "SetVariable",
+        "typeProperties": {
+          "variableName": "batchloaddatetime",
+          "value": {
+            "value": "@pipeline().TriggerTime",
+            "type": "Expression"
+          }
+        },
+        "policy": {
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Set BatchLoadDatetime",
+        "dependsOn": [
+          {
+            "activity": "Check LoadIngestData",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "TridentNotebook",
+        "typeProperties": {
+          "notebookId": "270a5178-5dd8-4a69-91cf-03788573bbc2",
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "parameters": {
+            "startyear": {
+              "value": {
+                "value": "@pipeline().parameters.startyear",
+                "type": "Expression"
+              },
+              "type": "int"
+            },
+            "endyear": {
+              "value": {
+                "value": "@pipeline().parameters.endyear",
+                "type": "Expression"
+              },
+              "type": "int"
+            },
+            "lakehousePath": {
+              "value": {
+                "value": "@pipeline().parameters.bronzepath",
+                "type": "Expression"
+              },
+              "type": "string"
+            }
+          }
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 2,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Build Calendar",
+        "dependsOn": []
+      },
+      {
+        "type": "Office365Outlook",
+        "typeProperties": {
+          "inputs": {
+            "body": {
+              "To": "daniel@woodlandmills.com",
+              "Subject": "The pipeline \"@{pipeline().PipelineName}\" has succeeded!",
+              "Body": "<p>The pipeline <b>\"@{pipeline().PipelineName}\"</b> with ID \"@{pipeline().Pipeline}\" ran with success! </p>\n<p> It was initiated at <b>@{variables('batchloaddatetime')}</b> and finished at <b>@{variables('batchloadenddatetime')}</b>.</p>\n<p>Bronze Stats:</p>\n<p>@{variables('runMultiple')}</p>\n<p>Gold Stats:</p>\n<p>@{variables('goldjson')}</p>\n\n",
+              "Sensitivity": "",
+              "Importance": "Normal"
+            },
+            "method": "post",
+            "path": "/v2/Mail"
+          }
+        },
+        "name": "Confirmation Email",
+        "dependsOn": [
+          {
+            "activity": "Set BatchLoadEndDateTime",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "SetVariable",
+        "typeProperties": {
+          "variableName": "batchloadenddatetime",
+          "value": {
+            "value": "@utcNow()",
+            "type": "Expression"
+          }
+        },
+        "policy": {
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Set BatchLoadEndDateTime",
+        "dependsOn": [
+          {
+            "activity": "If LoadGoldLH True",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "IfCondition",
+        "typeProperties": {
+          "expression": {
+            "value": "@equals(pipeline().parameters.loadingestdata, 1)",
+            "type": "Expression"
+          },
+          "ifTrueActivities": [
+            {
+              "type": "RefreshDataflow",
+              "typeProperties": {
+                "dataflowId": "a8c2ad2f-a4ad-4141-af10-670d947793eb",
+                "workspaceId": "ffc83076-e681-4bb9-abb3-1d1e60ca2afd",
+                "notifyOption": "NoNotification"
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 1,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "Ingest ERP Data",
+              "dependsOn": []
+            },
+            {
+              "type": "Wait",
+              "typeProperties": {
+                "waitTimeInSeconds": {
+                  "value": "@pipeline().parameters.ingestwaittime",
+                  "type": "Expression"
+                }
+              },
+              "name": "Delay Bronze Load",
+              "description": "It can take up to 5 minutes from the time a table is created in the Fabric Lakehouse for it to be available in an endpoint!",
+              "dependsOn": [
+                {
+                  "activity": "Ingest ERP Data",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
+            }
+          ],
+          "ifFalseActivities": []
+        },
+        "name": "Check LoadIngestData",
+        "dependsOn": []
+      },
+      {
+        "type": "Lookup",
+        "typeProperties": {
+          "source": {
+            "type": "DataWarehouseSource",
+            "sqlReaderQuery": {
+              "value": "SELECT\n    *\nFROM\n    dbo.PipelineOrchestrator_Bronze\nWHERE\n    skipload=0 AND\n    @{pipeline().parameters.loadbronze} = 1",
+              "type": "Expression"
+            },
+            "partitionOption": "None",
+            "queryTimeout": "02:00:00"
+          },
+          "datasetSettings": {
+            "type": "DataWarehouseTable",
+            "schema": [],
+            "linkedService": {
+              "properties": {
+                "type": "DataWarehouse",
+                "typeProperties": {
+                  "artifactId": "8a168fbf-3cde-463b-a204-e4a4ded5f244",
+                  "endpoint": "n6bdj4tqpecefcf2bmwmfdw3ae-oyymr74b424uxk5tdupgbsrk7u.datawarehouse.fabric.microsoft.com",
+                  "workspaceId": "ffc83076-e681-4bb9-abb3-1d1e60ca2afd"
+                },
+                "annotations": []
+              },
+              "name": "DW_WH_MetadataOrchestration"
+            },
+            "annotations": []
+          },
+          "firstRowOnly": false
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 2,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Get Tables to Load to Lakehouse",
+        "dependsOn": [
+          {
+            "activity": "Set BatchLoadDatetime",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "ForEach",
+        "typeProperties": {
+          "isSequential": true,
+          "items": {
+            "value": "@activity('Get Tables to Load to Lakehouse').output.value",
+            "type": "Expression"
+          },
+          "activities": [
+            {
+              "type": "ExecutePipeline",
+              "typeProperties": {
+                "pipeline": {
+                  "referenceName": "57ceab40-d32c-430a-8835-48ad2cd3a37f",
+                  "type": "PipelineReference"
+                },
+                "parameters": {
+                  "ingestsourcedatecolumn": {
+                    "value": "@item().ingestsourcedatecolumn",
+                    "type": "Expression"
+                  },
+                  "ingeststartdate": {
+                    "value": "@item().ingeststartdate",
+                    "type": "Expression"
+                  },
+                  "ingestenddate": {
+                    "value": "@item().ingestenddate",
+                    "type": "Expression"
+                  },
+                  "ingestsourceschema": {
+                    "value": "@item().ingestsourceschema",
+                    "type": "Expression"
+                  },
+                  "ingestsourcetable": {
+                    "value": "@item().ingestsourcetable",
+                    "type": "Expression"
+                  },
+                  "sinktablename": {
+                    "value": "@item().sinktablename",
+                    "type": "Expression"
+                  },
+                  "loadtype": {
+                    "value": "@item().loadtype",
+                    "type": "Expression"
+                  },
+                  "sourcekeycolumn": {
+                    "value": "@item().sourcekeycolumn",
+                    "type": "Expression"
+                  },
+                  "batchloaddatetime": {
+                    "value": "@variables('batchloaddatetime')",
+                    "type": "Expression"
+                  }
+                },
+                "waitOnCompletion": true
+              },
+              "policy": {
+                "secureInput": false
+              },
+              "name": "Get Ingested Data",
+              "dependsOn": []
+            },
+            {
+              "type": "IfCondition",
+              "typeProperties": {
+                "expression": {
+                  "value": "@equals(item().loadtype, 'full')",
+                  "type": "Expression"
+                },
+                "ifTrueActivities": [
+                  {
+                    "type": "AppendVariable",
+                    "typeProperties": {
+                      "variableName": "fullloaddata",
+                      "value": {
+                        "value": "@concat('{\"layer\" : \"bronze\", \"loadtype\" : \"', item().loadtype, '\", \"batchloaddatetime\" : \"', variables('batchloaddatetime'), '\", \"ingestsourceschema\" : \"', item().ingestsourceschema, '\", \"ingestsourcetable\" : \"', item().ingestsourcetable, '\", \"lakehousePath\" : \"', pipeline().parameters.bronzepath, '\", \"tableName\" : \"', item().sinktablename, '\", \"tableKey\" : \"', item().sourcekeycolumn, '\", \"dateColumn\" : \"', item().ingestsourcedatecolumn, '\", \"copyStats\" : \"', activity('Get Ingested Data').output.pipelineReturnValue.childstats, '\"}')",
+                        "type": "Expression"
+                      }
+                    },
+                    "name": "Append to FullLoadData",
+                    "dependsOn": []
+                  }
+                ],
+                "ifFalseActivities": [
+                  {
+                    "type": "AppendVariable",
+                    "typeProperties": {
+                      "variableName": "incrloaddata",
+                      "value": {
+                        "value": "@concat('{\"layer\" : \"bronze\", \"loadtype\" : \"', item().loadtype, '\", \"batchloaddatetime\" : \"', variables('batchloaddatetime'), '\", \"ingestsourceschema\" : \"', item().ingestsourceschema, '\", \"ingestsourcetable\" : \"', item().ingestsourcetable, '\", \"lakehousePath\" : \"', pipeline().parameters.bronzepath, '\", \"tableName\" : \"', item().sinktablename, '\", \"tableKey\" : \"', item().sourcekeycolumn, '\", \"dateColumn\" : \"', item().ingestsourcedatecolumn, '\", \"copyStats\" : \"', activity('Get Ingested Data').output.pipelineReturnValue.childstats, '\"}')",
+                        "type": "Expression"
+                      }
+                    },
+                    "name": "Append to IncrLoadData",
+                    "dependsOn": []
+                  }
+                ]
+              },
+              "name": "Append to Load Data Variable",
+              "dependsOn": [
+                {
+                  "activity": "Get Ingested Data",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "name": "For Each Table to Load to Lakehouse",
+        "state": "Inactive",
+        "onInactiveMarkAs": "Succeeded",
+        "dependsOn": [
+          {
+            "activity": "Get Tables to Load to Lakehouse",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "ForEach",
+        "typeProperties": {
+          "isSequential": false,
+          "batchCount": 4,
+          "items": {
+            "value": "@activity('Get Tables to Load to Gold Lakehouse').output.value",
+            "type": "Expression"
+          },
+          "activities": [
+            {
+              "type": "ExecutePipeline",
+              "typeProperties": {
+                "pipeline": {
+                  "referenceName": "c02da533-2139-4b5f-9633-99f36585e37d",
+                  "type": "PipelineReference"
+                },
+                "parameters": {
+                  "sourcestartdate": {
+                    "value": "@item().sourcestartdate",
+                    "type": "Expression"
+                  },
+                  "sourceenddate": {
+                    "value": "@item().sourceenddate",
+                    "type": "Expression"
+                  },
+                  "sourceschema": {
+                    "value": "@item().sourceschema",
+                    "type": "Expression"
+                  },
+                  "sourcetable": {
+                    "value": "@item().sourcetable",
+                    "type": "Expression"
+                  },
+                  "loadtype": {
+                    "value": "@item().loadtype",
+                    "type": "Expression"
+                  },
+                  "batchloaddatetime": {
+                    "value": "@variables('batchloaddatetime')\n",
+                    "type": "Expression"
+                  },
+                  "sinktable": {
+                    "value": "@item().sinktable\n",
+                    "type": "Expression"
+                  },
+                  "tablekey": {
+                    "value": "@item().tablekey\n",
+                    "type": "Expression"
+                  },
+                  "tablekey2": {
+                    "value": "@item().tablekey2",
+                    "type": "Expression"
+                  }
+                },
+                "waitOnCompletion": true
+              },
+              "policy": {
+                "secureInput": false
+              },
+              "name": "Invoke Load Gold Lakehouse",
+              "dependsOn": []
+            },
+            {
+              "type": "IfCondition",
+              "typeProperties": {
+                "expression": {
+                  "value": "@equals(item().loadtype, 'full')",
+                  "type": "Expression"
+                },
+                "ifTrueActivities": [
+                  {
+                    "type": "AppendVariable",
+                    "typeProperties": {
+                      "variableName": "fullloadgold",
+                      "value": {
+                        "value": "@concat('{\"tablestats\":{\"loadtype\":\"', item().loadtype, '\",\"batchloaddatetime\":\"', variables('batchloaddatetime'),'\",\"sourceschema\":\"', item().sourceschema, '\",\"sourcetable\":\"', item().sourcetable, '\",', substring(activity('Invoke Load Gold Lakehouse').output.pipelineReturnValue.childstats, 1, sub(length(activity('Invoke Load Gold Lakehouse').output.pipelineReturnValue.childstats), 1)), '}')",
+                        "type": "Expression"
+                      }
+                    },
+                    "name": "Append to FullLoadGold",
+                    "dependsOn": []
+                  }
+                ],
+                "ifFalseActivities": [
+                  {
+                    "type": "AppendVariable",
+                    "typeProperties": {
+                      "variableName": "incrloadgold",
+                      "value": {
+                        "value": "@concat('{\"layer\" : \"gold\", \"loadtype\" : \"', item().loadtype, '\", \"batchloaddatetime\" : \"', variables('batchloaddatetime'), '\", \"sourceschema\" : \"', item().sourceschema, '\", \"sourcetable\" : \"', item().sourcetable, '\", \"lakehousePath\" : \"', pipeline().parameters.goldpath, '\", \"tableName\" : \"', item().sinktable, '\", \"tableKey\" : \"', item().tableKey, '\", \"tableKey2\" : \"', item().tableKey2, '\", \"dateColumn\" : \"LastUpdated\", \"copyStats\" : \"', activity('Invoke Load Gold Lakehouse').output.pipelineReturnValue.childstats, '\"}')",
+                        "type": "Expression"
+                      }
+                    },
+                    "name": "Append to IncrLoadGold",
+                    "dependsOn": []
+                  }
+                ]
+              },
+              "name": "Append to Load Gold Variable",
+              "dependsOn": [
+                {
+                  "activity": "Invoke Load Gold Lakehouse",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "name": "For Each Table to Load to Gold Lakehouse",
+        "dependsOn": [
+          {
+            "activity": "Get Tables to Load to Gold Lakehouse",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Lookup",
+        "typeProperties": {
+          "source": {
+            "type": "DataWarehouseSource",
+            "sqlReaderQuery": {
+              "value": "SELECT\n    *\nFROM\n    dbo.PipelineOrchestrator_Gold\nWHERE\n    skipload=0 AND\n    @{pipeline().parameters.loadgoldlh} = 1",
+              "type": "Expression"
+            },
+            "partitionOption": "None",
+            "queryTimeout": "02:00:00"
+          },
+          "datasetSettings": {
+            "type": "DataWarehouseTable",
+            "schema": [],
+            "linkedService": {
+              "properties": {
+                "type": "DataWarehouse",
+                "typeProperties": {
+                  "artifactId": "8a168fbf-3cde-463b-a204-e4a4ded5f244",
+                  "endpoint": "n6bdj4tqpecefcf2bmwmfdw3ae-oyymr74b424uxk5tdupgbsrk7u.datawarehouse.fabric.microsoft.com",
+                  "workspaceId": "ffc83076-e681-4bb9-abb3-1d1e60ca2afd"
+                },
+                "annotations": []
+              },
+              "name": "DW_WH_MetadataOrchestration"
+            },
+            "annotations": []
+          },
+          "firstRowOnly": false
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 2,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Get Tables to Load to Gold Lakehouse",
+        "dependsOn": [
+          {
+            "activity": "Delay Gold Load",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Wait",
+        "typeProperties": {
+          "waitTimeInSeconds": {
+            "value": "@pipeline().parameters.goldwaittime",
+            "type": "Expression"
+          }
+        },
+        "name": "Delay Gold Load",
+        "description": "It can take up to 5 minutes from the time a table is created in the Fabric Lakehouse for it to be available in an endpoint!",
+        "dependsOn": [
+          {
+            "activity": "Build Calendar",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          },
+          {
+            "activity": "If LoadBronze True",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          },
+          {
+            "activity": "If LoadBronze 1",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "IfCondition",
+        "typeProperties": {
+          "expression": {
+            "value": "@and(equals(pipeline().parameters.loadbronze, 1), or(not(empty(variables('fullloaddata'))), not(empty(variables('incrloaddata')))))",
+            "type": "Expression"
+          },
+          "ifTrueActivities": [
+            {
+              "type": "SqlServerStoredProcedure",
+              "typeProperties": {
+                "storedProcedureName": "[dbo].[UpdateBronzePipelineStats]",
+                "storedProcedureParameters": {
+                  "json": {
+                    "value": {
+                      "value": "@variables('bronzejson')",
+                      "type": "Expression"
+                    },
+                    "type": "String"
+                  }
+                }
+              },
+              "linkedService": {
+                "properties": {
+                  "type": "DataWarehouse",
+                  "typeProperties": {
+                    "artifactId": "8a168fbf-3cde-463b-a204-e4a4ded5f244",
+                    "endpoint": "n6bdj4tqpecefcf2bmwmfdw3ae-oyymr74b424uxk5tdupgbsrk7u.datawarehouse.fabric.microsoft.com",
+                    "workspaceId": "ffc83076-e681-4bb9-abb3-1d1e60ca2afd"
+                  },
+                  "annotations": []
+                },
+                "name": "DW_WH_MetadataOrchestration",
+                "objectId": "8a168fbf-3cde-463b-a204-e4a4ded5f244"
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "Update Bronze Pipeline Stats",
+              "dependsOn": [
+                {
+                  "activity": "Set BronzeJson",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "SetVariable",
+              "typeProperties": {
+                "variableName": "bronzejson",
+                "value": {
+                  "value": "@if(\n  equals(length(activity('Bronze Incr Load').output.result.exitValue), 2), activity('Bronze Full Load').output.result.exitValue,\n  if(equals(length(activity('Bronze Full Load').output.result.exitValue), 2), activity('Bronze Incr Load').output.result.exitValue,\n    concat(\n      substring(activity('Bronze Incr Load').output.result.exitValue, 0, sub(length(activity('Bronze Incr Load').output.result.exitValue), 1)),\n      ',',\n      substring(activity('Bronze Full Load').output.result.exitValue, 1, sub(length(activity('Bronze Full Load').output.result.exitValue), 1))\n    )\n  )\n)",
+                  "type": "Expression"
+                }
+              },
+              "policy": {
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "Set BronzeJson",
+              "dependsOn": [
+                {
+                  "activity": "Bronze Incr Load",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                },
+                {
+                  "activity": "Bronze Full Load",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "TridentNotebook",
+              "typeProperties": {
+                "notebookId": "abc75e86-b3dd-4eba-a2ba-4a184d4cb824",
+                "workspaceId": "ffc83076-e681-4bb9-abb3-1d1e60ca2afd",
+                "parameters": {
+                  "incrload": {
+                    "value": {
+                      "value": "@string(variables('incrloaddata'))",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  }
+                }
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "Bronze Incr Load",
+              "dependsOn": []
+            },
+            {
+              "type": "TridentNotebook",
+              "typeProperties": {
+                "notebookId": "95d620e8-60c2-49a6-b310-7bd5b92182d6",
+                "workspaceId": "ffc83076-e681-4bb9-abb3-1d1e60ca2afd",
+                "parameters": {
+                  "fullload": {
+                    "value": {
+                      "value": "@string(variables('fullloaddata'))",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  }
+                }
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "Bronze Full Load",
+              "dependsOn": []
+            }
+          ],
+          "ifFalseActivities": []
+        },
+        "name": "If LoadBronze True",
+        "state": "Inactive",
+        "onInactiveMarkAs": "Succeeded",
+        "dependsOn": [
+          {
+            "activity": "For Each Table to Load to Lakehouse",
+            "dependencyConditions": [
+              "Completed"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "IfCondition",
+        "typeProperties": {
+          "expression": {
+            "value": "@and(equals(pipeline().parameters.loadgoldlh, 1), or(not(empty(variables('fullloadgold'))), not(empty(variables('incrloadgold')))))",
+            "type": "Expression"
+          },
+          "ifTrueActivities": [
+            {
+              "type": "SetVariable",
+              "typeProperties": {
+                "variableName": "goldjson",
+                "value": {
+                  "value": "@if(\n  equals(length(activity('Gold Incr Load').output.result.exitValue), 2), variables('fullgoldjson'),\n  if(\n    equals(length(variables('fullgoldjson')), 2), activity('Gold Incr Load').output.result.exitValue,\n    concat(\n      substring(activity('Gold Incr Load').output.result.exitValue, 0, sub(length(activity('Gold Incr Load').output.result.exitValue), 1)),\n      ',',\n       substring(variables('fullgoldjson'), 1, sub(length(variables('fullgoldjson')), 1))\n    )\n  )\n)",
+                  "type": "Expression"
+                }
+              },
+              "policy": {
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "Set GoldJson",
+              "dependsOn": [
+                {
+                  "activity": "Gold Incr Load",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                },
+                {
+                  "activity": "Set FullGoldJson",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "SqlServerStoredProcedure",
+              "typeProperties": {
+                "storedProcedureName": "[dbo].[UpdateGoldPipelineStats]",
+                "storedProcedureParameters": {
+                  "json": {
+                    "value": {
+                      "value": "@{variables('goldjson')}",
+                      "type": "Expression"
+                    },
+                    "type": "String"
+                  }
+                }
+              },
+              "linkedService": {
+                "properties": {
+                  "type": "DataWarehouse",
+                  "typeProperties": {
+                    "artifactId": "8a168fbf-3cde-463b-a204-e4a4ded5f244",
+                    "endpoint": "n6bdj4tqpecefcf2bmwmfdw3ae-oyymr74b424uxk5tdupgbsrk7u.datawarehouse.fabric.microsoft.com",
+                    "workspaceId": "ffc83076-e681-4bb9-abb3-1d1e60ca2afd"
+                  },
+                  "annotations": []
+                },
+                "name": "DW_WH_MetadataOrchestration",
+                "objectId": "8a168fbf-3cde-463b-a204-e4a4ded5f244"
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "Update Gold Pipeline Stats",
+              "dependsOn": [
+                {
+                  "activity": "Set GoldJson",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "TridentNotebook",
+              "typeProperties": {
+                "notebookId": "3a7e6a14-1f2d-4c89-8284-692d1af6d0be",
+                "workspaceId": "00000000-0000-0000-0000-000000000000",
+                "parameters": {
+                  "incrload": {
+                    "value": {
+                      "value": "@string(variables('incrloadgold'))",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  }
+                }
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 2,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "Gold Incr Load",
+              "dependsOn": []
+            },
+            {
+              "type": "SetVariable",
+              "typeProperties": {
+                "variableName": "fullgoldjson",
+                "value": {
+                  "value": "@concat(\n    '[',\n    replace(\n        replace(\n            replace(\n                join(variables('fullloadgold'), ','),\n                '\\\"', \n                '\"'\n            ),\n            '\"{',\n            '{'\n        ),\n        '}\"',\n        '}'\n    ),\n    ']'\n)",
+                  "type": "Expression"
+                }
+              },
+              "policy": {
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "Set FullGoldJson",
+              "dependsOn": []
+            }
+          ],
+          "ifFalseActivities": []
+        },
+        "name": "If LoadGoldLH True",
+        "dependsOn": [
+          {
+            "activity": "For Each Table to Load to Gold Lakehouse",
+            "dependencyConditions": [
+              "Completed"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "ForEach",
+        "typeProperties": {
+          "isSequential": true,
+          "items": {
+            "value": "@activity('Get Tables to Load to Lakehouse').output.value",
+            "type": "Expression"
+          },
+          "activities": [
+            {
+              "type": "AppendVariable",
+              "typeProperties": {
+                "variableName": "runMultiple",
+                "value": {
+                  "value": "@concat('{\"tableParams\":{\"ingestsourceschema\":\"', item().ingestsourceschema, '\",\"ingestsourcetable\":\"', item().ingestsourcetable, '\",\"loadtype\":\"', item().loadtype, '\",\"ingestsourcedatecolumn\":\"', item().ingestsourcedatecolumn, '\",\"ingeststartdate\":\"', item().ingeststartdate, '\",\"ingestenddate\":\"', item().ingestenddate, '\",\"sinktablename\":\"', item().sinktablename, '\",\"sourcekeycolumn\":\"', item().sourcekeycolumn,'\",\"batchloaddatetime\":\"', variables('batchloaddatetime'),'\"}}')",
+                  "type": "Expression"
+                }
+              },
+              "name": "Append runMultiple",
+              "dependsOn": []
+            }
+          ]
+        },
+        "name": "For Each Table to Load to Bronze",
+        "dependsOn": [
+          {
+            "activity": "Get Tables to Load to Lakehouse",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "IfCondition",
+        "typeProperties": {
+          "expression": {
+            "value": "@equals(pipeline().parameters.loadbronze, 1)",
+            "type": "Expression"
+          },
+          "ifTrueActivities": [
+            {
+              "type": "TridentNotebook",
+              "typeProperties": {
+                "notebookId": "c3f072bd-4f0c-4ffc-abdf-5865fb1e897c",
+                "workspaceId": "00000000-0000-0000-0000-000000000000",
+                "parameters": {
+                  "tableParams": {
+                    "value": {
+                      "value": "@string(variables('runMultiple'))",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  }
+                }
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 2,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "Load Bronze Tables",
+              "dependsOn": []
+            },
+            {
+              "type": "SqlServerStoredProcedure",
+              "typeProperties": {
+                "storedProcedureName": "[dbo].[UpdateBronzePipelineStats]",
+                "storedProcedureParameters": {
+                  "json": {
+                    "value": {
+                      "value": "@activity('Load Bronze Tables').output.result.exitValue",
+                      "type": "Expression"
+                    },
+                    "type": "String"
+                  }
+                }
+              },
+              "linkedService": {
+                "properties": {
+                  "type": "DataWarehouse",
+                  "typeProperties": {
+                    "artifactId": "8a168fbf-3cde-463b-a204-e4a4ded5f244",
+                    "endpoint": "n6bdj4tqpecefcf2bmwmfdw3ae-oyymr74b424uxk5tdupgbsrk7u.datawarehouse.fabric.microsoft.com",
+                    "workspaceId": "ffc83076-e681-4bb9-abb3-1d1e60ca2afd"
+                  },
+                  "annotations": []
+                },
+                "name": "DW_WH_MetadataOrchestration",
+                "objectId": "8a168fbf-3cde-463b-a204-e4a4ded5f244"
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "Update Bronze Load Stats",
+              "dependsOn": [
+                {
+                  "activity": "Load Bronze Tables",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
+            }
+          ],
+          "ifFalseActivities": []
+        },
+        "name": "If LoadBronze 1",
+        "dependsOn": [
+          {
+            "activity": "For Each Table to Load to Bronze",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      }
+    ],
+    "parameters": {
+      "startyear": {
+        "type": "int",
+        "defaultValue": 2023
+      },
+      "endyear": {
+        "type": "int",
+        "defaultValue": 2024
+      },
+      "loadingestdata": {
+        "type": "int",
+        "defaultValue": 0
+      },
+      "loadbronze": {
+        "type": "int",
+        "defaultValue": 1
+      },
+      "loadgoldlh": {
+        "type": "int",
+        "defaultValue": 1
+      },
+      "ingestwaittime": {
+        "type": "int",
+        "defaultValue": 300
+      },
+      "goldwaittime": {
+        "type": "int",
+        "defaultValue": 300
+      },
+      "bronzepath": {
+        "type": "string",
+        "defaultValue": "abfss://WP_DEV_OneLake@onelake.dfs.fabric.microsoft.com/DE_LH_100_BRONZE_WoodlandMills.Lakehouse"
+      },
+      "goldpath": {
+        "type": "string",
+        "defaultValue": "abfss://WP_DEV_OneLake@onelake.dfs.fabric.microsoft.com/DE_LH_300_GOLD_WoodlandMills.Lakehouse"
+      }
+    },
+    "variables": {
+      "batchloaddatetime": {
+        "type": "String"
+      },
+      "bronzestats": {
+        "type": "Array"
+      },
+      "bronzejson": {
+        "type": "String"
+      },
+      "goldstats": {
+        "type": "Array"
+      },
+      "goldjson": {
+        "type": "String"
+      },
+      "batchloadenddatetime": {
+        "type": "String"
+      },
+      "bronzeload": {
+        "type": "Array"
+      },
+      "fullloaddata": {
+        "type": "Array"
+      },
+      "incrloaddata": {
+        "type": "Array"
+      },
+      "loadstatus": {
+        "type": "String"
+      },
+      "rowsread": {
+        "type": "String"
+      },
+      "rowscopied": {
+        "type": "String"
+      },
+      "fullloadgold": {
+        "type": "Array"
+      },
+      "incrloadgold": {
+        "type": "Array"
+      },
+      "fullgoldjson": {
+        "type": "String"
+      },
+      "runMultiple": {
+        "type": "Array"
+      }
+    }
+  }
+}

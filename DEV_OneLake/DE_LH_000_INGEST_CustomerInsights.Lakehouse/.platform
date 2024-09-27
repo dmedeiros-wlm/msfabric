@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Lakehouse",
+    "displayName": "DE_LH_000_INGEST_CustomerInsights"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "bec54da5-6d9e-426a-9b4e-a32379122ffc"
+  }
+}

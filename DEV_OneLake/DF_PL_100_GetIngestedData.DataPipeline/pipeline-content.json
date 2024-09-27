@@ -1,0 +1,324 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "SetVariable",
+        "typeProperties": {
+          "variableName": "pipelinestarttime",
+          "value": {
+            "value": "@utcNow()",
+            "type": "Expression"
+          }
+        },
+        "policy": {
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Set pipelinestarttime",
+        "dependsOn": []
+      },
+      {
+        "type": "IfCondition",
+        "typeProperties": {
+          "expression": {
+            "value": "@equals(pipeline().parameters.loadtype,'full')",
+            "type": "Expression"
+          },
+          "ifTrueActivities": [
+            {
+              "type": "SetVariable",
+              "typeProperties": {
+                "variableName": "loadstatus",
+                "value": {
+                  "value": "@{activity('Bronze Load').output.result.runStatus}",
+                  "type": "Expression"
+                }
+              },
+              "policy": {
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "Set Full Load Status",
+              "dependsOn": []
+            },
+            {
+              "type": "SetVariable",
+              "typeProperties": {
+                "variableName": "pipelineendtime",
+                "value": {
+                  "value": "@utcNow()",
+                  "type": "Expression"
+                }
+              },
+              "policy": {
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "Set Full Pipeline EndTime",
+              "dependsOn": [
+                {
+                  "activity": "Set Full Load Status",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "SetVariable",
+              "typeProperties": {
+                "variableName": "pipelineReturnValue",
+                "value": [
+                  {
+                    "key": "childstats",
+                    "value": {
+                      "type": "Expression",
+                      "content": "{\"loadstatus\" : \"@{variables('loadstatus')}\", \"rowsread\" : \"@{json(activity('Bronze Load').output.result.exitValue).rowsread}\", \"rowscopied\" : \"@{json(activity('Bronze Load').output.result.exitValue).rowscopied}\", \"deltalkeupdated\" : \"0\", \"pipelinestarttime\" : \"@{variables('pipelinestarttime')}\", \"pipelineendtime\" : \"@{variables('pipelineendtime')}\"}"
+                    }
+                  }
+                ],
+                "setSystemVariable": true
+              },
+              "policy": {
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "Set Child Full Pipeline Stats",
+              "dependsOn": [
+                {
+                  "activity": "Set Full Pipeline EndTime",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
+            }
+          ],
+          "ifFalseActivities": [
+            {
+              "type": "SetVariable",
+              "typeProperties": {
+                "variableName": "loadstatus",
+                "value": {
+                  "value": "@{activity('Bronze Load').output.result.runStatus}",
+                  "type": "Expression"
+                }
+              },
+              "policy": {
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "Set Incr Load Status",
+              "dependsOn": []
+            },
+            {
+              "type": "SetVariable",
+              "typeProperties": {
+                "variableName": "pipelineendtime",
+                "value": {
+                  "value": "@utcNow()",
+                  "type": "Expression"
+                }
+              },
+              "policy": {
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "Set Incr Pipeline EndTime",
+              "dependsOn": [
+                {
+                  "activity": "Set Incr Load Status",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "SetVariable",
+              "typeProperties": {
+                "variableName": "pipelineReturnValue",
+                "value": [
+                  {
+                    "key": "childstats",
+                    "value": {
+                      "type": "Expression",
+                      "content": "{\"loadstatus\" : \"@{variables('loadstatus')}\", \"rowsread\" : \"@{json(activity('Bronze Load').output.result.exitValue).rowsread}\", \"rowscopied\" : \"@{json(activity('Bronze Load').output.result.exitValue).rowscopied}\", \"pipelinestarttime\" : \"@{variables('pipelinestarttime')}\", \"pipelineendtime\" : \"@{variables('pipelineendtime')}\"}"
+                    }
+                  }
+                ],
+                "setSystemVariable": true
+              },
+              "policy": {
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "Set Child Incr Pipeline Stats",
+              "dependsOn": [
+                {
+                  "activity": "Set Incr Pipeline EndTime",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "name": "Check TableName",
+        "dependsOn": [
+          {
+            "activity": "Bronze Load",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "TridentNotebook",
+        "typeProperties": {
+          "notebookId": "dd352ce0-3c8b-4d17-a491-e9269f1051f1",
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "parameters": {
+            "ingestsourceschema": {
+              "value": {
+                "value": "@pipeline().parameters.ingestsourceschema",
+                "type": "Expression"
+              },
+              "type": "string"
+            },
+            "ingestsourcetable": {
+              "value": {
+                "value": "@pipeline().parameters.ingestsourcetable",
+                "type": "Expression"
+              },
+              "type": "string"
+            },
+            "ingestsourcedatecolumn": {
+              "value": {
+                "value": "@pipeline().parameters.ingestsourcedatecolumn",
+                "type": "Expression"
+              },
+              "type": "string"
+            },
+            "ingeststartdate": {
+              "value": {
+                "value": "@pipeline().parameters.ingeststartdate",
+                "type": "Expression"
+              },
+              "type": "string"
+            },
+            "ingestenddate": {
+              "value": {
+                "value": "@pipeline().parameters.ingestenddate",
+                "type": "Expression"
+              },
+              "type": "string"
+            },
+            "sinktablename": {
+              "value": {
+                "value": "@pipeline().parameters.sinktablename",
+                "type": "Expression"
+              },
+              "type": "string"
+            },
+            "loadtype": {
+              "value": {
+                "value": "@pipeline().parameters.loadtype",
+                "type": "Expression"
+              },
+              "type": "string"
+            }
+          }
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Bronze Load",
+        "dependsOn": [
+          {
+            "activity": "Set pipelinestarttime",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      }
+    ],
+    "parameters": {
+      "ingestsourcedatecolumn": {
+        "type": "string"
+      },
+      "ingeststartdate": {
+        "type": "string"
+      },
+      "ingestenddate": {
+        "type": "string"
+      },
+      "ingestsourceschema": {
+        "type": "string"
+      },
+      "ingestsourcetable": {
+        "type": "string"
+      },
+      "sinktablename": {
+        "type": "string"
+      },
+      "loadtype": {
+        "type": "string"
+      },
+      "sourcekeycolumn": {
+        "type": "string"
+      },
+      "batchloaddatetime": {
+        "type": "string"
+      }
+    },
+    "variables": {
+      "datepredicate": {
+        "type": "String"
+      },
+      "maxdate": {
+        "type": "String"
+      },
+      "rowsinserted": {
+        "type": "String"
+      },
+      "rowsupdated": {
+        "type": "String"
+      },
+      "pipelinestarttime": {
+        "type": "String"
+      },
+      "pipelineendtime": {
+        "type": "String"
+      },
+      "stats": {
+        "type": "String"
+      },
+      "bronzeload": {
+        "type": "Array"
+      },
+      "fullloaddata": {
+        "type": "Array"
+      },
+      "incrloaddata": {
+        "type": "Array"
+      },
+      "loadstatus": {
+        "type": "String"
+      },
+      "rowsread": {
+        "type": "String"
+      },
+      "rowscopied": {
+        "type": "String"
+      }
+    }
+  }
+}

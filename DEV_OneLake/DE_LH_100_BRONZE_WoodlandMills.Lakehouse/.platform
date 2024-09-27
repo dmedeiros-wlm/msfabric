@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Lakehouse",
+    "displayName": "DE_LH_100_BRONZE_WoodlandMills"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "ddfe732b-feb1-453f-a525-d883f3eeb7dc"
+  }
+}
