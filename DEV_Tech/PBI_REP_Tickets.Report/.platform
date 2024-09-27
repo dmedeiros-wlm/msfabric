@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "PBI_REP_Tickets",
+    "description": "v1.1"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "056b7064-b04c-464a-bb55-2ee42c2187c8"
+  }
+}

@@ -1,0 +1,3569 @@
+{
+  "compatibilityLevel": 1604,
+  "model": {
+    "annotations": [
+      {
+        "name": "__PBI_TimeIntelligenceEnabled",
+        "value": "0"
+      },
+      {
+        "name": "PBIDesktopVersion",
+        "value": "2.134.7420.2 (Main)"
+      },
+      {
+        "name": "PBI_QueryOrder",
+        "value": "[\"DatabaseQuery\"]"
+      },
+      {
+        "name": "PBI_ProTooling",
+        "value": "[\"WebModelingEdit\",\"CalcGroup\"]"
+      },
+      {
+        "name": "__TEdtr",
+        "value": "1"
+      }
+    ],
+    "collation": "Latin1_General_100_BIN2_UTF8",
+    "culture": "en-US",
+    "cultures": [
+      {
+        "name": "en-US",
+        "linguisticMetadata": {
+          "content": {
+            "Language": "en-US",
+            "Version": "1.0.0"
+          },
+          "contentType": "json"
+        }
+      }
+    ],
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": true
+    },
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "discourageImplicitMeasures": true,
+    "expressions": [
+      {
+        "name": "DatabaseQuery",
+        "annotations": [
+          {
+            "name": "PBI_IncludeFutureArtifacts",
+            "value": "False"
+          }
+        ],
+        "expression": [
+          "let",
+          "    database = Sql.Database(\"N6BDJ4TQPECEFCF2BMWMFDW3AE-OYYMR74B424UXK5TDUPGBSRK7U.datawarehouse.fabric.microsoft.com\", \"eb83f5b4-733a-498b-9627-bd6bec100aab\")",
+          "in",
+          "    database"
+        ],
+        "kind": "m",
+        "lineageTag": "f46f55b0-b51d-4d7e-b3f1-0769b9b77809"
+      }
+    ],
+    "relationships": [
+      {
+        "name": "41253f9a-01e6-3a74-8376-59657c03dc72",
+        "fromColumn": "resolutionoptions_fk",
+        "fromTable": "tech_tickets",
+        "toColumn": "resolutionsoptions_sk",
+        "toTable": "tech_resolutions_options"
+      },
+      {
+        "name": "9de52875-08d0-c139-30ca-b839298cf139",
+        "fromColumn": "ticketoptions_fk",
+        "fromTable": "tech_tickets",
+        "toColumn": "ticketsoptions_sk",
+        "toTable": "tech_tickets_options"
+      },
+      {
+        "name": "ade17d77-3740-0525-6c4e-0adedfe38e63",
+        "fromColumn": "product_fk",
+        "fromTable": "tech_tickets",
+        "toColumn": "productsimpacted_sk",
+        "toTable": "tech_products_impacted"
+      },
+      {
+        "name": "1d006d6c-abb7-678e-686a-b8d398e331f9",
+        "fromColumn": "rep_fk",
+        "fromTable": "tech_tickets",
+        "toColumn": "advisor_sk",
+        "toTable": "tech_advisors"
+      },
+      {
+        "name": "ebe86a8f-e408-d748-c2a0-b2566250d094",
+        "fromColumn": "resolutioneditor_fk",
+        "fromTable": "tech_tickets",
+        "isActive": false,
+        "toColumn": "advisor_sk",
+        "toTable": "tech_advisors"
+      },
+      {
+        "name": "04f5d4b2-2c43-283f-7303-267a1b9a3f31",
+        "fromColumn": "resolutionrep_fk",
+        "fromTable": "tech_tickets",
+        "isActive": false,
+        "toColumn": "advisor_sk",
+        "toTable": "tech_advisors"
+      },
+      {
+        "name": "21f2e651-2305-dfe7-c6b9-bdcc2b239fd7",
+        "fromColumn": "owner_fk",
+        "fromTable": "tech_tickets",
+        "isActive": false,
+        "toColumn": "advisor_sk",
+        "toTable": "tech_advisors"
+      },
+      {
+        "name": "4048a7af-3d79-dabf-dff2-cbffe8ff5845",
+        "fromColumn": "escalatee_fk",
+        "fromTable": "tech_tickets",
+        "isActive": false,
+        "toColumn": "advisor_sk",
+        "toTable": "tech_advisors"
+      },
+      {
+        "name": "7b1a6432-c2d1-0aa8-987a-7d9c87d08ae3",
+        "fromColumn": "editor_fk",
+        "fromTable": "tech_tickets",
+        "isActive": false,
+        "toColumn": "advisor_sk",
+        "toTable": "tech_advisors"
+      },
+      {
+        "name": "fa5ce824-053c-24c0-4bc5-00785b792842",
+        "fromColumn": "customer_fk",
+        "fromTable": "tech_tickets",
+        "toColumn": "customersadvised_sk",
+        "toTable": "tech_customers_advised"
+      },
+      {
+        "name": "31f7ae36-433d-7761-bc40-0a0f4e3546b2",
+        "fromColumn": "createdondate",
+        "fromTable": "tech_tickets",
+        "toColumn": "Date",
+        "toTable": "Calendar"
+      }
+    ],
+    "sourceQueryCulture": "en-US",
+    "tables": [
+      {
+        "name": "Calendar",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Date",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "TabularEditor_MarkAsDateKey",
+                "value": "1"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "mm/dd/yyyy",
+            "isKey": true,
+            "lineageTag": "b4d9de17-52c1-4407-949d-8ecd18bcb216",
+            "sourceColumn": "Date",
+            "sourceLineageTag": "Date",
+            "sourceProviderType": "date",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "DayNum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "df7caff1-288a-45d1-8c6a-3250a372264c",
+            "sourceColumn": "DayNum",
+            "sourceLineageTag": "DayNum",
+            "sourceProviderType": "int",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "DayOfWeek",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "2014171d-89f4-4c74-9668-e10a272c819d",
+            "sourceColumn": "DayOfWeek",
+            "sourceLineageTag": "DayOfWeek",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "DayOfWeekNum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "67a8d321-1bf5-41a6-b6fd-9e976b4928a1",
+            "sourceColumn": "DayOfWeekNum",
+            "sourceLineageTag": "DayOfWeekNum",
+            "sourceProviderType": "int",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Month",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "SortByColumn"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "d596b192-198f-4bf4-a104-da69c555862a",
+            "sortByColumn": "MonthNum",
+            "sourceColumn": "Month",
+            "sourceLineageTag": "Month",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "MonthNum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "5a2cc383-54d6-4a14-9d82-56eee7f488f8",
+            "sourceColumn": "MonthNum",
+            "sourceLineageTag": "MonthNum",
+            "sourceProviderType": "int",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "MonthYear",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "UnderlyingDateTimeDataType",
+                "value": "Date"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isCustom\":true}"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "DataType"
+              },
+              {
+                "property": "FormatString"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "MMM-YY",
+            "lineageTag": "142df063-eef2-4e13-b63d-1cd2d5612fdb",
+            "sourceColumn": "MonthYear",
+            "sourceLineageTag": "MonthYear",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Quarter",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "300871e2-b21a-4645-830f-503f3dddd40a",
+            "sourceColumn": "Quarter",
+            "sourceLineageTag": "Quarter",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "QuarterNum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "2e7c00fa-d6cf-40de-8f10-92e0af83f590",
+            "sourceColumn": "QuarterNum",
+            "sourceLineageTag": "QuarterNum",
+            "sourceProviderType": "int",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Year",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "e28f4231-54ab-4aca-85d6-a647f65e235c",
+            "sourceColumn": "Year",
+            "sourceLineageTag": "Year",
+            "sourceProviderType": "int",
+            "summarizeBy": "none"
+          }
+        ],
+        "dataCategory": "Time",
+        "hierarchies": [
+          {
+            "name": "Date Hierarchy",
+            "levels": [
+              {
+                "name": "Date",
+                "column": "Date",
+                "lineageTag": "b27cd006-1c04-49a7-aa13-9df06173b667",
+                "ordinal": 0
+              },
+              {
+                "name": "Month",
+                "column": "Month",
+                "lineageTag": "63e63486-ec65-4426-897f-4fd78866166b",
+                "ordinal": 1
+              },
+              {
+                "name": "Quarter",
+                "column": "Quarter",
+                "lineageTag": "d96e9f62-162d-48d4-a372-7cadd37b3968",
+                "ordinal": 2
+              },
+              {
+                "name": "Year",
+                "column": "Year",
+                "lineageTag": "4d9532d0-5ef2-444a-9baa-3edf20fe59f7",
+                "ordinal": 3
+              }
+            ],
+            "lineageTag": "f86e7970-f737-411f-bf24-2a698b0123ef"
+          }
+        ],
+        "lineageTag": "f988c2c0-4605-4414-b4c0-cb444eb10615",
+        "partitions": [
+          {
+            "name": "Calendar",
+            "mode": "directLake",
+            "source": {
+              "entityName": "Calendar",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo",
+              "type": "entity"
+            }
+          }
+        ],
+        "sourceLineageTag": "[dbo].[Calendar]"
+      },
+      {
+        "name": "tech_products_impacted",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "productid",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "string",
+            "isHidden": true,
+            "lineageTag": "5c9d5514-925c-49ee-ad40-e2c9529a6ed3",
+            "sourceColumn": "productid",
+            "sourceLineageTag": "productid",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "productname",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "e0b991fc-9ecc-4bba-9a54-e4a84501026d",
+            "sourceColumn": "productname",
+            "sourceLineageTag": "productname",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "productcategory",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "44da9f4f-ac5f-461e-b1db-12694835083f",
+            "sourceColumn": "productcategory",
+            "sourceLineageTag": "productcategory",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "productsimpacted_sk",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "string",
+            "isHidden": true,
+            "isKey": true,
+            "lineageTag": "4edd9b16-b82f-4700-aa15-f92f8b5d7ba7",
+            "sourceColumn": "productsimpacted_sk",
+            "sourceLineageTag": "productsimpacted_sk",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          }
+        ],
+        "hierarchies": [
+          {
+            "name": "Product Hierarchy",
+            "changedProperties": [
+              {
+                "property": "Name"
+              }
+            ],
+            "levels": [
+              {
+                "name": "productname",
+                "column": "productname",
+                "lineageTag": "ed0715f5-689f-42d6-9c32-1016bc24b271",
+                "ordinal": 0
+              },
+              {
+                "name": "productcategory",
+                "column": "productcategory",
+                "lineageTag": "af9260d6-1e86-4fba-87e1-2108a6c39f4a",
+                "ordinal": 1
+              }
+            ],
+            "lineageTag": "13a216fb-23c8-4bb9-a05b-4965118b68fc"
+          }
+        ],
+        "lineageTag": "676e69f8-65e9-4474-ac47-c712ad4563a0",
+        "partitions": [
+          {
+            "name": "tech_products_impacted",
+            "mode": "directLake",
+            "source": {
+              "entityName": "tech_products_impacted",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo",
+              "type": "entity"
+            }
+          }
+        ],
+        "sourceLineageTag": "[dbo].[tech_products_impacted]"
+      },
+      {
+        "name": "tech_tickets_options",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "originid",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isHidden": true,
+            "lineageTag": "19eb2bd3-c80d-4528-a3d3-6d60a7e81fef",
+            "sourceColumn": "originid",
+            "sourceLineageTag": "originid",
+            "sourceProviderType": "bigint",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "priorityid",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isHidden": true,
+            "lineageTag": "de3973a5-a082-411e-8f7f-676efeac294c",
+            "sourceColumn": "priorityid",
+            "sourceLineageTag": "priorityid",
+            "sourceProviderType": "bigint",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "statusid",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isHidden": true,
+            "lineageTag": "c4eb0817-8595-4338-b443-abb21b56ca7c",
+            "sourceColumn": "statusid",
+            "sourceLineageTag": "statusid",
+            "sourceProviderType": "bigint",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "statusreasonid",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isHidden": true,
+            "lineageTag": "a74fa930-b9f1-4fbb-a62f-685ee3c65db3",
+            "sourceColumn": "statusreasonid",
+            "sourceLineageTag": "statusreasonid",
+            "sourceProviderType": "bigint",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "tickettagid",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "BestPracticeAnalyzer_IgnoreRules",
+                "value": "{\"RuleIDs\":[\"OBJECTS_WITH_NO_DESCRIPTION\"]}"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isHidden": true,
+            "lineageTag": "6c08da8b-c853-40fa-992a-5dd6e8456d96",
+            "sourceColumn": "tickettagid",
+            "sourceLineageTag": "tickettagid",
+            "sourceProviderType": "bigint",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "tickettypeid",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isHidden": true,
+            "lineageTag": "71a84bc3-ea9b-40a8-ad76-638ebd42b700",
+            "sourceColumn": "tickettypeid",
+            "sourceLineageTag": "tickettypeid",
+            "sourceProviderType": "bigint",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "origin",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "a3e93a78-eb4d-43dd-ad04-a3795cff3394",
+            "sourceColumn": "origin",
+            "sourceLineageTag": "origin",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "priority",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "f1eca387-99be-4203-becf-172d14b761cf",
+            "sourceColumn": "priority",
+            "sourceLineageTag": "priority",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "status",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "e709bfc5-dc71-43bd-b0b7-6c34826cab15",
+            "sourceColumn": "status",
+            "sourceLineageTag": "status",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "statusreason",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "b1055092-9407-4618-8f45-76f4a03038ec",
+            "sourceColumn": "statusreason",
+            "sourceLineageTag": "statusreason",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "tickettag",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "93ed26a0-1301-4912-b6d6-5d27b2e5bb8b",
+            "sourceColumn": "tickettag",
+            "sourceLineageTag": "tickettag",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "tickettype",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "77ba2fa6-191d-4939-b388-d58612df816e",
+            "sourceColumn": "tickettype",
+            "sourceLineageTag": "tickettype",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ticketsoptions_sk",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "string",
+            "isHidden": true,
+            "isKey": true,
+            "lineageTag": "d41f0e75-ba66-40b0-99bd-844e9391faaa",
+            "sourceColumn": "ticketsoptions_sk",
+            "sourceLineageTag": "ticketsoptions_sk",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "7dbc5ab7-4b1b-4cd6-aedf-ead7daea78fc",
+        "partitions": [
+          {
+            "name": "tech_tickets_options",
+            "mode": "directLake",
+            "source": {
+              "entityName": "tech_tickets_options",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo",
+              "type": "entity"
+            }
+          }
+        ],
+        "sourceLineageTag": "[dbo].[tech_tickets_options]"
+      },
+      {
+        "name": "tech_advisors",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "advisorid",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "string",
+            "isHidden": true,
+            "lineageTag": "44115f22-1ab6-452b-82d0-8d3112c86c81",
+            "sourceColumn": "advisorid",
+            "sourceLineageTag": "advisorid",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "fullname",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "6d2e514b-e9f1-44bd-a07f-b424669711cf",
+            "sourceColumn": "fullname",
+            "sourceLineageTag": "fullname",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "is_senior_tech",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "f4e9e789-3a3b-47e9-afa9-7d8eca4ebf8a",
+            "sourceColumn": "is_senior_tech",
+            "sourceLineageTag": "is_senior_tech",
+            "sourceProviderType": "int",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "is_team_lead",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "36434794-29f2-4d08-b7f4-1a359bbb6682",
+            "sourceColumn": "is_team_lead",
+            "sourceLineageTag": "is_team_lead",
+            "sourceProviderType": "int",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "is_resolution_rep",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "e58cc249-65b8-46ac-8112-786fdf9bb132",
+            "sourceColumn": "is_resolution_rep",
+            "sourceLineageTag": "is_resolution_rep",
+            "sourceProviderType": "int",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "is_resolution_editor",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "83810492-5906-4cbc-9548-60fe1c996d57",
+            "sourceColumn": "is_resolution_editor",
+            "sourceLineageTag": "is_resolution_editor",
+            "sourceProviderType": "int",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "is_ticket_rep",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "48d83a8a-0686-44a0-9874-bb80ebcf67ff",
+            "sourceColumn": "is_ticket_rep",
+            "sourceLineageTag": "is_ticket_rep",
+            "sourceProviderType": "int",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "is_ticket_editor",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "4277b461-3955-4525-ac63-ab3974299009",
+            "sourceColumn": "is_ticket_editor",
+            "sourceLineageTag": "is_ticket_editor",
+            "sourceProviderType": "int",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "is_ticket_owner",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "3a1587ca-e807-47fe-8274-8a9be23f3fef",
+            "sourceColumn": "is_ticket_owner",
+            "sourceLineageTag": "is_ticket_owner",
+            "sourceProviderType": "int",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "is_ticket_escalatee",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "4633c154-e9a4-45ea-8e4e-fc718226f984",
+            "sourceColumn": "is_ticket_escalatee",
+            "sourceLineageTag": "is_ticket_escalatee",
+            "sourceProviderType": "int",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "audit_createdon",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "General Date",
+            "isHidden": true,
+            "lineageTag": "7c1d3759-8cae-42f8-bc51-d989ba811b22",
+            "sourceColumn": "audit_createdon",
+            "sourceLineageTag": "audit_createdon",
+            "sourceProviderType": "datetime2",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "audit_createdby",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "string",
+            "isHidden": true,
+            "lineageTag": "be9f06a5-eb76-4531-908b-0fd3caa842d4",
+            "sourceColumn": "audit_createdby",
+            "sourceLineageTag": "audit_createdby",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "audit_lastupdated",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "mm/dd/yyyy",
+            "isHidden": true,
+            "lineageTag": "b3fc1648-d721-45ad-a111-18908cf75bd2",
+            "sourceColumn": "audit_lastupdated",
+            "sourceLineageTag": "audit_lastupdated",
+            "sourceProviderType": "datetime2",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "audit_lastupdatedby",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "string",
+            "isHidden": true,
+            "lineageTag": "692b0b49-4f62-4bfd-be42-de993140df32",
+            "sourceColumn": "audit_lastupdatedby",
+            "sourceLineageTag": "audit_lastupdatedby",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "advisor_sk",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "string",
+            "isHidden": true,
+            "isKey": true,
+            "lineageTag": "e2ac9ef6-d0ab-4366-9ce3-b83e3a278781",
+            "sourceColumn": "advisor_sk",
+            "sourceLineageTag": "advisor_sk",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "is_tech_advisor",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "0a641c82-35b9-46c8-9e70-11e78d1ad5bf",
+            "sourceColumn": "is_tech_advisor",
+            "sourceLineageTag": "is_tech_advisor",
+            "sourceProviderType": "int",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "beaf1ee6-96bd-4395-80ad-db0bd94dec5b",
+        "partitions": [
+          {
+            "name": "tech_advisors",
+            "mode": "directLake",
+            "source": {
+              "entityName": "tech_advisors",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo",
+              "type": "entity"
+            }
+          }
+        ],
+        "sourceLineageTag": "[dbo].[tech_advisors]"
+      },
+      {
+        "name": "tech_customers_advised",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "accountid",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "string",
+            "isHidden": true,
+            "lineageTag": "50851435-b590-4171-8d5e-62e821ce4ce1",
+            "sourceColumn": "accountid",
+            "sourceLineageTag": "accountid",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "accountnumber",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "9a4e6b61-bd5a-4922-9945-5b9ec3fc4d17",
+            "sourceColumn": "accountnumber",
+            "sourceLineageTag": "accountnumber",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "city",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "DataCategory"
+              }
+            ],
+            "dataCategory": "City",
+            "dataType": "string",
+            "lineageTag": "f409bf7f-a371-44d0-8314-ad91c158c70f",
+            "sourceColumn": "city",
+            "sourceLineageTag": "city",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "stateorprovince",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "DataCategory"
+              }
+            ],
+            "dataCategory": "StateOrProvince",
+            "dataType": "string",
+            "lineageTag": "0617eefa-cfe5-43cb-8f1f-f23cdc38d02e",
+            "sourceColumn": "stateorprovince",
+            "sourceLineageTag": "stateorprovince",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "country",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "DataCategory"
+              }
+            ],
+            "dataCategory": "Country",
+            "dataType": "string",
+            "lineageTag": "5f00fddd-fbd9-4531-98c4-7e5eed7a1c67",
+            "sourceColumn": "country",
+            "sourceLineageTag": "country",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "postalcode",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "DataCategory"
+              }
+            ],
+            "dataCategory": "PostalCode",
+            "dataType": "string",
+            "lineageTag": "9a968006-4a79-46e3-92a9-7088f8a3e4af",
+            "sourceColumn": "postalcode",
+            "sourceLineageTag": "postalcode",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "companyname",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "a05a8940-ba74-4682-8221-3427d1b88c51",
+            "sourceColumn": "companyname",
+            "sourceLineageTag": "companyname",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "audit_createdon",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "General Date",
+            "isHidden": true,
+            "lineageTag": "1bf391a4-36be-4eff-b800-c222dcb710d7",
+            "sourceColumn": "audit_createdon",
+            "sourceLineageTag": "audit_createdon",
+            "sourceProviderType": "datetime2",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "audit_createdby",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "string",
+            "isHidden": true,
+            "lineageTag": "f9a5a2fd-42dd-4ab1-9950-986d07506346",
+            "sourceColumn": "audit_createdby",
+            "sourceLineageTag": "audit_createdby",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "audit_lastupdated",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "General Date",
+            "isHidden": true,
+            "lineageTag": "4bd851e8-61a3-46bf-8174-e516736400b2",
+            "sourceColumn": "audit_lastupdated",
+            "sourceLineageTag": "audit_lastupdated",
+            "sourceProviderType": "datetime2",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "audit_lastupdatedby",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "string",
+            "isHidden": true,
+            "lineageTag": "6de6e82f-2b1b-4615-9e58-36cc3275d6a2",
+            "sourceColumn": "audit_lastupdatedby",
+            "sourceLineageTag": "audit_lastupdatedby",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "customersadvised_sk",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "string",
+            "isHidden": true,
+            "isKey": true,
+            "lineageTag": "fdf778b2-ee0d-4a80-8307-751e55e37c99",
+            "sourceColumn": "customersadvised_sk",
+            "sourceLineageTag": "customersadvised_sk",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          }
+        ],
+        "hierarchies": [
+          {
+            "name": "Customer Location Hierarchy",
+            "changedProperties": [
+              {
+                "property": "Name"
+              }
+            ],
+            "levels": [
+              {
+                "name": "city",
+                "column": "city",
+                "lineageTag": "aea6c263-ab5e-44cc-8323-edfc343ab59f",
+                "ordinal": 0
+              },
+              {
+                "name": "stateorprovince",
+                "column": "stateorprovince",
+                "lineageTag": "f5ed26bc-e0a1-42cd-ac57-6ca8d04ba8e7",
+                "ordinal": 1
+              },
+              {
+                "name": "country",
+                "column": "country",
+                "lineageTag": "3d75154b-c52a-48f9-85c6-1ba93e729eac",
+                "ordinal": 2
+              },
+              {
+                "name": "postalcode",
+                "column": "postalcode",
+                "lineageTag": "8b93ea47-fe68-4ec6-b771-4c124d4669f1",
+                "ordinal": 3
+              }
+            ],
+            "lineageTag": "ef5469e6-8b43-41ce-9fca-514fe874c219"
+          }
+        ],
+        "lineageTag": "594936e2-3178-4962-a978-b133528db35e",
+        "partitions": [
+          {
+            "name": "tech_customers_advised",
+            "mode": "directLake",
+            "source": {
+              "entityName": "tech_customers_advised",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo",
+              "type": "entity"
+            }
+          }
+        ],
+        "sourceLineageTag": "[dbo].[tech_customers_advised]"
+      },
+      {
+        "name": "tech_resolutions_options",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "ticketresolutionid",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "SummarizeBy"
+              },
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isHidden": true,
+            "lineageTag": "7f1a7ae3-dfaa-4844-8df0-59016aa4ec89",
+            "sourceColumn": "ticketresolutionid",
+            "sourceLineageTag": "ticketresolutionid",
+            "sourceProviderType": "bigint",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "resolutiontypeid",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "SummarizeBy"
+              },
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isHidden": true,
+            "lineageTag": "fdaca278-2cb7-44c4-9733-2253e90b5d44",
+            "sourceColumn": "resolutiontypeid",
+            "sourceLineageTag": "resolutiontypeid",
+            "sourceProviderType": "bigint",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "resolutiontype",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "9377f6a6-3cab-4c1c-8380-d3bda2c07756",
+            "sourceColumn": "resolutiontype",
+            "sourceLineageTag": "resolutiontype",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "resolutionsoptions_sk",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "string",
+            "isHidden": true,
+            "isKey": true,
+            "lineageTag": "9b2b1d25-14c8-4c79-b9c8-9eebc7bee623",
+            "sourceColumn": "resolutionsoptions_sk",
+            "sourceLineageTag": "resolutionsoptions_sk",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ticketresolution",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "d947e3ac-94b1-4d82-ac55-0e0a2eab3f52",
+            "sourceColumn": "ticketresolution",
+            "sourceLineageTag": "ticketresolution",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "8a166a38-5366-45a7-a56d-89a477df8e12",
+        "partitions": [
+          {
+            "name": "tech_resolutions_options",
+            "mode": "directLake",
+            "source": {
+              "entityName": "tech_resolutions_options",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo",
+              "type": "entity"
+            }
+          }
+        ],
+        "sourceLineageTag": "[dbo].[tech_resolutions_options]"
+      },
+      {
+        "name": "tech_tickets",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "tickets_pk",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "string",
+            "isHidden": true,
+            "lineageTag": "c4da87b1-c9e5-41ae-beca-d145226c4609",
+            "sourceColumn": "tickets_pk",
+            "sourceLineageTag": "tickets_pk",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ticketid",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "1a58d7dc-c046-4a1f-bac9-259c98206a58",
+            "sourceColumn": "ticketid",
+            "sourceLineageTag": "ticketid",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "productid",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "string",
+            "isHidden": true,
+            "lineageTag": "84cde417-7dbc-4c88-9198-cc740a465288",
+            "sourceColumn": "productid",
+            "sourceLineageTag": "productid",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "resolutionid",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "4ddebb6c-7e74-493c-94e0-c51edf82b7b9",
+            "sourceColumn": "resolutionid",
+            "sourceLineageTag": "resolutionid",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "product_fk",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "string",
+            "isAvailableInMdx": false,
+            "isHidden": true,
+            "lineageTag": "39b6698e-659b-4d98-af69-ee82fe383370",
+            "sourceColumn": "product_fk",
+            "sourceLineageTag": "product_fk",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "customer_fk",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "string",
+            "isAvailableInMdx": false,
+            "isHidden": true,
+            "lineageTag": "c514ceb6-79ea-456a-881d-1131c84485fe",
+            "sourceColumn": "customer_fk",
+            "sourceLineageTag": "customer_fk",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "resolutionoptions_fk",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "string",
+            "isAvailableInMdx": false,
+            "isHidden": true,
+            "lineageTag": "e95e61af-a3e2-40fc-8a51-0bc771462fa7",
+            "sourceColumn": "resolutionoptions_fk",
+            "sourceLineageTag": "resolutionoptions_fk",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ticketoptions_fk",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "string",
+            "isAvailableInMdx": false,
+            "isHidden": true,
+            "lineageTag": "e5bf0164-4f92-4523-9f7a-1927a5611150",
+            "sourceColumn": "ticketoptions_fk",
+            "sourceLineageTag": "ticketoptions_fk",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "resolutionrep_fk",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "string",
+            "isAvailableInMdx": false,
+            "isHidden": true,
+            "lineageTag": "89f0d2c3-7daa-48a2-b90a-0b26e5537471",
+            "sourceColumn": "resolutionrep_fk",
+            "sourceLineageTag": "resolutionrep_fk",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "resolutioneditor_fk",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "string",
+            "isAvailableInMdx": false,
+            "isHidden": true,
+            "lineageTag": "011dba5b-a540-473c-be65-44b3eb380d9e",
+            "sourceColumn": "resolutioneditor_fk",
+            "sourceLineageTag": "resolutioneditor_fk",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "owner_fk",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "string",
+            "isAvailableInMdx": false,
+            "isHidden": true,
+            "lineageTag": "a821648a-08e1-4e3b-8630-6f4cb7f2cda0",
+            "sourceColumn": "owner_fk",
+            "sourceLineageTag": "owner_fk",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "rep_fk",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "string",
+            "isAvailableInMdx": false,
+            "isHidden": true,
+            "lineageTag": "247c8da8-bf45-4136-b8be-9c690e42a408",
+            "sourceColumn": "rep_fk",
+            "sourceLineageTag": "rep_fk",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "editor_fk",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "string",
+            "isAvailableInMdx": false,
+            "isHidden": true,
+            "lineageTag": "2e881b15-556f-4e9f-944d-b930a06b49d3",
+            "sourceColumn": "editor_fk",
+            "sourceLineageTag": "editor_fk",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "escalatee_fk",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "string",
+            "isAvailableInMdx": false,
+            "isHidden": true,
+            "lineageTag": "c7bef271-09b3-4782-b370-c2eb38546356",
+            "sourceColumn": "escalatee_fk",
+            "sourceLineageTag": "escalatee_fk",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ticketresolutiontime",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "SummarizeBy"
+              },
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "e1d3ef1c-6659-4067-8f89-b0af94b892cc",
+            "sourceColumn": "ticketresolutiontime",
+            "sourceLineageTag": "ticketresolutiontime",
+            "sourceProviderType": "bigint",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "escalationreason",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "string",
+            "isHidden": true,
+            "lineageTag": "a7d10aa9-531f-4c1a-8234-7c9c0050a86f",
+            "sourceColumn": "escalationreason",
+            "sourceLineageTag": "escalationreason",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "recordcreatedon",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "General Date",
+            "lineageTag": "5ee8a344-dce6-4fb9-9fa0-89d42dae7a98",
+            "sourceColumn": "recordcreatedon",
+            "sourceLineageTag": "recordcreatedon",
+            "sourceProviderType": "datetime2",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "createdon",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "General Date",
+            "lineageTag": "2398ce19-a9f0-4b9b-97c2-850a8bfbe163",
+            "sourceColumn": "createdon",
+            "sourceLineageTag": "createdon",
+            "sourceProviderType": "datetime2",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "createdondate",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "mm/dd/yyyy",
+            "isHidden": true,
+            "lineageTag": "e3e3f421-5518-4b2b-9a8d-68bf43357956",
+            "sourceColumn": "createdondate",
+            "sourceLineageTag": "createdondate",
+            "sourceProviderType": "date",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "LastUpdated",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "General Date",
+            "lineageTag": "f83680f4-7a7e-487e-b852-8ab838561e11",
+            "sourceColumn": "LastUpdated",
+            "sourceLineageTag": "LastUpdated",
+            "sourceProviderType": "datetime2",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "lastupdateddate",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "mm/dd/yyyy",
+            "isHidden": true,
+            "lineageTag": "62b1b9bc-5b32-40db-9dde-06f6863152ee",
+            "sourceColumn": "lastupdateddate",
+            "sourceLineageTag": "lastupdateddate",
+            "sourceProviderType": "date",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "resolutioncreatedon",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "General Date",
+            "lineageTag": "d104e008-4751-4bdb-9bdd-45b09166ec11",
+            "sourceColumn": "resolutioncreatedon",
+            "sourceLineageTag": "resolutioncreatedon",
+            "sourceProviderType": "datetime2",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "resolutioncreatedondate",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "mm/dd/yyyy",
+            "isHidden": true,
+            "lineageTag": "7f6173a5-33bc-4028-ba5f-7bd3c2eda758",
+            "sourceColumn": "resolutioncreatedondate",
+            "sourceLineageTag": "resolutioncreatedondate",
+            "sourceProviderType": "date",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "resolutionlastupdated",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "General Date",
+            "lineageTag": "bcaf6ab4-c667-46e4-81fd-9d5b516622a4",
+            "sourceColumn": "resolutionlastupdated",
+            "sourceLineageTag": "resolutionlastupdated",
+            "sourceProviderType": "datetime2",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "resolutionlastupdateddate",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "mm/dd/yyyy",
+            "isHidden": true,
+            "lineageTag": "9a5c9f4c-af91-47b1-b163-ffb4ee574ffe",
+            "sourceColumn": "resolutionlastupdateddate",
+            "sourceLineageTag": "resolutionlastupdateddate",
+            "sourceProviderType": "date",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "c40d8f85-2e1b-4571-87f1-e202820a5cd5",
+        "measures": [
+          {
+            "name": "_%GtEscalatedTickets",
+            "changedProperties": [
+              {
+                "property": "Name"
+              },
+              {
+                "property": "FormatString"
+              },
+              {
+                "property": "DisplayFolder"
+              }
+            ],
+            "displayFolder": "_Measures",
+            "expression": [
+              "",
+              "    FORMAT(",
+              "        DIVIDE(",
+              "            [_CountEscalatedTickets],",
+              "            CALCULATE(",
+              "                [_CountEscalatedTickets],",
+              "                ALLSELECTED()",
+              "            )",
+              "        ),",
+              "        \"0%;-0%;0%\"",
+              "    )"
+            ],
+            "formatString": "#,0.0%;-#,0.0%;#,0.0%",
+            "lineageTag": "25322d5d-a3f9-4805-b903-264ee4a6cba6"
+          },
+          {
+            "name": "_%GtProducts",
+            "changedProperties": [
+              {
+                "property": "Name"
+              },
+              {
+                "property": "DisplayFolder"
+              },
+              {
+                "property": "FormatString"
+              }
+            ],
+            "displayFolder": "_Measures",
+            "expression": [
+              "",
+              "    FORMAT(",
+              "        DIVIDE(",
+              "            [_UniqueProductCountAcrossTickets],",
+              "            CALCULATE(",
+              "                [_UniqueProductCountAcrossTickets],",
+              "                ALLSELECTED(tech_tickets)",
+              "                )",
+              "            ),",
+              "        \"0%;-0%;0%\"",
+              "    )"
+            ],
+            "formatString": "#,0.0%;-#,0.0%;#,0.0%",
+            "lineageTag": "ac456f2a-12eb-4bcd-aede-c16bf5cb90b3"
+          },
+          {
+            "name": "_%GtTickets",
+            "changedProperties": [
+              {
+                "property": "Name"
+              },
+              {
+                "property": "FormatString"
+              },
+              {
+                "property": "IsHidden"
+              },
+              {
+                "property": "DisplayFolder"
+              }
+            ],
+            "displayFolder": "_Measures",
+            "expression": [
+              "",
+              "    FORMAT(",
+              "        DIVIDE(",
+              "            [_DistinctTicketCount],",
+              "            CALCULATE(",
+              "                [_DistinctTicketCount],",
+              "                ALLSELECTED()",
+              "            )",
+              "        ),",
+              "        \"0%;-0%;0%\"",
+              "    )"
+            ],
+            "formatString": "#,0.0%;-#,0.0%;#,0.0%",
+            "lineageTag": "cb08309e-88d1-48e5-8613-72e7dd2d9244"
+          },
+          {
+            "name": "_AverageResolutionTime",
+            "changedProperties": [
+              {
+                "property": "Name"
+              },
+              {
+                "property": "IsHidden"
+              },
+              {
+                "property": "FormatString"
+              },
+              {
+                "property": "DisplayFolder"
+              }
+            ],
+            "displayFolder": "_Measures",
+            "expression": [
+              "",
+              "    DIVIDE([_SumResolutionTime], [_DistinctTicketCount])"
+            ],
+            "formatString": "0.00",
+            "lineageTag": "e8490063-9f7f-4be3-b1ad-7cc8edb10684"
+          },
+          {
+            "name": "_AverageResolutionTimeEscalated",
+            "changedProperties": [
+              {
+                "property": "Name"
+              },
+              {
+                "property": "FormatString"
+              },
+              {
+                "property": "DisplayFolder"
+              }
+            ],
+            "displayFolder": "_Measures",
+            "expression": [
+              "",
+              "    DIVIDE([_SumResolutionTimeEscalated], [_CountEscalatedTickets])"
+            ],
+            "formatString": "0.00",
+            "lineageTag": "21a427ab-3f03-4a3c-b139-4bad868ed67a"
+          },
+          {
+            "name": "_AverageResolutionTimeEscalatedMOM%",
+            "changedProperties": [
+              {
+                "property": "Name"
+              },
+              {
+                "property": "FormatString"
+              },
+              {
+                "property": "DisplayFolder"
+              }
+            ],
+            "displayFolder": "_Measures",
+            "expression": [
+              "",
+              "    CALCULATE(",
+              "        [_AverageResolutionTimeEscalated],",
+              "        'Time Intelligence'[Time Calculation] = \"MOM%\"",
+              "    )"
+            ],
+            "formatString": "#,0.0%;-#,0.0%;#,0.0%",
+            "lineageTag": "ee87ff69-4490-4bc6-b363-84762e4125ef"
+          },
+          {
+            "name": "_AverageResolutionTimeMOM%",
+            "changedProperties": [
+              {
+                "property": "Name"
+              },
+              {
+                "property": "FormatString"
+              },
+              {
+                "property": "IsHidden"
+              },
+              {
+                "property": "DisplayFolder"
+              }
+            ],
+            "displayFolder": "_Measures",
+            "expression": [
+              "",
+              "    CALCULATE(",
+              "        [_AverageResolutionTime],",
+              "        'Time Intelligence'[Time Calculation] = \"MOM%\"",
+              "    )"
+            ],
+            "formatString": "#,0.0%;-#,0.0%;#,0.0%",
+            "lineageTag": "47487188-b576-44df-bfc9-7a53ecbd7ef8"
+          },
+          {
+            "name": "_AverageResolutionTimePM",
+            "changedProperties": [
+              {
+                "property": "Name"
+              },
+              {
+                "property": "IsHidden"
+              },
+              {
+                "property": "FormatString"
+              },
+              {
+                "property": "DisplayFolder"
+              }
+            ],
+            "displayFolder": "_Measures",
+            "expression": [
+              "",
+              "    CALCULATE(",
+              "        [_AverageResolutionTime],",
+              "        'Time Intelligence'[Time Calculation] = \"PM\"",
+              "    )"
+            ],
+            "formatString": "#,0",
+            "lineageTag": "aa90c459-b0fd-4cb9-9b86-366202453d93"
+          },
+          {
+            "name": "_AverageResolutionTimeYOY%",
+            "changedProperties": [
+              {
+                "property": "Name"
+              },
+              {
+                "property": "FormatString"
+              },
+              {
+                "property": "IsHidden"
+              },
+              {
+                "property": "DisplayFolder"
+              }
+            ],
+            "displayFolder": "_Measures",
+            "expression": [
+              "",
+              "    CALCULATE(",
+              "        [_AverageResolutionTime],",
+              "        'Time Intelligence'[Time Calculation] = \"YOY%\"",
+              "    )"
+            ],
+            "formatString": "#,0.0%;-#,0.0%;#,0.0%",
+            "lineageTag": "0dc07dd9-31af-416c-a102-a716e19c6095"
+          },
+          {
+            "name": "_CountEscalatedTickets",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "Name"
+              },
+              {
+                "property": "IsHidden"
+              },
+              {
+                "property": "FormatString"
+              },
+              {
+                "property": "DisplayFolder"
+              }
+            ],
+            "displayFolder": "_Measures",
+            "expression": [
+              "",
+              "CALCULATE(",
+              "    [_DistinctTicketCount],",
+              "    FILTER(",
+              "        tech_tickets,",
+              "        (",
+              "            (",
+              "                RELATED(tech_advisors[is_tech_advisor]) = 1 || ",
+              "                RELATED(tech_advisors[is_team_lead]) = 1",
+              "            ) && ",
+              "            LOOKUPVALUE(",
+              "                tech_advisors[is_senior_tech],",
+              "                tech_advisors[advisor_sk],",
+              "                tech_tickets[owner_fk]",
+              "            ) = 1",
+              "        ) ||",
+              "        (",
+              "            (",
+              "                RELATED(tech_advisors[is_tech_advisor]) = 1 || ",
+              "                RELATED(tech_advisors[is_senior_tech]) = 1",
+              "            ) && ",
+              "            LOOKUPVALUE(",
+              "                tech_advisors[is_team_lead],",
+              "                tech_advisors[advisor_sk],",
+              "                tech_tickets[owner_fk]",
+              "            ) = 1",
+              "        )",
+              "    ))"
+            ],
+            "lineageTag": "92f3b56b-511c-472d-9259-4a1845ce6665"
+          },
+          {
+            "name": "_CountEscalatedTicketsMTD",
+            "changedProperties": [
+              {
+                "property": "Name"
+              },
+              {
+                "property": "IsHidden"
+              },
+              {
+                "property": "FormatString"
+              },
+              {
+                "property": "DisplayFolder"
+              }
+            ],
+            "displayFolder": "_Measures",
+            "expression": [
+              "",
+              "    CALCULATE(",
+              "        [_CountEscalatedTickets],",
+              "        'Time Intelligence'[Time Calculation] = \"MTD\"",
+              "    )"
+            ],
+            "formatString": "#,0",
+            "lineageTag": "59d84167-fed1-483e-bf15-478eaa2857fa"
+          },
+          {
+            "name": "_CountEscalatedTicketsPM",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isDecimal\":true}"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "Name"
+              },
+              {
+                "property": "FormatString"
+              },
+              {
+                "property": "DisplayFolder"
+              }
+            ],
+            "displayFolder": "_Measures",
+            "expression": [
+              "",
+              "    CALCULATE(",
+              "        [_CountEscalatedTickets],",
+              "        'Time Intelligence'[Time Calculation] = \"PM\"",
+              "    )"
+            ],
+            "formatString": "0",
+            "lineageTag": "8db24cef-88c6-4d04-b080-cc8c72b6bed8"
+          },
+          {
+            "name": "_CountEscalatedTicketsTrend",
+            "changedProperties": [
+              {
+                "property": "Name"
+              },
+              {
+                "property": "FormatString"
+              },
+              {
+                "property": "DisplayFolder"
+              }
+            ],
+            "displayFolder": "_Measures",
+            "expression": [
+              "",
+              "CALCULATE(",
+              "    [_CountEscalatedTickets],",
+              "    FILTER(",
+              "        ALL('Calendar'[Date]),",
+              "        'Calendar'[Date] >= DATE(YEAR(TODAY()), 1, 1) &&",
+              "        'Calendar'[Date] <= MAX('Calendar'[Date])",
+              "    )",
+              ")"
+            ],
+            "formatString": "#,0",
+            "lineageTag": "a6387e58-22b7-4dcb-9d99-ad8d8a3d68f8"
+          },
+          {
+            "name": "_CountTicketsTrend",
+            "changedProperties": [
+              {
+                "property": "Name"
+              },
+              {
+                "property": "FormatString"
+              },
+              {
+                "property": "DisplayFolder"
+              }
+            ],
+            "displayFolder": "_Measures",
+            "expression": [
+              "",
+              "CALCULATE(",
+              "    [_DistinctTicketCount],",
+              "    FILTER(",
+              "        ALL('Calendar'[Date]),",
+              "        'Calendar'[Date] >= DATE(YEAR(TODAY()), 1, 1) &&",
+              "        'Calendar'[Date] <= MAX('Calendar'[Date])",
+              "    )",
+              ")"
+            ],
+            "formatString": "#,0",
+            "lineageTag": "9eab992a-864e-44b1-8b33-599053314b69"
+          },
+          {
+            "name": "_DistinctCount",
+            "changedProperties": [
+              {
+                "property": "Name"
+              },
+              {
+                "property": "FormatString"
+              },
+              {
+                "property": "DisplayFolder"
+              }
+            ],
+            "displayFolder": "_Measures",
+            "expression": [
+              "",
+              "    DISTINCTCOUNT(tech_tickets[tickets_pk])"
+            ],
+            "formatString": "#,0",
+            "lineageTag": "88e4ea21-8947-4f5c-8469-591bd5ae94df"
+          },
+          {
+            "name": "_DistinctProductCount",
+            "changedProperties": [
+              {
+                "property": "Name"
+              },
+              {
+                "property": "FormatString"
+              },
+              {
+                "property": "DisplayFolder"
+              },
+              {
+                "property": "Description"
+              }
+            ],
+            "description": "This measure calculates the number of unique products that have been recorded in the tech tickets. It helps in understanding how many different products are being reported or serviced.",
+            "displayFolder": "_Measures",
+            "expression": "DISTINCTCOUNT(tech_tickets[productid])",
+            "formatString": "#,0",
+            "lineageTag": "8e7502bb-2b20-4963-a303-ea572fe523bc"
+          },
+          {
+            "name": "_DistinctProductMOM%",
+            "changedProperties": [
+              {
+                "property": "Name"
+              },
+              {
+                "property": "FormatString"
+              },
+              {
+                "property": "DisplayFolder"
+              }
+            ],
+            "displayFolder": "_Measures",
+            "expression": [
+              "",
+              "    CALCULATE(",
+              "        [_DistinctProductCount],",
+              "        'Time Intelligence'[Time Calculation] = \"MOM%\"",
+              "    )"
+            ],
+            "formatString": "#,0.0%;-#,0.0%;#,0.0%",
+            "lineageTag": "cb3cc4af-0eb2-471d-9626-2803b35656b1"
+          },
+          {
+            "name": "_DistinctTicketCount",
+            "changedProperties": [
+              {
+                "property": "Name"
+              },
+              {
+                "property": "IsHidden"
+              },
+              {
+                "property": "FormatString"
+              },
+              {
+                "property": "DisplayFolder"
+              }
+            ],
+            "displayFolder": "_Measures",
+            "expression": [
+              "",
+              "    DISTINCTCOUNT(tech_tickets[ticketid])"
+            ],
+            "formatString": "#,0",
+            "lineageTag": "776a657e-115e-4087-bfb6-70d4cfa04127"
+          },
+          {
+            "name": "_EscalatedTicketsMOM%",
+            "changedProperties": [
+              {
+                "property": "Name"
+              },
+              {
+                "property": "FormatString"
+              },
+              {
+                "property": "DisplayFolder"
+              }
+            ],
+            "displayFolder": "_Measures",
+            "expression": [
+              "",
+              "    CALCULATE(",
+              "        [_CountEscalatedTickets],",
+              "        'Time Intelligence'[Time Calculation] = \"MOM%\"",
+              "    )"
+            ],
+            "formatString": "#,0.0%;-#,0.0%;#,0.0%",
+            "lineageTag": "210d33bc-bd75-457e-8343-4b0d05ec9fe2"
+          },
+          {
+            "name": "_EscalatedTicketsPM",
+            "changedProperties": [
+              {
+                "property": "Name"
+              },
+              {
+                "property": "FormatString"
+              },
+              {
+                "property": "DisplayFolder"
+              }
+            ],
+            "displayFolder": "_Measures",
+            "expression": [
+              "",
+              "    CALCULATE(",
+              "        [_CountEscalatedTickets],",
+              "        'Time Intelligence'[Time Calculation] = \"PM\"",
+              "    )"
+            ],
+            "formatString": "#,0",
+            "lineageTag": "4e05b68e-2d20-4226-9610-e88c1051d723"
+          },
+          {
+            "name": "_EscalatedTicketsPY",
+            "changedProperties": [
+              {
+                "property": "Name"
+              },
+              {
+                "property": "FormatString"
+              },
+              {
+                "property": "DisplayFolder"
+              }
+            ],
+            "displayFolder": "_Measures",
+            "expression": [
+              "",
+              "    CALCULATE(",
+              "        [_CountEscalatedTickets],",
+              "        'Time Intelligence'[Time Calculation] = \"PY\"",
+              "    )"
+            ],
+            "formatString": "#,0",
+            "lineageTag": "c315e67d-339f-4c13-b185-7315e41089a4"
+          },
+          {
+            "name": "_EscalatedTicketsRatio",
+            "changedProperties": [
+              {
+                "property": "DisplayFolder"
+              },
+              {
+                "property": "Name"
+              },
+              {
+                "property": "FormatString"
+              }
+            ],
+            "displayFolder": "_Measures",
+            "expression": [
+              "",
+              "    DIVIDE([_CountEscalatedTickets], [_DistinctCount])"
+            ],
+            "formatString": "#,0.0%;-#,0.0%;#,0.0%",
+            "lineageTag": "46c46e2c-32a1-4519-b84b-c43b1c29fb76"
+          },
+          {
+            "name": "_EscalatedTicketsRatioPerAdvisor",
+            "changedProperties": [
+              {
+                "property": "Name"
+              },
+              {
+                "property": "FormatString"
+              },
+              {
+                "property": "DisplayFolder"
+              }
+            ],
+            "displayFolder": "_Measures",
+            "expression": [
+              "",
+              "    DIVIDE([_CountEscalatedTickets], CALCULATE([_CountEscalatedTickets], ALLSELECTED(tech_tickets)))"
+            ],
+            "formatString": "#,0.0%;-#,0.0%;#,0.0%",
+            "lineageTag": "66f636aa-1cf7-42e4-88f8-e2fbb9d33192"
+          },
+          {
+            "name": "_EscalatedTicketsYOY%",
+            "changedProperties": [
+              {
+                "property": "Name"
+              },
+              {
+                "property": "FormatString"
+              },
+              {
+                "property": "DisplayFolder"
+              }
+            ],
+            "displayFolder": "_Measures",
+            "expression": [
+              "",
+              "    CALCULATE(",
+              "        [_CountEscalatedTickets],",
+              "        'Time Intelligence'[Time Calculation] = \"YOY%\"",
+              "    )"
+            ],
+            "formatString": "#,0.0%;-#,0.0%;#,0.0%",
+            "lineageTag": "06719373-89e4-45d1-a17f-d98ca97464f3"
+          },
+          {
+            "name": "_IndicatorEscalatedTicketMOM%",
+            "changedProperties": [
+              {
+                "property": "Name"
+              },
+              {
+                "property": "FormatString"
+              },
+              {
+                "property": "DisplayFolder"
+              }
+            ],
+            "displayFolder": "_Measures",
+            "expression": [
+              "",
+              "    IF([_EscalatedTicketsMOM%]>0, \"👎\", \"👍\")"
+            ],
+            "formatString": "#,0.0%;-#,0.0%;#,0.0%",
+            "lineageTag": "4a41d4bf-be3b-446a-8c39-888bf2d3459a"
+          },
+          {
+            "name": "_IndicatorTicketMOM%",
+            "changedProperties": [
+              {
+                "property": "Name"
+              },
+              {
+                "property": "IsHidden"
+              },
+              {
+                "property": "FormatString"
+              },
+              {
+                "property": "DisplayFolder"
+              }
+            ],
+            "displayFolder": "_Measures",
+            "expression": [
+              "",
+              "    IF([_TicketsMOM%]>0, \"👎\", \"👍\")"
+            ],
+            "formatString": "#,0.0%;-#,0.0%;#,0.0%",
+            "lineageTag": "2af1d52b-707b-4b05-b40a-96fc0e7ac9b1"
+          },
+          {
+            "name": "_IndicatorTicketYOY%",
+            "changedProperties": [
+              {
+                "property": "Name"
+              },
+              {
+                "property": "FormatString"
+              },
+              {
+                "property": "DisplayFolder"
+              }
+            ],
+            "displayFolder": "_Measures",
+            "expression": [
+              "",
+              "    IF([_TicketsYOY%]>0, \"👎\", \"👍\")"
+            ],
+            "formatString": "#,0.0%;-#,0.0%;#,0.0%",
+            "lineageTag": "9e7ecd8d-6864-4eec-b49d-2d962a493792"
+          },
+          {
+            "name": "_ProductPareto%",
+            "changedProperties": [
+              {
+                "property": "Name"
+              },
+              {
+                "property": "FormatString"
+              },
+              {
+                "property": "DisplayFolder"
+              }
+            ],
+            "displayFolder": "_Measures",
+            "expression": [
+              "",
+              "    VAR _CurrentFactor = SELECTEDVALUE(tech_products_impacted[productname])",
+              "    RETURN",
+              "        IF(",
+              "            NOT ISBLANK(_CurrentFactor),",
+              "            VAR _AllselectedFactor = ALLSELECTED(tech_products_impacted[productname])",
+              "            VAR _FactorTable = ADDCOLUMNS(",
+              "                _AllselectedFactor,",
+              "                \"@Count\", [_UniqueProductCountAcrossTickets], ",
+              "                \"@Rank\", RANKX(_AllselectedFactor, [_UniqueProductCountAcrossTickets]) + DIVIDE(RANKX(_AllselectedFactor, tech_products_impacted[productname]),1000000)",
+              "                )",
+              "            VAR _CurrentFactorPosition = MAXX(FILTER(_FactorTable, tech_products_impacted[productname] = _CurrentFactor), [@Rank])",
+              "            VAR _CurrentFactorCumCount = SUMX(FILTER(_FactorTable, [@Rank] <= _CurrentFactorPosition), [@Count])",
+              "            VAR _TotalCumCount = CALCULATE([_UniqueProductCountAcrossTickets], _AllselectedFactor)",
+              "            VAR _Result = DIVIDE(_CurrentFactorCumCount, _TotalCumCount)",
+              "",
+              "            RETURN",
+              "                _Result",
+              "        )"
+            ],
+            "formatString": "#,0.0%;-#,0.0%;#,0.0%",
+            "lineageTag": "ef97535a-6dab-4b20-aa48-b3374db1f147"
+          },
+          {
+            "name": "_SumResolutionTime",
+            "changedProperties": [
+              {
+                "property": "Name"
+              },
+              {
+                "property": "IsHidden"
+              },
+              {
+                "property": "FormatString"
+              },
+              {
+                "property": "DisplayFolder"
+              }
+            ],
+            "displayFolder": "_Measures",
+            "expression": [
+              "",
+              "    SUMX(",
+              "        VALUES(tech_tickets[ticketid]),",
+              "        CALCULATE(",
+              "            SUM(tech_tickets[ticketresolutiontime])",
+              "            )",
+              "    )"
+            ],
+            "formatString": "#,0",
+            "lineageTag": "5e1038eb-8a79-41bc-b63b-712e34c5f086"
+          },
+          {
+            "name": "_SumResolutionTimeEscalated",
+            "changedProperties": [
+              {
+                "property": "Name"
+              },
+              {
+                "property": "FormatString"
+              },
+              {
+                "property": "DisplayFolder"
+              }
+            ],
+            "displayFolder": "_Measures",
+            "expression": [
+              "",
+              "SUMX(",
+              "    SUMMARIZE(",
+              "        FILTER(",
+              "            tech_tickets,",
+              "            (",
+              "                (",
+              "                    RELATED(tech_advisors[is_tech_advisor]) = 1 || ",
+              "                    RELATED(tech_advisors[is_team_lead]) = 1",
+              "                ) && ",
+              "                LOOKUPVALUE(",
+              "                    tech_advisors[is_senior_tech],",
+              "                    tech_advisors[advisor_sk],",
+              "                    tech_tickets[owner_fk]",
+              "                ) = 1",
+              "            ) ||",
+              "            (",
+              "                (",
+              "                    RELATED(tech_advisors[is_tech_advisor]) = 1 || ",
+              "                    RELATED(tech_advisors[is_senior_tech]) = 1",
+              "                ) && ",
+              "                LOOKUPVALUE(",
+              "                    tech_advisors[is_team_lead],",
+              "                    tech_advisors[advisor_sk],",
+              "                    tech_tickets[owner_fk]",
+              "                ) = 1",
+              "            )",
+              "        ),",
+              "        tech_tickets[ticketid],",
+              "        \"ResolutionTime\", MIN(tech_tickets[ticketresolutiontime])",
+              "    ),",
+              "    [ResolutionTime]",
+              ")"
+            ],
+            "formatString": "#,0",
+            "lineageTag": "f77a3e4a-59dd-4593-ac49-49ee67bab13c"
+          },
+          {
+            "name": "_TicketCount",
+            "changedProperties": [
+              {
+                "property": "Name"
+              },
+              {
+                "property": "IsHidden"
+              },
+              {
+                "property": "FormatString"
+              },
+              {
+                "property": "DisplayFolder"
+              }
+            ],
+            "displayFolder": "_Measures",
+            "expression": [
+              "",
+              "    COUNT(tech_tickets[ticketid])"
+            ],
+            "formatString": "#,0",
+            "lineageTag": "81a9e407-95be-4cd0-8bee-c7831940105d"
+          },
+          {
+            "name": "_TicketsMOM%",
+            "changedProperties": [
+              {
+                "property": "Name"
+              },
+              {
+                "property": "IsHidden"
+              },
+              {
+                "property": "FormatString"
+              },
+              {
+                "property": "DisplayFolder"
+              }
+            ],
+            "displayFolder": "_Measures",
+            "expression": [
+              "",
+              "    CALCULATE(",
+              "        [_DistinctTicketCount],",
+              "        'Time Intelligence'[Time Calculation] = \"MOM%\"",
+              "    )"
+            ],
+            "formatString": "#,0.0%;-#,0.0%;#,0.0%",
+            "lineageTag": "6e24250f-501e-444c-a3c3-f5f89232694e"
+          },
+          {
+            "name": "_TicketsMTD",
+            "changedProperties": [
+              {
+                "property": "Name"
+              },
+              {
+                "property": "IsHidden"
+              },
+              {
+                "property": "FormatString"
+              },
+              {
+                "property": "DisplayFolder"
+              }
+            ],
+            "displayFolder": "_Measures",
+            "expression": [
+              "",
+              "    CALCULATE(",
+              "        [_DistinctTicketCount],",
+              "        'Time Intelligence'[Time Calculation] = \"MTD\"",
+              "    )"
+            ],
+            "formatString": "#,0",
+            "lineageTag": "45f12dda-13da-45d7-b7f6-2eb17b4aad2e"
+          },
+          {
+            "name": "_TicketsPM",
+            "changedProperties": [
+              {
+                "property": "Name"
+              },
+              {
+                "property": "IsHidden"
+              },
+              {
+                "property": "FormatString"
+              },
+              {
+                "property": "DisplayFolder"
+              }
+            ],
+            "displayFolder": "_Measures",
+            "expression": [
+              "",
+              "    CALCULATE(",
+              "        [_DistinctTicketCount],",
+              "        'Time Intelligence'[Time Calculation] = \"PM\"",
+              "    )"
+            ],
+            "formatString": "#,0",
+            "lineageTag": "d4aeac7a-3d78-4adc-86d3-b164dc084ab5"
+          },
+          {
+            "name": "_TicketsPY",
+            "changedProperties": [
+              {
+                "property": "Name"
+              },
+              {
+                "property": "FormatString"
+              },
+              {
+                "property": "DisplayFolder"
+              }
+            ],
+            "displayFolder": "_Measures",
+            "expression": [
+              "",
+              "    CALCULATE(",
+              "        [_DistinctTicketCount],",
+              "        'Time Intelligence'[Time Calculation] = \"PY\"",
+              "    )"
+            ],
+            "formatString": "#,0",
+            "lineageTag": "605b95da-4aab-479f-8726-15f72d88b40b"
+          },
+          {
+            "name": "_TicketsYOY%",
+            "changedProperties": [
+              {
+                "property": "Name"
+              },
+              {
+                "property": "IsHidden"
+              },
+              {
+                "property": "FormatString"
+              },
+              {
+                "property": "DisplayFolder"
+              }
+            ],
+            "displayFolder": "_Measures",
+            "expression": [
+              "",
+              "    CALCULATE(",
+              "        [_DistinctTicketCount],",
+              "        'Time Intelligence'[Time Calculation] = \"YOY%\"",
+              "    )"
+            ],
+            "formatString": "#,0.0%;-#,0.0%;#,0.0%",
+            "lineageTag": "1b74ad3a-763e-42d7-b418-1ad4c1d4f86b"
+          },
+          {
+            "name": "_TicketsYTD",
+            "changedProperties": [
+              {
+                "property": "Name"
+              },
+              {
+                "property": "IsHidden"
+              },
+              {
+                "property": "FormatString"
+              },
+              {
+                "property": "DisplayFolder"
+              }
+            ],
+            "displayFolder": "_Measures",
+            "expression": [
+              "",
+              "    CALCULATE(",
+              "        [_DistinctTicketCount],",
+              "        'Time Intelligence'[Time Calculation] = \"YTD\"",
+              "    )"
+            ],
+            "formatString": "#,0",
+            "lineageTag": "18862d16-e0ed-44fe-9358-d96ce72d87d7"
+          },
+          {
+            "name": "_TotalProductCount",
+            "changedProperties": [
+              {
+                "property": "Name"
+              },
+              {
+                "property": "FormatString"
+              },
+              {
+                "property": "DisplayFolder"
+              }
+            ],
+            "displayFolder": "_Measures",
+            "expression": [
+              "",
+              "    CALCULATE(",
+              "        COUNT(tech_products_impacted[productid]),",
+              "        ALL(tech_products_impacted)",
+              "    )"
+            ],
+            "formatString": "#,0",
+            "lineageTag": "b433d82b-8152-4e90-a50d-c0fa5fe33767"
+          },
+          {
+            "name": "_UniqueProductCountAcrossTickets",
+            "changedProperties": [
+              {
+                "property": "Name"
+              },
+              {
+                "property": "FormatString"
+              },
+              {
+                "property": "DisplayFolder"
+              }
+            ],
+            "displayFolder": "_Measures",
+            "expression": [
+              "",
+              "    COUNTROWS(",
+              "        SUMMARIZE(",
+              "            tech_tickets,",
+              "            tech_tickets[productid],",
+              "            tech_tickets[ticketid]",
+              "        )",
+              "    )"
+            ],
+            "formatString": "#,0",
+            "lineageTag": "28e54f7b-bea6-4a4d-9014-286846aa3ad4"
+          },
+          {
+            "name": "_ReceivedEscalatedTickets",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "DisplayFolder"
+              },
+              {
+                "property": "Name"
+              }
+            ],
+            "displayFolder": "_Measures",
+            "expression": [
+              "",
+              "CALCULATE(",
+              "    [_DistinctTicketCount],",
+              "    FILTER(",
+              "        tech_tickets,",
+              "        (",
+              "            (",
+              "                RELATED(tech_advisors[is_senior_tech]) = 1 || ",
+              "                RELATED(tech_advisors[is_team_lead]) = 1",
+              "            ) && ",
+              "            LOOKUPVALUE(",
+              "                tech_advisors[is_tech_advisor],",
+              "                tech_advisors[advisor_sk],",
+              "                tech_tickets[rep_fk]",
+              "            ) = 1",
+              "        ) ||",
+              "        (",
+              "            (",
+              "                RELATED(tech_advisors[is_team_lead]) = 1",
+              "            ) && ",
+              "            LOOKUPVALUE(",
+              "                tech_advisors[is_senior_tech],",
+              "                tech_advisors[advisor_sk],",
+              "                tech_tickets[rep_fk]",
+              "            ) = 1",
+              "        ) ||",
+              "        (",
+              "            (",
+              "                RELATED(tech_advisors[is_senior_tech]) = 1",
+              "            ) && ",
+              "            LOOKUPVALUE(",
+              "                tech_advisors[is_team_lead],",
+              "                tech_advisors[advisor_sk],",
+              "                tech_tickets[rep_fk]",
+              "            ) = 1",
+              "        )",
+              "    ))"
+            ],
+            "lineageTag": "2aaaedfa-c619-497c-8c65-be4e297b073b"
+          },
+          {
+            "name": "_EscalatedToOwner",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "DisplayFolder"
+              },
+              {
+                "property": "Name"
+              }
+            ],
+            "displayFolder": "_Measures",
+            "expression": [
+              "",
+              "    LOOKUPVALUE(",
+              "        'tech_advisors'[fullname],",
+              "        'tech_advisors'[advisor_sk],",
+              "        SELECTEDVALUE(tech_tickets[owner_fk])",
+              "    )"
+            ],
+            "lineageTag": "69d37247-876e-423e-999e-2f81d753013b"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "tech_tickets",
+            "mode": "directLake",
+            "source": {
+              "entityName": "tech_tickets",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo",
+              "type": "entity"
+            }
+          }
+        ],
+        "sourceLineageTag": "[dbo].[tech_tickets]"
+      },
+      {
+        "name": "Time Intelligence",
+        "calculationGroup": {
+          "calculationItems": [
+            {
+              "name": "Current",
+              "expression": [
+                "",
+                "    SELECTEDMEASURE()"
+              ],
+              "ordinal": 0
+            },
+            {
+              "name": "MTD",
+              "expression": [
+                "",
+                "    CALCULATE(",
+                "        SELECTEDMEASURE(),",
+                "        DATESMTD('Calendar'[Date])",
+                "    )"
+              ],
+              "ordinal": 1
+            },
+            {
+              "name": "QTD",
+              "expression": [
+                "",
+                "    CALCULATE(",
+                "        SELECTEDMEASURE(),",
+                "        DATESQTD('Calendar'[Date])",
+                "    )"
+              ],
+              "ordinal": 2
+            },
+            {
+              "name": "YTD",
+              "expression": [
+                "",
+                "    CALCULATE(",
+                "        SELECTEDMEASURE(),",
+                "        DATESYTD('Calendar'[Date])",
+                "    )"
+              ],
+              "ordinal": 3
+            },
+            {
+              "name": "PY",
+              "expression": [
+                "",
+                "    CALCULATE(",
+                "        SELECTEDMEASURE(),",
+                "        SAMEPERIODLASTYEAR('Calendar'[Date])",
+                "    )"
+              ],
+              "ordinal": 7
+            },
+            {
+              "name": "PY MTD",
+              "expression": [
+                "",
+                "    CALCULATE(",
+                "        SELECTEDMEASURE(),",
+                "        SAMEPERIODLASTYEAR('Calendar'[Date]),",
+                "        'Time Intelligence'[Time Calculation] = \"MTD\"",
+                "    )"
+              ],
+              "ordinal": 8
+            },
+            {
+              "name": "PY QTD",
+              "expression": [
+                "",
+                "    CALCULATE(",
+                "        SELECTEDMEASURE(),",
+                "        SAMEPERIODLASTYEAR('Calendar'[Date]),",
+                "        'Time Intelligence'[Time Calculation] = \"QTD\"",
+                "    )"
+              ],
+              "ordinal": 9
+            },
+            {
+              "name": "PY YTD",
+              "expression": [
+                "",
+                "    CALCULATE(",
+                "        SELECTEDMEASURE(),",
+                "        SAMEPERIODLASTYEAR('Calendar'[Date]),",
+                "        'Time Intelligence'[Time Calculation] = \"YTD\"",
+                "    )"
+              ],
+              "ordinal": 10
+            },
+            {
+              "name": "YOY",
+              "expression": [
+                "",
+                "    SELECTEDMEASURE() -",
+                "    CALCULATE(",
+                "        SELECTEDMEASURE(),",
+                "        'Time Intelligence'[Time Calculation] = \"PY\"",
+                "    )"
+              ],
+              "ordinal": 11
+            },
+            {
+              "name": "YOY%",
+              "expression": [
+                "",
+                "    DIVIDE(",
+                "        CALCULATE(",
+                "            SELECTEDMEASURE(),",
+                "            'Time Intelligence'[Time Calculation]=\"YOY\"",
+                "        ),",
+                "        CALCULATE(",
+                "            SELECTEDMEASURE(),",
+                "            'Time Intelligence'[Time Calculation]=\"PY\"",
+                "        )",
+                "    )"
+              ],
+              "formatStringDefinition": {
+                "expression": "\"#,##0.00%\""
+              },
+              "ordinal": 12
+            },
+            {
+              "name": "PM",
+              "expression": [
+                "",
+                "    CALCULATE(",
+                "        SELECTEDMEASURE(),",
+                "        PREVIOUSMONTH('Calendar'[Date])",
+                "    )"
+              ],
+              "ordinal": 4
+            },
+            {
+              "name": "MOM",
+              "expression": [
+                "",
+                "    SELECTEDMEASURE() -",
+                "    CALCULATE(",
+                "        SELECTEDMEASURE(),",
+                "        'Time Intelligence'[Time Calculation] = \"PM\"",
+                "    )"
+              ],
+              "ordinal": 5
+            },
+            {
+              "name": "MOM%",
+              "expression": [
+                "",
+                "    DIVIDE(",
+                "        CALCULATE(",
+                "            SELECTEDMEASURE(),",
+                "            'Time Intelligence'[Time Calculation]=\"MOM\"",
+                "        ),",
+                "        CALCULATE(",
+                "            SELECTEDMEASURE(),",
+                "            'Time Intelligence'[Time Calculation]=\"PM\"",
+                "        )",
+                "    )"
+              ],
+              "formatStringDefinition": {
+                "expression": "\"#,##0.00%\""
+              },
+              "ordinal": 6
+            }
+          ],
+          "precedence": 20
+        },
+        "columns": [
+          {
+            "name": "Time Calculation",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "e67fc8c8-08e0-491b-b7b7-5398124c6e93",
+            "sortByColumn": "Ordinal",
+            "sourceColumn": "Name",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Ordinal",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "4cfd8da1-a250-47de-a142-68c22e889501",
+            "sourceColumn": "Ordinal",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "cc8350ca-fff6-4039-8df0-400f99b4c879",
+        "partitions": [
+          {
+            "name": "Time Intelligence",
+            "mode": "import",
+            "source": {
+              "type": "calculationGroup"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Analyze By",
+        "calculationGroup": {
+          "calculationItems": [
+            {
+              "name": "Rep",
+              "expression": [
+                "",
+                "    SELECTEDMEASURE()"
+              ],
+              "ordinal": 0
+            },
+            {
+              "name": "Owner",
+              "expression": [
+                "",
+                "    CALCULATE(",
+                "        SELECTEDMEASURE(),",
+                "        USERELATIONSHIP(tech_tickets[owner_fk], tech_advisors[advisor_sk])",
+                "    )"
+              ],
+              "ordinal": 2
+            },
+            {
+              "name": "Resolution Editor",
+              "expression": [
+                "",
+                "    CALCULATE(",
+                "        SELECTEDMEASURE(),",
+                "        USERELATIONSHIP(tech_tickets[resolutioneditor_fk], tech_advisors[advisor_sk])",
+                "    )"
+              ],
+              "ordinal": 5
+            },
+            {
+              "name": "Escalatee",
+              "expression": [
+                "",
+                "    CALCULATE(",
+                "        SELECTEDMEASURE(),",
+                "        USERELATIONSHIP(tech_tickets[escalatee_fk], tech_advisors[advisor_sk])",
+                "    )"
+              ],
+              "ordinal": 3
+            },
+            {
+              "name": "Resolution Rep",
+              "expression": [
+                "",
+                "    CALCULATE(",
+                "        SELECTEDMEASURE(),",
+                "        USERELATIONSHIP(tech_tickets[resolutionrep_fk], tech_advisors[advisor_sk])",
+                "    )"
+              ],
+              "ordinal": 4
+            },
+            {
+              "name": "Editor",
+              "expression": [
+                "",
+                "    CALCULATE(",
+                "        SELECTEDMEASURE(),",
+                "        USERELATIONSHIP(tech_tickets[editor_fk], tech_advisors[advisor_sk])",
+                "    )"
+              ],
+              "ordinal": 1
+            }
+          ],
+          "precedence": 21
+        },
+        "columns": [
+          {
+            "name": "Advisor",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "ffce7565-8434-4956-986c-ab7d8e1237a8",
+            "sortByColumn": "Ordinal",
+            "sourceColumn": "Name",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Ordinal",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "28bb676d-77ac-4aef-af74-ed1bd523564f",
+            "sourceColumn": "Ordinal",
+            "summarizeBy": "sum"
+          }
+        ],
+        "lineageTag": "18417e06-924d-42f4-b586-4b1bd9e62dc3",
+        "partitions": [
+          {
+            "name": "Analyze By",
+            "mode": "import",
+            "source": {
+              "type": "calculationGroup"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
