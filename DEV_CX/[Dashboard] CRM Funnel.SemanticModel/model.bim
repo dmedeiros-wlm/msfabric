@@ -1,0 +1,3601 @@
+{
+  "compatibilityLevel": 1567,
+  "model": {
+    "annotations": [
+      {
+        "name": "PBI_QueryOrder",
+        "value": "[\"DAX_Measures\",\"DirectQuery to AS - crm_funnel\"]"
+      },
+      {
+        "name": "__PBI_TimeIntelligenceEnabled",
+        "value": "1"
+      },
+      {
+        "name": "PBIDesktopVersion",
+        "value": "2.127.1327.0 (24.03)"
+      },
+      {
+        "name": "__TEdtr",
+        "value": "1"
+      }
+    ],
+    "culture": "en-CA",
+    "cultures": [
+      {
+        "name": "en-CA",
+        "linguisticMetadata": {
+          "content": {
+            "Entities": {
+              "andproduct.and_no": {
+                "Definition": {
+                  "Binding": {
+                    "ConceptualEntity": "andproduct",
+                    "ConceptualProperty": "and_no"
+                  }
+                },
+                "State": "Generated"
+              },
+              "bc_items.column__lookupitemname": {
+                "Definition": {
+                  "Binding": {
+                    "ConceptualEntity": "bc_items",
+                    "ConceptualProperty": "__LookupItemName"
+                  }
+                },
+                "State": "Generated",
+                "Terms": [
+                  {
+                    "Item Name": {
+                      "Source": {
+                        "Agent": "PowerBI.VisualColumnRename",
+                        "Type": "External"
+                      },
+                      "State": "Suggested",
+                      "Weight": 0.9
+                    }
+                  }
+                ]
+              },
+              "bc_items.no": {
+                "Definition": {
+                  "Binding": {
+                    "ConceptualEntity": "bc_items",
+                    "ConceptualProperty": "no"
+                  }
+                },
+                "State": "Generated"
+              },
+              "bc_postedsalesinvoicelines.no": {
+                "Definition": {
+                  "Binding": {
+                    "ConceptualEntity": "bc_postedSalesInvoiceLines",
+                    "ConceptualProperty": "no"
+                  }
+                },
+                "State": "Generated",
+                "Terms": [
+                  {
+                    "SKU": {
+                      "Source": {
+                        "Agent": "PowerBI.VisualColumnRename",
+                        "Type": "External"
+                      },
+                      "State": "Suggested",
+                      "Weight": 0.9
+                    }
+                  }
+                ]
+              },
+              "crm_funnel.accountcreatedon": {
+                "Definition": {
+                  "Binding": {
+                    "ConceptualEntity": "crm_funnel",
+                    "ConceptualProperty": "AccountCreatedOn"
+                  }
+                },
+                "State": "Generated",
+                "Terms": [
+                  {
+                    "Account Created On": {
+                      "Source": {
+                        "Agent": "PowerBI.VisualColumnRename",
+                        "Type": "External"
+                      },
+                      "State": "Suggested",
+                      "Weight": 0.9
+                    }
+                  }
+                ]
+              },
+              "crm_funnel.accountcreatedon_monthyear": {
+                "Definition": {
+                  "Binding": {
+                    "ConceptualEntity": "crm_funnel",
+                    "ConceptualProperty": "AccountCreatedOn_MonthYear"
+                  }
+                },
+                "State": "Generated",
+                "Terms": [
+                  {
+                    "Account Created On": {
+                      "Source": {
+                        "Agent": "PowerBI.VisualColumnRename",
+                        "Type": "External"
+                      },
+                      "State": "Suggested",
+                      "Weight": 0.9
+                    }
+                  }
+                ]
+              },
+              "dax_basketanalysis.orders_confidence": {
+                "Definition": {
+                  "Binding": {
+                    "ConceptualEntity": "DAX_BasketAnalysis",
+                    "ConceptualProperty": "% Orders Confidence"
+                  }
+                },
+                "State": "Generated"
+              },
+              "dax_basketanalysis.orders_support": {
+                "Definition": {
+                  "Binding": {
+                    "ConceptualEntity": "DAX_BasketAnalysis",
+                    "ConceptualProperty": "% Orders Support"
+                  }
+                },
+                "State": "Generated"
+              },
+              "dax_measures.account_multipledirectrepeat": {
+                "Definition": {
+                  "Binding": {
+                    "ConceptualEntity": "DAX_Measures",
+                    "ConceptualProperty": "Account_MultipleDirectRepeat"
+                  }
+                },
+                "State": "Generated",
+                "Terms": [
+                  {
+                    "Repeat Sales per AwDS": {
+                      "Source": {
+                        "Agent": "PowerBI.VisualColumnRename",
+                        "Type": "External"
+                      },
+                      "State": "Suggested",
+                      "Weight": 0.9
+                    }
+                  }
+                ]
+              },
+              "dax_measures.account_subsetmultipledirectproportion": {
+                "Definition": {
+                  "Binding": {
+                    "ConceptualEntity": "DAX_Measures",
+                    "ConceptualProperty": "Account_SubsetMultipleDirectProportion"
+                  }
+                },
+                "State": "Generated",
+                "Terms": [
+                  {
+                    "Repeat AwD": {
+                      "Source": {
+                        "Agent": "PowerBI.VisualColumnRename",
+                        "Type": "External"
+                      },
+                      "State": "Suggested",
+                      "Weight": 0.9
+                    }
+                  },
+                  {
+                    "Repeat AwDS": {
+                      "Source": {
+                        "Agent": "PowerBI.VisualColumnRename",
+                        "Type": "External"
+                      },
+                      "State": "Suggested",
+                      "Weight": 0.9
+                    }
+                  }
+                ]
+              },
+              "dax_measures.avgdays_a2o": {
+                "Definition": {
+                  "Binding": {
+                    "ConceptualEntity": "DAX_Measures",
+                    "ConceptualProperty": "AvgDays_A2O"
+                  }
+                },
+                "State": "Generated",
+                "Terms": [
+                  {
+                    "Account to Opportunity": {
+                      "Source": {
+                        "Agent": "PowerBI.VisualColumnRename",
+                        "Type": "External"
+                      },
+                      "State": "Suggested",
+                      "Weight": 0.9
+                    }
+                  }
+                ]
+              },
+              "dax_measures.avgdays_a2o_first": {
+                "Definition": {
+                  "Binding": {
+                    "ConceptualEntity": "DAX_Measures",
+                    "ConceptualProperty": "AvgDays_A2O_First"
+                  }
+                },
+                "State": "Generated",
+                "Terms": [
+                  {
+                    "Account to Opportunity": {
+                      "Source": {
+                        "Agent": "PowerBI.VisualColumnRename",
+                        "Type": "External"
+                      },
+                      "State": "Suggested",
+                      "Weight": 0.9
+                    }
+                  }
+                ]
+              },
+              "dax_measures.avgdays_o2q": {
+                "Definition": {
+                  "Binding": {
+                    "ConceptualEntity": "DAX_Measures",
+                    "ConceptualProperty": "AvgDays_O2Q"
+                  }
+                },
+                "State": "Generated",
+                "Terms": [
+                  {
+                    "Opportunity to Quote": {
+                      "Source": {
+                        "Agent": "PowerBI.VisualColumnRename",
+                        "Type": "External"
+                      },
+                      "State": "Suggested",
+                      "Weight": 0.9
+                    }
+                  }
+                ]
+              },
+              "dax_measures.avgdays_o2q_first": {
+                "Definition": {
+                  "Binding": {
+                    "ConceptualEntity": "DAX_Measures",
+                    "ConceptualProperty": "AvgDays_O2Q_First"
+                  }
+                },
+                "State": "Generated",
+                "Terms": [
+                  {
+                    "Opportunity to Quote": {
+                      "Source": {
+                        "Agent": "PowerBI.VisualColumnRename",
+                        "Type": "External"
+                      },
+                      "State": "Suggested",
+                      "Weight": 0.9
+                    }
+                  }
+                ]
+              },
+              "dax_measures.avgdays_q2s": {
+                "Definition": {
+                  "Binding": {
+                    "ConceptualEntity": "DAX_Measures",
+                    "ConceptualProperty": "AvgDays_Q2S"
+                  }
+                },
+                "State": "Generated",
+                "Terms": [
+                  {
+                    "Quote to Sales": {
+                      "Source": {
+                        "Agent": "PowerBI.VisualColumnRename",
+                        "Type": "External"
+                      },
+                      "State": "Suggested",
+                      "Weight": 0.9
+                    }
+                  }
+                ]
+              },
+              "dax_measures.avgdays_q2s_first": {
+                "Definition": {
+                  "Binding": {
+                    "ConceptualEntity": "DAX_Measures",
+                    "ConceptualProperty": "AvgDays_Q2S_First"
+                  }
+                },
+                "State": "Generated",
+                "Terms": [
+                  {
+                    "Quote to Sales": {
+                      "Source": {
+                        "Agent": "PowerBI.VisualColumnRename",
+                        "Type": "External"
+                      },
+                      "State": "Suggested",
+                      "Weight": 0.9
+                    }
+                  }
+                ]
+              },
+              "dax_measures.avgdur_a2o": {
+                "Definition": {
+                  "Binding": {
+                    "ConceptualEntity": "DAX_Measures",
+                    "ConceptualProperty": "AvgDur_A2O"
+                  }
+                },
+                "State": "Generated",
+                "Terms": [
+                  {
+                    "Account to Opportunity": {
+                      "Source": {
+                        "Agent": "PowerBI.VisualColumnRename",
+                        "Type": "External"
+                      },
+                      "State": "Suggested",
+                      "Weight": 0.9
+                    }
+                  }
+                ]
+              },
+              "dax_measures.avgdur_a2o_first": {
+                "Definition": {
+                  "Binding": {
+                    "ConceptualEntity": "DAX_Measures",
+                    "ConceptualProperty": "AvgDur_A2O_First"
+                  }
+                },
+                "State": "Generated",
+                "Terms": [
+                  {
+                    "Account to 1st Opportunity": {
+                      "Source": {
+                        "Agent": "PowerBI.VisualColumnRename",
+                        "Type": "External"
+                      },
+                      "State": "Suggested",
+                      "Weight": 0.9
+                    }
+                  }
+                ]
+              },
+              "dax_measures.avgdur_a2s": {
+                "Definition": {
+                  "Binding": {
+                    "ConceptualEntity": "DAX_Measures",
+                    "ConceptualProperty": "AvgDur_A2S"
+                  }
+                },
+                "State": "Generated",
+                "Terms": [
+                  {
+                    "Account to Sales Order": {
+                      "Source": {
+                        "Agent": "PowerBI.VisualColumnRename",
+                        "Type": "External"
+                      },
+                      "State": "Suggested",
+                      "Weight": 0.9
+                    }
+                  }
+                ]
+              },
+              "dax_measures.avgdur_o2q": {
+                "Definition": {
+                  "Binding": {
+                    "ConceptualEntity": "DAX_Measures",
+                    "ConceptualProperty": "AvgDur_O2Q"
+                  }
+                },
+                "State": "Generated",
+                "Terms": [
+                  {
+                    "Opportunity to Quote": {
+                      "Source": {
+                        "Agent": "PowerBI.VisualColumnRename",
+                        "Type": "External"
+                      },
+                      "State": "Suggested",
+                      "Weight": 0.9
+                    }
+                  }
+                ]
+              },
+              "dax_measures.avgdur_o2q_first": {
+                "Definition": {
+                  "Binding": {
+                    "ConceptualEntity": "DAX_Measures",
+                    "ConceptualProperty": "AvgDur_O2Q_First"
+                  }
+                },
+                "State": "Generated",
+                "Terms": [
+                  {
+                    "1st Opportunity to 1st Quote": {
+                      "Source": {
+                        "Agent": "PowerBI.VisualColumnRename",
+                        "Type": "External"
+                      },
+                      "State": "Suggested",
+                      "Weight": 0.9
+                    }
+                  }
+                ]
+              },
+              "dax_measures.avgdur_q2s": {
+                "Definition": {
+                  "Binding": {
+                    "ConceptualEntity": "DAX_Measures",
+                    "ConceptualProperty": "AvgDur_Q2S"
+                  }
+                },
+                "State": "Generated",
+                "Terms": [
+                  {
+                    "Quote to Sales Order": {
+                      "Source": {
+                        "Agent": "PowerBI.VisualColumnRename",
+                        "Type": "External"
+                      },
+                      "State": "Suggested",
+                      "Weight": 0.9
+                    }
+                  }
+                ]
+              },
+              "dax_measures.avgdur_q2s_first": {
+                "Definition": {
+                  "Binding": {
+                    "ConceptualEntity": "DAX_Measures",
+                    "ConceptualProperty": "AvgDur_Q2S_First"
+                  }
+                },
+                "State": "Generated",
+                "Terms": [
+                  {
+                    "1st Quote to 1st Sales": {
+                      "Source": {
+                        "Agent": "PowerBI.VisualColumnRename",
+                        "Type": "External"
+                      },
+                      "State": "Suggested",
+                      "Weight": 0.9
+                    }
+                  }
+                ]
+              },
+              "dax_measures.column_dropoffcount": {
+                "Definition": {
+                  "Binding": {
+                    "ConceptualEntity": "DAX_Measures",
+                    "ConceptualProperty": "_DropOffCount"
+                  }
+                },
+                "State": "Generated",
+                "Terms": [
+                  {
+                    "Drop-off (%)": {
+                      "Source": {
+                        "Agent": "PowerBI.VisualColumnRename",
+                        "Type": "External"
+                      },
+                      "State": "Suggested",
+                      "Weight": 0.9
+                    }
+                  }
+                ]
+              },
+              "dax_measures.column_dropofffirst": {
+                "Definition": {
+                  "Binding": {
+                    "ConceptualEntity": "DAX_Measures",
+                    "ConceptualProperty": "_DropOffFirst"
+                  }
+                },
+                "State": "Generated",
+                "Terms": [
+                  {
+                    "Drop-Off (%)": {
+                      "Source": {
+                        "Agent": "PowerBI.VisualColumnRename",
+                        "Type": "External"
+                      },
+                      "State": "Suggested",
+                      "Weight": 0.9
+                    }
+                  }
+                ]
+              },
+              "dax_measures.opportunity_distinctcount_all": {
+                "Definition": {
+                  "Binding": {
+                    "ConceptualEntity": "DAX_Measures",
+                    "ConceptualProperty": "Opportunity_DistinctCount_All"
+                  }
+                },
+                "State": "Generated",
+                "Terms": [
+                  {
+                    "Opportunity": {
+                      "Source": {
+                        "Agent": "PowerBI.VisualColumnRename",
+                        "Type": "External"
+                      },
+                      "State": "Suggested",
+                      "Weight": 0.9
+                    }
+                  }
+                ]
+              },
+              "dax_measures.opportunity_distinctcount_firstall": {
+                "Definition": {
+                  "Binding": {
+                    "ConceptualEntity": "DAX_Measures",
+                    "ConceptualProperty": "Opportunity_DistinctCount_FirstAll"
+                  }
+                },
+                "State": "Generated",
+                "Terms": [
+                  {
+                    "Opportunity": {
+                      "Source": {
+                        "Agent": "PowerBI.VisualColumnRename",
+                        "Type": "External"
+                      },
+                      "State": "Suggested",
+                      "Weight": 0.9
+                    }
+                  }
+                ]
+              },
+              "dax_measures.quote_distinctcount_all": {
+                "Definition": {
+                  "Binding": {
+                    "ConceptualEntity": "DAX_Measures",
+                    "ConceptualProperty": "Quote_DistinctCount_All"
+                  }
+                },
+                "State": "Generated",
+                "Terms": [
+                  {
+                    "Quote": {
+                      "Source": {
+                        "Agent": "PowerBI.VisualColumnRename",
+                        "Type": "External"
+                      },
+                      "State": "Suggested",
+                      "Weight": 0.9
+                    }
+                  }
+                ]
+              },
+              "dax_measures.quote_distinctcount_firstregular": {
+                "Definition": {
+                  "Binding": {
+                    "ConceptualEntity": "DAX_Measures",
+                    "ConceptualProperty": "Quote_DistinctCount_FirstRegular"
+                  }
+                },
+                "State": "Generated",
+                "Terms": [
+                  {
+                    "Quote": {
+                      "Source": {
+                        "Agent": "PowerBI.VisualColumnRename",
+                        "Type": "External"
+                      },
+                      "State": "Suggested",
+                      "Weight": 0.9
+                    }
+                  }
+                ]
+              },
+              "dax_measures.quote_distinctcount_tech": {
+                "Definition": {
+                  "Binding": {
+                    "ConceptualEntity": "DAX_Measures",
+                    "ConceptualProperty": "Quote_DistinctCount_Tech"
+                  }
+                },
+                "State": "Generated",
+                "Terms": [
+                  {
+                    "Quote": {
+                      "Source": {
+                        "Agent": "PowerBI.VisualColumnRename",
+                        "Type": "External"
+                      },
+                      "State": "Suggested",
+                      "Weight": 0.9
+                    }
+                  }
+                ]
+              },
+              "dax_measures.salesorder_directproportion": {
+                "Definition": {
+                  "Binding": {
+                    "ConceptualEntity": "DAX_Measures",
+                    "ConceptualProperty": "SalesOrder_DirectProportion"
+                  }
+                },
+                "State": "Generated",
+                "Terms": [
+                  {
+                    "Direct to Total Sales": {
+                      "Source": {
+                        "Agent": "PowerBI.VisualColumnRename",
+                        "Type": "External"
+                      },
+                      "State": "Suggested",
+                      "Weight": 0.9
+                    }
+                  }
+                ]
+              },
+              "dax_measures.salesorder_distinctcount_all": {
+                "Definition": {
+                  "Binding": {
+                    "ConceptualEntity": "DAX_Measures",
+                    "ConceptualProperty": "SalesOrder_DistinctCount_All"
+                  }
+                },
+                "State": "Generated",
+                "Terms": [
+                  {
+                    "Sales": {
+                      "Source": {
+                        "Agent": "PowerBI.VisualColumnRename",
+                        "Type": "External"
+                      },
+                      "State": "Suggested",
+                      "Weight": 0.9
+                    }
+                  }
+                ]
+              },
+              "dax_measures.salesorder_distinctcount_direct": {
+                "Definition": {
+                  "Binding": {
+                    "ConceptualEntity": "DAX_Measures",
+                    "ConceptualProperty": "SalesOrder_DistinctCount_Direct"
+                  }
+                },
+                "State": "Generated",
+                "Terms": [
+                  {
+                    "Sales": {
+                      "Source": {
+                        "Agent": "PowerBI.VisualColumnRename",
+                        "Type": "External"
+                      },
+                      "State": "Suggested",
+                      "Weight": 0.9
+                    }
+                  }
+                ]
+              },
+              "dax_measures.salesorder_distinctcount_tech": {
+                "Definition": {
+                  "Binding": {
+                    "ConceptualEntity": "DAX_Measures",
+                    "ConceptualProperty": "SalesOrder_DistinctCount_Tech"
+                  }
+                },
+                "State": "Generated",
+                "Terms": [
+                  {
+                    "Sales": {
+                      "Source": {
+                        "Agent": "PowerBI.VisualColumnRename",
+                        "Type": "External"
+                      },
+                      "State": "Suggested",
+                      "Weight": 0.9
+                    }
+                  }
+                ]
+              },
+              "dax_measures.salesorder_firstdirectaccountproportion": {
+                "Definition": {
+                  "Binding": {
+                    "ConceptualEntity": "DAX_Measures",
+                    "ConceptualProperty": "SalesOrder_FirstDirectAccountProportion"
+                  }
+                },
+                "State": "Generated",
+                "Terms": [
+                  {
+                    "Accounts w/ Direct": {
+                      "Source": {
+                        "Agent": "PowerBI.VisualColumnRename",
+                        "Type": "External"
+                      },
+                      "State": "Suggested",
+                      "Weight": 0.9
+                    }
+                  },
+                  {
+                    "Accounts w/ Direct Sale": {
+                      "Source": {
+                        "Agent": "PowerBI.VisualColumnRename",
+                        "Type": "External"
+                      },
+                      "State": "Suggested",
+                      "Weight": 0.9
+                    }
+                  }
+                ]
+              },
+              "funnel2.account_count2": {
+                "Definition": {
+                  "Binding": {
+                    "ConceptualEntity": "DAX_Measures",
+                    "ConceptualProperty": "Account_DistinctCount_All"
+                  }
+                },
+                "State": "Generated",
+                "Terms": [
+                  {
+                    "Accounts": {
+                      "Source": {
+                        "Agent": "PowerBI.VisualColumnRename",
+                        "Type": "External"
+                      },
+                      "State": "Suggested",
+                      "Weight": 0.9
+                    }
+                  }
+                ]
+              },
+              "funnel2.avgdays_a2s2": {
+                "Definition": {
+                  "Binding": {
+                    "ConceptualEntity": "DAX_Measures",
+                    "ConceptualProperty": "AvgDays_A2S_Direct"
+                  }
+                },
+                "State": "Generated",
+                "Terms": [
+                  {
+                    "Account to Sales": {
+                      "Source": {
+                        "Agent": "PowerBI.VisualColumnRename",
+                        "Type": "External"
+                      },
+                      "State": "Suggested",
+                      "Weight": 0.9
+                    }
+                  }
+                ]
+              },
+              "funnel2.avgdur_a2s2": {
+                "Definition": {
+                  "Binding": {
+                    "ConceptualEntity": "DAX_Measures",
+                    "ConceptualProperty": "AvgDur_A2S_Direct"
+                  }
+                },
+                "State": "Generated",
+                "Terms": [
+                  {
+                    "Account to 1st Direct Sale": {
+                      "Source": {
+                        "Agent": "PowerBI.VisualColumnRename",
+                        "Type": "External"
+                      },
+                      "State": "Suggested",
+                      "Weight": 0.9
+                    }
+                  }
+                ]
+              },
+              "funnel2.salesorder_count2": {
+                "Definition": {
+                  "Binding": {
+                    "ConceptualEntity": "DAX_Measures",
+                    "ConceptualProperty": "SalesOrder_DistinctCount_FirstRegular"
+                  }
+                },
+                "State": "Generated",
+                "Terms": [
+                  {
+                    "Sales": {
+                      "Source": {
+                        "Agent": "PowerBI.VisualColumnRename",
+                        "Type": "External"
+                      },
+                      "State": "Suggested",
+                      "Weight": 0.9
+                    }
+                  }
+                ]
+              },
+              "funnel2.total_count2": {
+                "Definition": {
+                  "Binding": {
+                    "ConceptualEntity": "DAX_Measures",
+                    "ConceptualProperty": "_Total_Count2"
+                  }
+                },
+                "State": "Generated",
+                "Terms": [
+                  {
+                    "Drop-off (%)": {
+                      "Source": {
+                        "Agent": "PowerBI.VisualColumnRename",
+                        "Type": "External"
+                      },
+                      "State": "Suggested",
+                      "Weight": 0.9
+                    }
+                  }
+                ]
+              },
+              "salesorder.createdby": {
+                "Definition": {
+                  "Binding": {
+                    "ConceptualEntity": "salesorder",
+                    "ConceptualProperty": "createdby"
+                  }
+                },
+                "State": "Generated",
+                "Terms": [
+                  {
+                    "Order Created By": {
+                      "Source": {
+                        "Agent": "PowerBI.VisualColumnRename",
+                        "Type": "External"
+                      },
+                      "State": "Suggested",
+                      "Weight": 0.9
+                    }
+                  }
+                ]
+              },
+              "salesorder.wsi_originoforder": {
+                "Definition": {
+                  "Binding": {
+                    "ConceptualEntity": "salesorder",
+                    "ConceptualProperty": "wsi_originoforder"
+                  }
+                },
+                "State": "Generated",
+                "Terms": [
+                  {
+                    "Origin of Order": {
+                      "Source": {
+                        "Agent": "PowerBI.VisualColumnRename",
+                        "Type": "External"
+                      },
+                      "State": "Suggested",
+                      "Weight": 0.9
+                    }
+                  }
+                ]
+              }
+            },
+            "Language": "en-US",
+            "Version": "2.0.0"
+          },
+          "contentType": "json"
+        }
+      }
+    ],
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": true
+    },
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "expressions": [
+      {
+        "name": "DirectQuery to AS - crm_funnel",
+        "annotations": [
+          {
+            "name": "PBI_IncludeFutureArtifacts",
+            "value": "True"
+          }
+        ],
+        "expression": [
+          "let",
+          "    Source = AnalysisServices.Database(\"powerbi://api.powerbi.com/v1.0/myorg/salesAnalytics\", \"crm_funnel\"),",
+          "    Cubes = Table.Combine(Source[Data]),",
+          "    Cube = Cubes{[Id=\"Model\", Kind=\"Cube\"]}[Data]",
+          "in",
+          "    Cube"
+        ],
+        "kind": "m",
+        "lineageTag": "9922b626-23bd-428d-aa28-59fa1a28d256"
+      }
+    ],
+    "relationships": [
+      {
+        "name": "e5018b14-99fd-4867-b8d8-b718ffe92e17",
+        "fromColumn": "AccountID",
+        "fromTable": "crm_funnel",
+        "toColumn": "id",
+        "toTable": "account"
+      },
+      {
+        "name": "8eb2c8ba-1dea-44a2-8224-f5245f4789c1",
+        "fromColumn": "QuoteID",
+        "fromTable": "crm_funnel",
+        "toColumn": "id",
+        "toTable": "quote"
+      },
+      {
+        "name": "5fa8e817-f34e-4059-a1fc-bd2adff8779a",
+        "fromColumn": "SalesOrderID",
+        "fromTable": "crm_funnel",
+        "toColumn": "id",
+        "toTable": "salesorder"
+      },
+      {
+        "name": "9c55bcd4-330f-40d3-8f9f-2d4a1629c7bb",
+        "fromColumn": "OpportunityID",
+        "fromTable": "crm_funnel",
+        "toColumn": "id",
+        "toTable": "opportunity"
+      },
+      {
+        "name": "88d0939b-d529-47ab-83ec-dc84364e5be7",
+        "fromColumn": "originatingleadid",
+        "fromTable": "account",
+        "toColumn": "id",
+        "toTable": "lead"
+      },
+      {
+        "name": "fdafdf4e-f083-41f6-9a27-d79ada443856",
+        "fromColumn": "AccountCreatedOn",
+        "fromTable": "crm_funnel",
+        "toColumn": "Date",
+        "toTable": "dim_datetable"
+      },
+      {
+        "name": "c101b429-87d8-4022-b3fc-140917694536",
+        "crossFilteringBehavior": "bothDirections",
+        "fromColumn": "wsi_originoforder",
+        "fromTable": "salesorder",
+        "toColumn": "Option",
+        "toTable": "dim_salesorder_wsi_originoforder"
+      },
+      {
+        "name": "9c64dda2-a1e3-4c5a-9229-12041741fb20",
+        "fromColumn": "createdby",
+        "fromTable": "lead",
+        "isActive": false,
+        "toColumn": "id",
+        "toTable": "systemuser"
+      },
+      {
+        "name": "03ddaab1-229a-4857-9fb3-3f1f2df6d478",
+        "fromColumn": "createdby",
+        "fromTable": "opportunity",
+        "isActive": false,
+        "toColumn": "id",
+        "toTable": "systemuser"
+      },
+      {
+        "name": "b5912294-ced1-4b4d-b811-ed468a3bcc6f",
+        "fromColumn": "createdby",
+        "fromTable": "quote",
+        "isActive": false,
+        "toColumn": "id",
+        "toTable": "systemuser"
+      },
+      {
+        "name": "16336ab3-2af9-4f1d-9715-b9fa1cb20a8b",
+        "fromColumn": "createdby",
+        "fromTable": "account",
+        "isActive": false,
+        "toColumn": "id",
+        "toTable": "systemuser"
+      },
+      {
+        "name": "931f59e4-504d-408b-b301-315839ff05b8",
+        "crossFilteringBehavior": "bothDirections",
+        "fromColumn": "createdby",
+        "fromTable": "salesorder",
+        "toColumn": "id",
+        "toTable": "systemuser"
+      }
+    ],
+    "sourceQueryCulture": "en-CA",
+    "tables": [
+      {
+        "name": "DAX_Measures",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "lineageTag": "99d4707b-fde3-4845-a80c-3a2b843b5be6",
+        "measures": [
+          {
+            "name": "Account_2_or_more_direct_sales",
+            "displayFolder": "Funnel\\Account",
+            "expression": [
+              "",
+              "COUNTROWS(",
+              "        FILTER(",
+              "            SUMMARIZECOLUMNS(",
+              "                crm_funnel[AccountID]",
+              "            ),",
+              "            [SalesOrder_DistinctCount_Direct] > 1",
+              "        )",
+              "    )"
+            ],
+            "formatString": "0",
+            "lineageTag": "d919d135-17cf-4868-8b7f-16a8dfdc530c"
+          },
+          {
+            "name": "Account_DistinctCount_All",
+            "displayFolder": "Funnel\\Account",
+            "expression": [
+              "",
+              "CALCULATE(",
+              "    COUNTROWS(",
+              "        FILTER(",
+              "            SUMMARIZECOLUMNS(",
+              "                crm_funnel[AccountID]",
+              "            ),",
+              "            NOT(ISBLANK(crm_funnel[AccountID]))",
+              "        )",
+              "    )",
+              ")"
+            ],
+            "formatString": "0",
+            "lineageTag": "a325a5a1-2f8c-417d-9597-0bc1018b59d5"
+          },
+          {
+            "name": "Account_MultipleDirectProportion",
+            "displayFolder": "Funnel\\Account",
+            "expression": [
+              "",
+              "DIVIDE(",
+              "    [Account_2_or_more_direct_sales],",
+              "    [Account_DistinctCount_All],",
+              "    BLANK()",
+              ")"
+            ],
+            "formatString": "0.00%;-0.00%;0.00%",
+            "lineageTag": "a5eef4ac-71ef-4e4a-af15-410904520cc9"
+          },
+          {
+            "name": "Account_MultipleDirectRepeat",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "displayFolder": "Funnel\\Account",
+            "expression": [
+              "",
+              "DIVIDE(",
+              "    [SalesOrder_DistinctCount_Direct] - [SalesOrder_DistinctCount_FirstDirect],",
+              "    [Account_2_or_more_direct_sales],",
+              "    BLANK()",
+              ")"
+            ],
+            "lineageTag": "23770bb3-19ea-43b2-9c72-78c431836545"
+          },
+          {
+            "name": "Account_SubsetMultipleDirectProportion",
+            "displayFolder": "Funnel\\Account",
+            "expression": [
+              "",
+              "DIVIDE(",
+              "    [Account_2_or_more_direct_sales],",
+              "    [SalesOrder_DistinctCount_FirstDirect],",
+              "    BLANK()",
+              ")"
+            ],
+            "formatString": "0.00%;-0.00%;0.00%",
+            "lineageTag": "2e49437a-b542-4e8f-aaaa-d932d50d4016"
+          },
+          {
+            "name": "AvgDays_A2O",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "displayFolder": "Funnel\\TimeDiff",
+            "expression": "[AvgSecs_A2O]/(60*60*24)",
+            "lineageTag": "220cec2c-c380-4302-b8bd-47239b257277"
+          },
+          {
+            "name": "AvgDays_A2S_Direct",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "displayFolder": "Funnel\\TimeDiff",
+            "expression": "[AvgSecs_A2S_Direct]/(60*60*24)",
+            "lineageTag": "f6c866f0-56d8-4e8c-80ef-881a9815bed6"
+          },
+          {
+            "name": "AvgDays_O2Q",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "displayFolder": "Funnel\\TimeDiff",
+            "expression": "[AvgSecs_O2Q]/(60*60*24)",
+            "lineageTag": "ac858652-a67a-46ae-9955-7a3cebc80b85"
+          },
+          {
+            "name": "AvgDays_Q2S",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "displayFolder": "Funnel\\TimeDiff",
+            "expression": "[AvgSecs_Q2S]/(60*60*24)",
+            "lineageTag": "05046768-3f6c-4905-9920-9f28a9726cff"
+          },
+          {
+            "name": "AvgDur_A2O",
+            "displayFolder": "Funnel\\TimeDiff",
+            "expression": [
+              "",
+              "FORMAT(",
+              "    INT([AvgSecs_A2O] / (24 * 3600)), \"00\") & \"d \" & ",
+              "FORMAT(",
+              "    INT(MOD([AvgSecs_A2O], (24 * 3600)) / 3600), \"00\") & \":\" & ",
+              "FORMAT(",
+              "    INT(MOD([AvgSecs_A2O], 3600) / 60), \"00\") & \":\" & ",
+              "FORMAT(",
+              "    MOD([AvgSecs_A2O], 60), \"00\")"
+            ],
+            "lineageTag": "71d96d6d-d878-42d3-a354-60a1ac6dc046"
+          },
+          {
+            "name": "AvgDur_A2S_Direct",
+            "displayFolder": "Funnel\\TimeDiff",
+            "expression": [
+              "",
+              "FORMAT(",
+              "    INT([AvgSecs_A2S_Direct] / (24 * 3600)), \"00\") & \"d \" & ",
+              "FORMAT(",
+              "    INT(MOD([AvgSecs_A2S_Direct], (24 * 3600)) / 3600), \"00\") & \":\" & ",
+              "FORMAT(",
+              "    INT(MOD([AvgSecs_A2S_Direct], 3600) / 60), \"00\") & \":\" & ",
+              "FORMAT(",
+              "    MOD([AvgSecs_A2S_Direct], 60), \"00\")"
+            ],
+            "lineageTag": "b982e740-41c0-4a2c-b20b-305ce6103d35"
+          },
+          {
+            "name": "AvgDur_O2Q",
+            "displayFolder": "Funnel\\TimeDiff",
+            "expression": [
+              "",
+              "FORMAT(",
+              "    INT([AvgSecs_O2Q] / (24 * 3600)), \"00\") & \"d \" & ",
+              "FORMAT(",
+              "    INT(MOD([AvgSecs_O2Q], (24 * 3600)) / 3600), \"00\") & \":\" & ",
+              "FORMAT(",
+              "    INT(MOD([AvgSecs_O2Q], 3600) / 60), \"00\") & \":\" & ",
+              "FORMAT(",
+              "    MOD([AvgSecs_O2Q], 60), \"00\")"
+            ],
+            "lineageTag": "b69adeff-7d12-4f86-8a0c-d68ac4ea36d9"
+          },
+          {
+            "name": "AvgDur_Q2S",
+            "displayFolder": "Funnel\\TimeDiff",
+            "expression": [
+              "",
+              "FORMAT(",
+              "    INT([AvgSecs_Q2S] / (24 * 3600)), \"00\") & \"d \" & ",
+              "FORMAT(",
+              "    INT(MOD([AvgSecs_Q2S], (24 * 3600)) / 3600), \"00\") & \":\" & ",
+              "FORMAT(",
+              "    INT(MOD([AvgSecs_Q2S], 3600) / 60), \"00\") & \":\" & ",
+              "FORMAT(",
+              "    MOD([AvgSecs_Q2S], 60), \"00\")"
+            ],
+            "lineageTag": "30fc380a-fb9b-4f9c-be30-59cbe05d792e"
+          },
+          {
+            "name": "AvgSecs_A2O",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "displayFolder": "Funnel\\TimeDiff",
+            "expression": "AVERAGE(crm_funnel[Account_Opportunity_Diff])",
+            "lineageTag": "384eac90-d77a-4f3d-98a7-7178be556c17"
+          },
+          {
+            "name": "AvgSecs_A2S_Direct",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "displayFolder": "Funnel\\TimeDiff",
+            "expression": [
+              "CALCULATE(",
+              "    [AvgSecs_A2S],",
+              "    FILTER(",
+              "        crm_funnel,",
+              "        NOT(ISBLANK(crm_funnel[SalesOrderID])) &&",
+              "        crm_funnel[SalesOrder_Account_Rank] = 1 &&",
+              "        crm_funnel[Type] = \"Direct Sale\"",
+              "    )",
+              ")"
+            ],
+            "lineageTag": "ff368230-7079-4019-b220-ae6d0c8f4aa6"
+          },
+          {
+            "name": "AvgSecs_A2S",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "displayFolder": "Funnel\\TimeDiff",
+            "expression": "AVERAGE(crm_funnel[Account_SalesOrder_Diff])",
+            "lineageTag": "0143215c-a27f-4231-b583-4376e17c3c97"
+          },
+          {
+            "name": "AvgSecs_O2Q",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "displayFolder": "Funnel\\TimeDiff",
+            "expression": "AVERAGE(crm_funnel[Opportunity_Quote_Diff])",
+            "lineageTag": "4847b073-6405-4708-9692-aea5890da046"
+          },
+          {
+            "name": "AvgSecs_Q2S",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "displayFolder": "Funnel\\TimeDiff",
+            "expression": "AVERAGE(crm_funnel[Quote_SalesOrder_Diff])",
+            "lineageTag": "59c7448b-62a2-424b-8071-eb53fbae3721"
+          },
+          {
+            "name": "Opportunity_DistinctCount_All",
+            "displayFolder": "Funnel\\Opportunity",
+            "expression": [
+              "",
+              "CALCULATE(",
+              "    COUNTROWS(",
+              "        FILTER(",
+              "            SUMMARIZECOLUMNS(",
+              "                crm_funnel[OpportunityID]",
+              "            ),",
+              "            NOT(ISBLANK(crm_funnel[OpportunityID]))",
+              "        )",
+              "    )",
+              ")"
+            ],
+            "formatString": "0",
+            "lineageTag": "5a5c9a36-1317-43fe-87cf-81fc3bf2a6ad"
+          },
+          {
+            "name": "Opportunity_DistinctCount_FirstAll",
+            "displayFolder": "Funnel\\Opportunity",
+            "expression": [
+              "",
+              "CALCULATE(",
+              "    COUNTROWS(",
+              "        FILTER(",
+              "            SUMMARIZECOLUMNS(",
+              "                crm_funnel[OpportunityID],",
+              "                crm_funnel[Opportunity_Account_Rank]",
+              "            ),",
+              "            NOT(ISBLANK(crm_funnel[OpportunityID])) &&",
+              "            crm_funnel[Opportunity_Account_Rank] = 1",
+              "        )",
+              "    )",
+              ")"
+            ],
+            "formatString": "0",
+            "lineageTag": "db7657b4-7f1e-4339-904f-01ca160aa3cd"
+          },
+          {
+            "name": "Quote_DistinctCount_All",
+            "displayFolder": "Funnel\\Quote",
+            "expression": [
+              "",
+              "CALCULATE(",
+              "    COUNTROWS(",
+              "        FILTER(",
+              "            SUMMARIZECOLUMNS(",
+              "                crm_funnel[QuoteID]",
+              "            ),",
+              "            NOT(ISBLANK(crm_funnel[QuoteID]))",
+              "        )",
+              "    )",
+              ")"
+            ],
+            "formatString": "0",
+            "lineageTag": "0bf982b9-1795-420a-981b-f91212bd9609"
+          },
+          {
+            "name": "Quote_DistinctCount_FirstAll",
+            "displayFolder": "Funnel\\Quote",
+            "expression": [
+              "",
+              "CALCULATE(",
+              "    COUNTROWS(",
+              "        FILTER(",
+              "            SUMMARIZECOLUMNS(",
+              "                crm_funnel[QuoteID],",
+              "                crm_funnel[Quote_Account_Rank]",
+              "            ),",
+              "            NOT(ISBLANK(crm_funnel[QuoteID])) &&",
+              "            crm_funnel[Quote_Account_Rank] = 1",
+              "        )",
+              "    )",
+              ")"
+            ],
+            "formatString": "0",
+            "lineageTag": "60f8898a-8eb3-4407-bb15-f1effb7ae879"
+          },
+          {
+            "name": "Quote_DistinctCount_FirstRegular",
+            "displayFolder": "Funnel\\Quote",
+            "expression": [
+              "",
+              "CALCULATE(",
+              "    COUNTROWS(",
+              "        FILTER(",
+              "            SUMMARIZECOLUMNS(",
+              "                crm_funnel[QuoteID],",
+              "                crm_funnel[Quote_Account_Rank],",
+              "                crm_funnel[Type]",
+              "            ),",
+              "            NOT(ISBLANK(crm_funnel[QuoteID])) &&",
+              "            crm_funnel[Quote_Account_Rank] = 1 &&",
+              "            crm_funnel[Type] IN {\"Complete\", \"Incomplete\", \"Sales Team\"}",
+              "        )",
+              "    )",
+              ")"
+            ],
+            "formatString": "0",
+            "lineageTag": "54caf153-5544-4ec2-937e-26145c27c347"
+          },
+          {
+            "name": "Quote_DistinctCount_Tech",
+            "displayFolder": "Funnel\\Quote",
+            "expression": [
+              "",
+              "CALCULATE(",
+              "    COUNTROWS(",
+              "        FILTER(",
+              "            SUMMARIZECOLUMNS(",
+              "                crm_funnel[QuoteID],",
+              "                crm_funnel[Type]",
+              "            ),",
+              "            NOT(ISBLANK(crm_funnel[QuoteID])) &&",
+              "            crm_funnel[Type] IN {\"Tech Team\"}",
+              "        )",
+              "    )",
+              ")"
+            ],
+            "formatString": "0",
+            "lineageTag": "3d17f6b0-0bdb-4d15-9967-2af55efe65b0"
+          },
+          {
+            "name": "SalesOrder_DirectPerAccount",
+            "displayFolder": "Funnel\\SalesOrder",
+            "expression": [
+              "",
+              "DIVIDE(",
+              "    [SalesOrder_DistinctCount_Direct],",
+              "    [SalesOrder_DistinctCount_FirstDirect],",
+              "    BLANK()",
+              ")-1"
+            ],
+            "formatString": "0.00%;-0.00%;0.00%",
+            "lineageTag": "dff2fd67-3cde-43ed-8cd5-bff38d80cc7c"
+          },
+          {
+            "name": "SalesOrder_DirectProportion",
+            "displayFolder": "Funnel\\SalesOrder",
+            "expression": [
+              "",
+              "DIVIDE(",
+              "    [SalesOrder_DistinctCount_Direct],",
+              "    [SalesOrder_DistinctCount_All],",
+              "    BLANK()",
+              ")"
+            ],
+            "formatString": "0.00%;-0.00%;0.00%",
+            "lineageTag": "b21db8c8-68e2-488f-9f36-60ec883780b2"
+          },
+          {
+            "name": "SalesOrder_DistinctCount_All",
+            "displayFolder": "Funnel\\SalesOrder",
+            "expression": [
+              "",
+              "CALCULATE(",
+              "    COUNTROWS(",
+              "        FILTER(",
+              "            SUMMARIZECOLUMNS(",
+              "                crm_funnel[SalesOrderID]",
+              "            ),",
+              "            NOT(ISBLANK(crm_funnel[SalesOrderID]))",
+              "        )",
+              "    )",
+              ")"
+            ],
+            "formatString": "0",
+            "lineageTag": "65ee821e-c75e-4647-b86c-d2c8b0e4e9ba"
+          },
+          {
+            "name": "SalesOrder_DistinctCount_Direct",
+            "displayFolder": "Funnel\\SalesOrder",
+            "expression": [
+              "",
+              "CALCULATE(",
+              "    COUNTROWS(",
+              "        FILTER(",
+              "            SUMMARIZECOLUMNS(",
+              "                crm_funnel[SalesOrderID],",
+              "                crm_funnel[Type]",
+              "            ),",
+              "            NOT(ISBLANK(crm_funnel[SalesOrderID])) &&",
+              "            crm_funnel[Type] = {\"Direct Sale\"}",
+              "        )",
+              "    )",
+              ")"
+            ],
+            "formatString": "0",
+            "lineageTag": "bf76bd5d-df4d-4579-b425-adbe526ecbee"
+          },
+          {
+            "name": "SalesOrder_DistinctCount_FirstAll",
+            "displayFolder": "Funnel\\SalesOrder",
+            "expression": [
+              "",
+              "CALCULATE(",
+              "    COUNTROWS(",
+              "        FILTER(",
+              "            SUMMARIZECOLUMNS(",
+              "                crm_funnel[SalesOrderID],",
+              "                crm_funnel[SalesOrder_Account_Rank]",
+              "            ),",
+              "            NOT(ISBLANK(crm_funnel[SalesOrderID])) &&",
+              "            crm_funnel[SalesOrder_Account_Rank] = 1",
+              "        )",
+              "    )",
+              ")"
+            ],
+            "formatString": "0",
+            "lineageTag": "279444ab-0c93-43de-bdab-08aedffb22b5"
+          },
+          {
+            "name": "SalesOrder_DistinctCount_FirstDirect",
+            "displayFolder": "Funnel\\SalesOrder",
+            "expression": [
+              "",
+              "CALCULATE(",
+              "    COUNTROWS(",
+              "        FILTER(",
+              "            SUMMARIZECOLUMNS(",
+              "                crm_funnel[SalesOrderID],",
+              "                crm_funnel[SalesOrder_Account_Rank],",
+              "                crm_funnel[Type]",
+              "            ),",
+              "            NOT(ISBLANK(crm_funnel[SalesOrderID])) &&",
+              "            crm_funnel[SalesOrder_Account_Rank] = 1 &&",
+              "            crm_funnel[Type] = {\"Direct Sale\"}",
+              "        )",
+              "    )",
+              ")"
+            ],
+            "formatString": "0",
+            "lineageTag": "470cd2e3-7d5c-4eab-84a8-37d9b6225f98"
+          },
+          {
+            "name": "SalesOrder_DistinctCount_FirstRegular",
+            "displayFolder": "Funnel\\SalesOrder",
+            "expression": [
+              "",
+              "CALCULATE(",
+              "    COUNTROWS(",
+              "        FILTER(",
+              "            SUMMARIZECOLUMNS(",
+              "                crm_funnel[SalesOrderID],",
+              "                crm_funnel[SalesOrder_Account_Rank],",
+              "                crm_funnel[Type]",
+              "            ),",
+              "            NOT(ISBLANK(crm_funnel[SalesOrderID])) &&",
+              "            crm_funnel[SalesOrder_Account_Rank] = 1 &&",
+              "            crm_funnel[Type] IN {\"Complete\", \"Incomplete\", \"Sales Team\"}",
+              "        )",
+              "    )",
+              ")"
+            ],
+            "formatString": "0",
+            "lineageTag": "6baa2f83-0b30-4747-91ec-326b526a2ad4"
+          },
+          {
+            "name": "SalesOrder_DistinctCount_Tech",
+            "displayFolder": "Funnel\\SalesOrder",
+            "expression": [
+              "",
+              "CALCULATE(",
+              "    COUNTROWS(",
+              "        FILTER(",
+              "            SUMMARIZECOLUMNS(",
+              "                crm_funnel[SalesOrderID],",
+              "                crm_funnel[Type]",
+              "            ),",
+              "            NOT(ISBLANK(crm_funnel[SalesOrderID])) &&",
+              "            crm_funnel[Type] IN {\"Tech Team\"}",
+              "        )",
+              "    )",
+              ")"
+            ],
+            "formatString": "0",
+            "lineageTag": "47f72a85-e27a-494c-abb4-c7a6105707d3"
+          },
+          {
+            "name": "SalesOrder_FirstDirectAccountProportion",
+            "displayFolder": "Funnel\\SalesOrder",
+            "expression": [
+              "",
+              "DIVIDE(",
+              "    [SalesOrder_DistinctCount_FirstDirect],",
+              "    [Account_DistinctCount_All],",
+              "    BLANK()",
+              ")"
+            ],
+            "formatString": "0.00%;-0.00%;0.00%",
+            "lineageTag": "d4a788ce-f72e-43a1-aee9-ddd2dc66c3ea"
+          },
+          {
+            "name": "SalesOrder_FirstDirectProportion",
+            "displayFolder": "Funnel\\SalesOrder",
+            "expression": [
+              "",
+              "DIVIDE(",
+              "    [SalesOrder_DistinctCount_FirstDirect],",
+              "    [SalesOrder_DistinctCount_All],",
+              "    BLANK()",
+              ")"
+            ],
+            "formatString": "0.00%;-0.00%;0.00%",
+            "lineageTag": "a874b2bf-5757-42cc-9a87-e585edffb171"
+          },
+          {
+            "name": "_Total_Count2",
+            "displayFolder": "Funnel",
+            "expression": [
+              "",
+              "SUMX(",
+              "    crm_funnel,",
+              "    SWITCH(",
+              "        TRUE(),",
+              "        crm_funnel[Stage] = \"Account\" ||",
+              "        crm_funnel[Stage] = \"Quote\" ||",
+              "        crm_funnel[Stage] = \"SalesOrder\" ||",
+              "        crm_funnel[Stage] = \"Opportunity\", 1,",
+              "        ",
+              "        crm_funnel[Stage] = \"Opportunity\" ||",
+              "        crm_funnel[Stage] = \"Quote\" ||",
+              "        crm_funnel[Stage] = \"SalesOrder\", 1,",
+              "        ",
+              "        crm_funnel[Stage] = \"Quote\" ||",
+              "        crm_funnel[Stage] = \"SalesOrder\", 1,",
+              "        ",
+              "        crm_funnel[Stage] = \"SalesOrder\", 1,",
+              "        ",
+              "        0",
+              "    )",
+              ")",
+              ""
+            ],
+            "formatString": "0",
+            "lineageTag": "561d87cb-2285-4987-aaeb-7ef4241a768e"
+          },
+          {
+            "name": "_Validity",
+            "displayFolder": "Funnel",
+            "expression": [
+              "",
+              "IF(",
+              "    [Opportunity_DistinctCount_FirstAll] = 1 && [Quote_DistinctCount_FirstRegular] = 1,",
+              "    \"Valid\",",
+              "    IF(",
+              "        [Opportunity_DistinctCount_FirstAll] = 1 && [Quote_DistinctCount_FirstRegular] = 0,",
+              "        \"Valid\",",
+              "        IF(",
+              "            [Opportunity_DistinctCount_FirstAll] = 0 && [Quote_DistinctCount_FirstRegular] = 1,",
+              "            \"Invalid\",",
+              "            IF(",
+              "                [Opportunity_DistinctCount_FirstAll] = 0 && [Quote_DistinctCount_FirstRegular] = 0,",
+              "                \"Invalid\",",
+              "                BLANK()",
+              "            )",
+              "        )",
+              "    )",
+              ")"
+            ],
+            "lineageTag": "2e7f57cf-a764-4f53-a076-72bc37fe771a"
+          },
+          {
+            "name": "AvgSecs_A2O_First",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "displayFolder": "Funnel\\TimeDiff",
+            "expression": [
+              "CALCULATE(",
+              "    [AvgSecs_A2O],",
+              "    FILTER(",
+              "        crm_funnel,",
+              "        NOT(ISBLANK(crm_funnel[OpportunityID])) &&",
+              "        crm_funnel[Opportunity_Account_Rank] = 1",
+              "    )",
+              ")"
+            ],
+            "lineageTag": "2853bfe1-0a07-42b7-85d6-bb129c28e640"
+          },
+          {
+            "name": "AvgDur_A2O_First",
+            "displayFolder": "Funnel\\TimeDiff",
+            "expression": [
+              "",
+              "FORMAT(",
+              "    INT([AvgSecs_A2O_First] / (24 * 3600)), \"00\") & \"d \" & ",
+              "FORMAT(",
+              "    INT(MOD([AvgSecs_A2O_First], (24 * 3600)) / 3600), \"00\") & \":\" & ",
+              "FORMAT(",
+              "    INT(MOD([AvgSecs_A2O_First], 3600) / 60), \"00\") & \":\" & ",
+              "FORMAT(",
+              "    MOD([AvgSecs_A2O_First], 60), \"00\")"
+            ],
+            "lineageTag": "73a08601-ed3e-4bfc-a191-cd9a72a1fafb"
+          },
+          {
+            "name": "AvgDays_A2O_First",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "displayFolder": "Funnel\\TimeDiff",
+            "expression": "[AvgSecs_A2O_First]/(60*60*24)",
+            "lineageTag": "fc3fde27-251a-4de7-ad41-f4b89af756c5"
+          },
+          {
+            "name": "AvgSecs_O2Q_First",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "displayFolder": "Funnel\\TimeDiff",
+            "expression": [
+              "CALCULATE(",
+              "    [AvgSecs_O2Q],",
+              "    FILTER(",
+              "        crm_funnel,",
+              "        NOT(ISBLANK(crm_funnel[QuoteID])) &&",
+              "        crm_funnel[Opportunity_Account_Rank] = 1 &&",
+              "        crm_funnel[Quote_Account_Rank] = 1",
+              "    )",
+              ")"
+            ],
+            "lineageTag": "de8b37bd-b986-4f63-b88b-bf275e7db559"
+          },
+          {
+            "name": "AvgDur_O2Q_First",
+            "displayFolder": "Funnel\\TimeDiff",
+            "expression": [
+              "",
+              "FORMAT(",
+              "    INT([AvgSecs_O2Q_First] / (24 * 3600)), \"00\") & \"d \" & ",
+              "FORMAT(",
+              "    INT(MOD([AvgSecs_O2Q_First], (24 * 3600)) / 3600), \"00\") & \":\" & ",
+              "FORMAT(",
+              "    INT(MOD([AvgSecs_O2Q_First], 3600) / 60), \"00\") & \":\" & ",
+              "FORMAT(",
+              "    MOD([AvgSecs_O2Q_First], 60), \"00\")"
+            ],
+            "lineageTag": "d8053746-4e19-407a-97d4-8a9d0770b7c8"
+          },
+          {
+            "name": "AvgDays_O2Q_First",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "displayFolder": "Funnel\\TimeDiff",
+            "expression": "[AvgSecs_O2Q_First]/(60*60*24)",
+            "lineageTag": "be24b21b-8d73-4a98-a11d-eeb4423996cc"
+          },
+          {
+            "name": "AvgSecs_Q2S_First",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "displayFolder": "Funnel\\TimeDiff",
+            "expression": [
+              "CALCULATE(",
+              "    [AvgSecs_Q2S],",
+              "    FILTER(",
+              "        crm_funnel,",
+              "        NOT(ISBLANK(crm_funnel[SalesOrderID])) &&",
+              "        crm_funnel[Opportunity_Account_Rank] = 1 &&",
+              "        crm_funnel[Quote_Account_Rank] = 1 &&",
+              "        crm_funnel[SalesOrder_Account_Rank] = 1",
+              "    )",
+              ")"
+            ],
+            "lineageTag": "ba7dd109-0d64-4449-9926-c66588c36566"
+          },
+          {
+            "name": "AvgDur_Q2S_First",
+            "displayFolder": "Funnel\\TimeDiff",
+            "expression": [
+              "",
+              "FORMAT(",
+              "    INT([AvgSecs_Q2S_First] / (24 * 3600)), \"00\") & \"d \" & ",
+              "FORMAT(",
+              "    INT(MOD([AvgSecs_Q2S_First], (24 * 3600)) / 3600), \"00\") & \":\" & ",
+              "FORMAT(",
+              "    INT(MOD([AvgSecs_Q2S_First], 3600) / 60), \"00\") & \":\" & ",
+              "FORMAT(",
+              "    MOD([AvgSecs_Q2S_First], 60), \"00\")"
+            ],
+            "lineageTag": "6ca878c8-33de-4ae8-a75a-333b66420f8a"
+          },
+          {
+            "name": "AvgDays_Q2S_First",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "displayFolder": "Funnel\\TimeDiff",
+            "expression": "[AvgSecs_Q2S_First]/(60*60*24)",
+            "lineageTag": "8cc01960-07cc-4402-abb1-68303cde02c4"
+          },
+          {
+            "name": "_DropOffCount",
+            "displayFolder": "Funnel",
+            "expression": "COUNT(crm_funnel[Stage])",
+            "formatString": "0",
+            "lineageTag": "66df10b3-3e33-4785-aef3-15d92ac03bb0"
+          },
+          {
+            "name": "_DropOffFirst",
+            "displayFolder": "Funnel",
+            "expression": [
+              "",
+              " CALCULATE(",
+              "    [_DropOffCount],",
+              "    FILTER(",
+              "        crm_funnel,",
+              "        IF([Stage]=\"Account\", NOT(ISBLANK(crm_funnel[AccountID]))) ||",
+              "        IF([Stage]=\"Opportunity\", crm_funnel[Opportunity_Account_Rank] = 1) ||",
+              "        IF([Stage]=\"Quote\", crm_funnel[Quote_Account_Rank] = 1) ||",
+              "        IF([Stage]=\"SalesOrder\", crm_funnel[SalesOrder_Account_Rank] = 1) &&",
+              "        crm_funnel[Type] IN {\"Complete\", \"Incomplete\", \"Sales Team\"}",
+              "    )",
+              ")"
+            ],
+            "formatString": "0",
+            "lineageTag": "07d6be13-adca-4164-9e10-d3c82a13db4c"
+          },
+          {
+            "name": "AvgDur_A2S",
+            "displayFolder": "Funnel\\TimeDiff",
+            "expression": [
+              "",
+              "FORMAT(",
+              "    INT([AvgSecs_A2S] / (24 * 3600)), \"00\") & \"d \" & ",
+              "FORMAT(",
+              "    INT(MOD([AvgSecs_A2S], (24 * 3600)) / 3600), \"00\") & \":\" & ",
+              "FORMAT(",
+              "    INT(MOD([AvgSecs_A2S], 3600) / 60), \"00\") & \":\" & ",
+              "FORMAT(",
+              "    MOD([AvgSecs_A2S], 60), \"00\")"
+            ],
+            "lineageTag": "9fba0542-b305-4853-a205-2ab87e345d46"
+          },
+          {
+            "name": "Account_2_or_more_direct_sales_T",
+            "displayFolder": "Account",
+            "expression": [
+              "",
+              "COUNTROWS(",
+              "        FILTER(",
+              "            SUMMARIZECOLUMNS(",
+              "                crm_funnel[AccountID]",
+              "            ),",
+              "            [SalesOrder_DistinctCount_Direct] > 1",
+              "        )",
+              "    )"
+            ],
+            "formatString": "0",
+            "lineageTag": "2fac33c4-d205-4a61-b344-0c04e7f3bb13"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DAX_Measures",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText(\"i44FAA==\", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(Source,{{\"Column1\", type text}}),",
+                "    #\"Removed Columns\" = Table.RemoveColumns(#\"Changed Type\",{\"Column1\"})",
+                "in",
+                "    #\"Removed Columns\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "DateTableTemplate_58c19802-89e6-4c3d-831a-f2e313979452",
+        "annotations": [
+          {
+            "name": "__PBI_TemplateDateTable",
+            "value": "true"
+          },
+          {
+            "name": "DefaultItem",
+            "value": "DateHierarchy"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Date",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "PaddedDateTableDates",
+            "dataType": "dateTime",
+            "isHidden": true,
+            "isNameInferred": true,
+            "lineageTag": "a01c1be1-635d-4633-8cf0-287dfb509a12",
+            "sourceColumn": "[Date]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "Year",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Year"
+              }
+            ],
+            "dataCategory": "Years",
+            "dataType": "int64",
+            "expression": "YEAR([Date])",
+            "isHidden": true,
+            "lineageTag": "23c317f7-8fe3-4f1b-a2c3-dc185bb9fd29",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "MonthNo",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "MonthNumber"
+              }
+            ],
+            "dataCategory": "MonthOfYear",
+            "dataType": "int64",
+            "expression": "MONTH([Date])",
+            "isHidden": true,
+            "lineageTag": "cd90a3d1-a553-41e3-98b2-68131c427bcf",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Month",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Month"
+              }
+            ],
+            "dataCategory": "Months",
+            "dataType": "string",
+            "expression": "FORMAT([Date], \"MMMM\")",
+            "isHidden": true,
+            "lineageTag": "9ad04342-9553-4ec3-84d7-f1201822dbe9",
+            "sortByColumn": "MonthNo",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "QuarterNo",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "QuarterNumber"
+              }
+            ],
+            "dataCategory": "QuarterOfYear",
+            "dataType": "int64",
+            "expression": "INT(([MonthNo] + 2) / 3)",
+            "isHidden": true,
+            "lineageTag": "baf2b90c-f74d-4a90-be63-7ab0691edf99",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Quarter",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Quarter"
+              }
+            ],
+            "dataCategory": "Quarters",
+            "dataType": "string",
+            "expression": "\"Qtr \" & [QuarterNo]",
+            "isHidden": true,
+            "lineageTag": "defa3828-1e0c-415b-9e3c-31853ac8a970",
+            "sortByColumn": "QuarterNo",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Day",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Day"
+              }
+            ],
+            "dataCategory": "DayOfMonth",
+            "dataType": "int64",
+            "expression": "DAY([Date])",
+            "isHidden": true,
+            "lineageTag": "be9a7452-d1d7-4b32-9159-87e2d1d3011a",
+            "summarizeBy": "none",
+            "type": "calculated"
+          }
+        ],
+        "hierarchies": [
+          {
+            "name": "Date Hierarchy",
+            "annotations": [
+              {
+                "name": "TemplateId",
+                "value": "DateHierarchy"
+              }
+            ],
+            "levels": [
+              {
+                "name": "Year",
+                "column": "Year",
+                "lineageTag": "d12949c9-66a2-44dc-9d28-16ca2e84a1f0",
+                "ordinal": 0
+              },
+              {
+                "name": "Quarter",
+                "column": "Quarter",
+                "lineageTag": "66340000-3dc8-4af4-8a36-4333a2cdca18",
+                "ordinal": 1
+              },
+              {
+                "name": "Month",
+                "column": "Month",
+                "lineageTag": "1b434106-9e75-45d1-a6b9-bb32d0db4e72",
+                "ordinal": 2
+              },
+              {
+                "name": "Day",
+                "column": "Day",
+                "lineageTag": "294f4762-527b-4c77-9a35-a7b4845ebec7",
+                "ordinal": 3
+              }
+            ],
+            "lineageTag": "8fb4e0eb-b3de-4294-9cc5-f36348023b52"
+          }
+        ],
+        "isHidden": true,
+        "isPrivate": true,
+        "lineageTag": "1a2cb211-339b-4ad7-95fe-c05264069837",
+        "partitions": [
+          {
+            "name": "DateTableTemplate_58c19802-89e6-4c3d-831a-f2e313979452",
+            "mode": "import",
+            "source": {
+              "expression": "Calendar(Date(2015,1,1), Date(2015,1,1))",
+              "type": "calculated"
+            }
+          }
+        ]
+      },
+      {
+        "name": "crm_funnel",
+        "columns": [
+          {
+            "name": "AccountID",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "string",
+            "lineageTag": "ad0ef3fc-91ed-4469-9f48-4336f6700fdd",
+            "sourceColumn": "AccountID",
+            "sourceLineageTag": "bac3686e-9a47-4297-946e-5605bc252f91",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "AccountCreatedOn",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "dateTime",
+            "formatString": "General Number",
+            "lineageTag": "e50a1bfd-a067-4bf1-af6c-bee569f19424",
+            "sourceColumn": "AccountCreatedOn",
+            "sourceLineageTag": "a9dfbb96-cd9e-42a9-8887-50d1f42e4fc2",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "OpportunityID",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "string",
+            "lineageTag": "00558f1e-d753-44fa-a0b2-5ddcffebccd7",
+            "sourceColumn": "OpportunityID",
+            "sourceLineageTag": "5bc63d1a-ba41-435e-91c9-9e68b9f223c2",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "OpportunityCreatedOn",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "dateTime",
+            "formatString": "General Number",
+            "lineageTag": "0475352d-859a-4ecb-90c0-9b23e8147e8a",
+            "sourceColumn": "OpportunityCreatedOn",
+            "sourceLineageTag": "a02e913c-22c3-4274-8a96-fa4e49ae6fa9",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "QuoteID",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "string",
+            "lineageTag": "13e3bf43-febf-40c9-8faa-17e16dbe22bc",
+            "sourceColumn": "QuoteID",
+            "sourceLineageTag": "b25b5eb8-d377-4832-bc01-5fa90b4ff682",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "QuoteCreatedOn",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "dateTime",
+            "formatString": "General Number",
+            "lineageTag": "e2946b21-1536-476b-973f-9355dee1db95",
+            "sourceColumn": "QuoteCreatedOn",
+            "sourceLineageTag": "d4d1083e-4608-4a21-9eb3-af951e6ccbaf",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "SalesOrderID",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "string",
+            "lineageTag": "172b7542-1b1b-4f9f-a774-a521813947ab",
+            "sourceColumn": "SalesOrderID",
+            "sourceLineageTag": "14a964ae-8bb4-4ead-ae3f-c3bbd6942737",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "SalesOrderCreatedOn",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "dateTime",
+            "formatString": "General Number",
+            "lineageTag": "83de35f5-bf5f-4a2f-9084-31227d86012f",
+            "sourceColumn": "SalesOrderCreatedOn",
+            "sourceLineageTag": "7a8447a7-5da9-42b2-9655-416603c8f110",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Account_Opportunity_Diff",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "30450ded-eb5a-4b17-8575-bf5e0b34ee2b",
+            "sourceColumn": "Account_Opportunity_Diff",
+            "sourceLineageTag": "08fe0091-6146-443e-9572-9b4e23d3ef79",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Opportunity_Quote_Diff",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "f031ee18-e328-4913-8c5c-cb1780ca50dc",
+            "sourceColumn": "Opportunity_Quote_Diff",
+            "sourceLineageTag": "bd861973-d762-49a7-a70a-c32b251a1b9d",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Quote_SalesOrder_Diff",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "b225d50f-7e1b-4f4f-a3ce-d27ddc8e2ed9",
+            "sourceColumn": "Quote_SalesOrder_Diff",
+            "sourceLineageTag": "a2cac7a2-f069-4138-bae4-f467ccf2b38d",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Account_SalesOrder_Diff",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "b2bdeb34-9ff7-4560-adc0-b2dcc119bc4d",
+            "sourceColumn": "Account_SalesOrder_Diff",
+            "sourceLineageTag": "e335a9a9-d194-44b3-9f79-1a5eeefccd2f",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Stage",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "string",
+            "lineageTag": "516ebed7-7cbe-4f58-927e-b9fb031a2e92",
+            "sourceColumn": "Stage",
+            "sourceLineageTag": "00305927-4649-44eb-b47b-b74a0a67bc62",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Opportunity_Account_Rank",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "3d4d9ece-21e1-43d4-b8d2-d2f479452585",
+            "sourceColumn": "Opportunity_Account_Rank",
+            "sourceLineageTag": "2da24caf-2d29-48e2-a2ac-b44983298dad",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Quote_Account_Rank",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "4256fac3-22e0-41ac-a97e-c1db37ecabac",
+            "sourceColumn": "Quote_Account_Rank",
+            "sourceLineageTag": "50baeb24-c164-4de0-a0dc-fce608820d87",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "SalesOrder_Account_Rank",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "b89feee6-1689-432a-9b5e-d3997ee8db90",
+            "sourceColumn": "SalesOrder_Account_Rank",
+            "sourceLineageTag": "19d656c4-ac67-468e-b2bf-9c7eb26e331f",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "AccountCreatedOn_MonthYear",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "string",
+            "lineageTag": "7bc6b63b-d295-493a-8171-d12ab45c8235",
+            "sourceColumn": "AccountCreatedOn_MonthYear",
+            "sourceLineageTag": "39762c67-dffc-4f79-a09d-c8ce3d06496b",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "SortingCol",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "24301835-1c4e-42a7-9f60-a82b68254902",
+            "sourceColumn": "SortingCol",
+            "sourceLineageTag": "bc3b9449-e2a1-4759-9715-4dcf66f47086",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Type",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "string",
+            "lineageTag": "33da35e2-a5de-4b5f-9926-3a439551cf8d",
+            "sourceColumn": "Type",
+            "sourceLineageTag": "890416a7-4087-4d63-a876-ae0cf3a8981e",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "id",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "string",
+            "lineageTag": "4ac25bfa-4807-44f9-bbcf-a7040b00edd8",
+            "sourceColumn": "id",
+            "sourceLineageTag": "ccb1e6f5-e61f-4de5-9cf2-7fb6effd3cac",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "08c7d9d0-78d6-4b6b-bac1-cd3e4a125d55",
+        "partitions": [
+          {
+            "name": "crm_funnel",
+            "mode": "directQuery",
+            "source": {
+              "entityName": "crm_funnel",
+              "expressionSource": "DirectQuery to AS - crm_funnel",
+              "type": "entity"
+            }
+          }
+        ],
+        "sourceLineageTag": "bc812919-08fc-4506-89b1-9068307d7ccd"
+      },
+      {
+        "name": "lead",
+        "columns": [
+          {
+            "name": "id",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "string",
+            "isNullable": false,
+            "lineageTag": "79d68381-7dd3-41c3-a58a-43e84cf0b460",
+            "sourceColumn": "id",
+            "sourceLineageTag": "f6c7e6c0-d140-4212-b904-0bf66d356730",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "createdon",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "dateTime",
+            "formatString": "General Number",
+            "lineageTag": "d40f2357-ba5c-4142-8524-0207e38bdcdc",
+            "sourceColumn": "createdon",
+            "sourceLineageTag": "13bdcb4d-e30b-4065-be9d-22570b39242c",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "modifiedon",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "dateTime",
+            "formatString": "General Number",
+            "lineageTag": "e9b644fd-e968-4f35-a688-43eec09631ff",
+            "sourceColumn": "modifiedon",
+            "sourceLineageTag": "126504a9-2680-4679-b5ca-d8aedf07b9d9",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "createdby",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "string",
+            "lineageTag": "ceea5a3a-66c6-44fc-90f1-83394f5fb539",
+            "sourceColumn": "createdby",
+            "sourceLineageTag": "1cc5d9e5-16eb-4ec0-9282-c8c3fed5e2c4",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "address1_country",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "string",
+            "lineageTag": "2b8df392-2cbc-4ef6-8e2d-f8a542637ebc",
+            "sourceColumn": "address1_country",
+            "sourceLineageTag": "a822b482-cd74-44d0-add0-184c13caf746",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "leadsourcecode",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "087031b9-6183-4605-968f-ce64bfa41582",
+            "sourceColumn": "leadsourcecode",
+            "sourceLineageTag": "fa19f951-40c3-4b3b-b61b-4bfb622849e1",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "wsi_reasonforcall",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "string",
+            "lineageTag": "9846e124-b480-4009-9fa6-d4d0827f0f6e",
+            "sourceColumn": "wsi_reasonforcall",
+            "sourceLineageTag": "22f6966f-61e0-400f-8b6d-e2315eee2754",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "wsi_productsinquiringabout",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "string",
+            "lineageTag": "8219a23d-c240-459c-8b64-b47551faed2b",
+            "sourceColumn": "wsi_productsinquiringabout",
+            "sourceLineageTag": "8a9d7d0f-05d3-4137-98bf-0a1b6e1fbf29",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "parentaccountid",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "string",
+            "lineageTag": "1c53d744-4afb-489e-9ea3-65933eb9ad1b",
+            "sourceColumn": "parentaccountid",
+            "sourceLineageTag": "b8113b46-fe69-46df-9d83-27694de5d738",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "7e397363-b95a-4d80-80e0-629882ea59a7",
+        "partitions": [
+          {
+            "name": "lead",
+            "mode": "directQuery",
+            "source": {
+              "entityName": "lead",
+              "expressionSource": "DirectQuery to AS - crm_funnel",
+              "type": "entity"
+            }
+          }
+        ],
+        "sourceLineageTag": "7387bf09-eeb7-49e5-9969-079148ed4601"
+      },
+      {
+        "name": "opportunity",
+        "columns": [
+          {
+            "name": "id",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "string",
+            "isNullable": false,
+            "lineageTag": "86de125a-8dae-4144-bb91-ffa075bfc16e",
+            "sourceColumn": "id",
+            "sourceLineageTag": "ae8f85d6-e0db-447b-9d05-8d8a05a59ed8",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "createdon",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "dateTime",
+            "formatString": "General Number",
+            "lineageTag": "d5c3048f-62d5-494a-b91e-201ba26ddbb5",
+            "sourceColumn": "createdon",
+            "sourceLineageTag": "9c441b6f-91bb-42c5-95fd-cd7373c4548d",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "modifiedon",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "dateTime",
+            "formatString": "General Number",
+            "lineageTag": "81adeab6-a961-418f-b3f2-ce56df01d0f7",
+            "sourceColumn": "modifiedon",
+            "sourceLineageTag": "03904a25-f44e-47fc-8015-24b522ba62c1",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "createdby",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "string",
+            "lineageTag": "0f3231f4-33e6-46da-8588-c466c06bf24f",
+            "sourceColumn": "createdby",
+            "sourceLineageTag": "06f0095b-bebb-4746-b270-c5b1dfd7aaf3",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "name",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "string",
+            "lineageTag": "0ce833dd-79ab-4d6d-a1b1-1e1ab9e33d69",
+            "sourceColumn": "name",
+            "sourceLineageTag": "547786a0-cb40-4b67-8708-b5e955b86902",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "originatingleadid",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "string",
+            "lineageTag": "64eb3182-1cbf-42f4-b004-a5d5aa529ac5",
+            "sourceColumn": "originatingleadid",
+            "sourceLineageTag": "0734c564-4406-4612-bb87-cb88ac984158",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "parentaccountid",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "string",
+            "lineageTag": "49691f6e-3562-4ae4-aca3-13376cf7454a",
+            "sourceColumn": "parentaccountid",
+            "sourceLineageTag": "e7ff11f4-7a07-4e14-b8a2-d2ee9e7a9267",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "03546b04-3938-4e5d-a187-daecb8602e24",
+        "partitions": [
+          {
+            "name": "opportunity",
+            "mode": "directQuery",
+            "source": {
+              "entityName": "opportunity",
+              "expressionSource": "DirectQuery to AS - crm_funnel",
+              "type": "entity"
+            }
+          }
+        ],
+        "sourceLineageTag": "20364b4b-efdd-49cf-b964-a039475c9078"
+      },
+      {
+        "name": "quote",
+        "columns": [
+          {
+            "name": "id",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "string",
+            "isNullable": false,
+            "lineageTag": "9389748e-0bdd-4b35-a913-61dfc54094f5",
+            "sourceColumn": "id",
+            "sourceLineageTag": "ee8c5b4d-bc15-4640-a365-8f25abd69108",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "createdon",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "dateTime",
+            "formatString": "General Number",
+            "lineageTag": "dfb6450a-479c-4d3e-84b6-6330c20e7dbe",
+            "sourceColumn": "createdon",
+            "sourceLineageTag": "bdaa2140-7194-47f3-8be2-69e707879f52",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "modifiedon",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "dateTime",
+            "formatString": "General Number",
+            "lineageTag": "7260e5e2-a7e3-420f-9dae-49a4b0ad29c0",
+            "sourceColumn": "modifiedon",
+            "sourceLineageTag": "12d1914e-a816-42cc-a3b1-a58a0457261f",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "createdby",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "string",
+            "lineageTag": "6cf92f74-0f30-432d-8595-7450433b2d97",
+            "sourceColumn": "createdby",
+            "sourceLineageTag": "367a86ce-4176-45e2-9db5-f3e1d9531828",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "wsi_account",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "string",
+            "lineageTag": "8a9852f6-dc67-4023-8683-bcacfd271330",
+            "sourceColumn": "wsi_account",
+            "sourceLineageTag": "8a3d8c55-aede-4965-9d08-24862f377c21",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "opportunityid",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "string",
+            "lineageTag": "50bda50d-8614-4b18-b577-9de7b089b446",
+            "sourceColumn": "opportunityid",
+            "sourceLineageTag": "3d307758-af44-4830-9036-258839f5461b",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "quotenumber",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "string",
+            "lineageTag": "2261e369-3b5f-4835-b468-81a10fd203c7",
+            "sourceColumn": "quotenumber",
+            "sourceLineageTag": "6c03a373-2fa5-4079-92ca-c0577dd8c001",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "totalamount",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "double",
+            "lineageTag": "f6f9691c-b62f-44bd-b60d-6204ac692a03",
+            "sourceColumn": "totalamount",
+            "sourceLineageTag": "183c78b3-9d7e-478c-8d0a-53834e3966eb",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "effectivefrom",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "dateTime",
+            "formatString": "General Number",
+            "lineageTag": "630cf53d-2092-4056-9017-a35f8a72df13",
+            "sourceColumn": "effectivefrom",
+            "sourceLineageTag": "3d6bf360-1829-455f-bf48-a7a7a3405771",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "effectiveto",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "dateTime",
+            "formatString": "General Number",
+            "lineageTag": "a6f4bd00-cce3-4ec5-a2a3-bab628cfd959",
+            "sourceColumn": "effectiveto",
+            "sourceLineageTag": "68525745-66af-4b4e-b36d-aba8817173ef",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "0d85c900-094a-4cab-be52-bd7ce777c63f",
+        "partitions": [
+          {
+            "name": "quote",
+            "mode": "directQuery",
+            "source": {
+              "entityName": "quote",
+              "expressionSource": "DirectQuery to AS - crm_funnel",
+              "type": "entity"
+            }
+          }
+        ],
+        "sourceLineageTag": "80c77a49-2d9a-459a-8462-811afd596742"
+      },
+      {
+        "name": "salesorder",
+        "columns": [
+          {
+            "name": "createdon",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "dateTime",
+            "formatString": "General Number",
+            "lineageTag": "85778448-0afc-400e-a538-49503109550b",
+            "sourceColumn": "createdon",
+            "sourceLineageTag": "aec1aff2-50fe-47ea-bb97-883a14805122",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "wsi_bcsalesorderno",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "string",
+            "lineageTag": "5bd1b26b-6ff4-401c-9879-df266dabe1ce",
+            "sourceColumn": "wsi_bcsalesorderno",
+            "sourceLineageTag": "b6b5077f-8768-41d4-ad85-a63391146753",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ordernumber",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "string",
+            "lineageTag": "0f46ee56-2991-4859-ba2f-25d8edf5e029",
+            "sourceColumn": "ordernumber",
+            "sourceLineageTag": "7fb12241-3a4b-43f2-815c-91147ebae396",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "submitdate",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "dateTime",
+            "formatString": "General Number",
+            "lineageTag": "d917d927-19d2-41cc-abf0-e0f04962424f",
+            "sourceColumn": "submitdate",
+            "sourceLineageTag": "12f7affc-aaeb-42fe-a9ad-c249d25282ff",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "totalamount",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "double",
+            "lineageTag": "66bb07b9-b357-4005-b844-80542ebf563d",
+            "sourceColumn": "totalamount",
+            "sourceLineageTag": "645b86f1-e744-4459-a2a3-568d74826554",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "wsi_totalweight",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "double",
+            "lineageTag": "a562d43c-0587-4ca7-9c6f-29ce6c04d64d",
+            "sourceColumn": "wsi_totalweight",
+            "sourceLineageTag": "3c23e236-f57e-4438-b6d7-69ae120427a6",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "wsi_datesentto3pl",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "dateTime",
+            "formatString": "General Number",
+            "lineageTag": "dc66adc2-d90a-411a-848e-23d84dd10b0b",
+            "sourceColumn": "wsi_datesentto3pl",
+            "sourceLineageTag": "1bd90d1e-eb98-4fb8-8cee-710c3b443afe",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "id",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "string",
+            "isNullable": false,
+            "lineageTag": "7b258e15-d5dd-4e94-8ef8-2a88df2859a8",
+            "sourceColumn": "id",
+            "sourceLineageTag": "fee8d17f-ffb7-4e68-8dd4-a97dffe6279c",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "modifiedon",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "dateTime",
+            "formatString": "General Number",
+            "lineageTag": "053afab4-1bb7-41f3-8d45-d49e246b87f7",
+            "sourceColumn": "modifiedon",
+            "sourceLineageTag": "631d9029-9dd8-4ae4-8f5a-83d8979880aa",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "createdon_date",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "dateTime",
+            "formatString": "General Number",
+            "lineageTag": "9fcf6e82-beba-4b52-b976-25102624a233",
+            "sourceColumn": "createdon_date",
+            "sourceLineageTag": "e9031ba3-5299-4866-bdcb-d384ab2ed507",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "createdby",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "string",
+            "lineageTag": "da0e7cfc-3a02-4f6f-984f-b5f5334ab628",
+            "sourceColumn": "createdby",
+            "sourceLineageTag": "d42a443b-b2ba-4342-996d-17f361d07561",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "wsi_account",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "string",
+            "lineageTag": "76369d01-0362-4348-a667-2a4b52701b10",
+            "sourceColumn": "wsi_account",
+            "sourceLineageTag": "6b97b0b2-f485-44c4-99f9-fcc170b92d32",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "opportunityid",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "string",
+            "lineageTag": "4a374627-69de-437a-8587-025bdb35303b",
+            "sourceColumn": "opportunityid",
+            "sourceLineageTag": "9403ac9d-3963-47f5-a65e-9bf994cbcca7",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "quoteid",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "string",
+            "lineageTag": "2b3c23d6-dd9d-4537-ab4a-4c924fac9883",
+            "sourceColumn": "quoteid",
+            "sourceLineageTag": "3fbaa200-861f-4194-9f61-2e2618960671",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "name",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "string",
+            "lineageTag": "f9bf450f-0457-4cd4-b249-46c751a914ad",
+            "sourceColumn": "name",
+            "sourceLineageTag": "07adb23d-b8ba-4f1c-a57b-6798307b029f",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "wsi_originoforder",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "9aabc81d-dcef-4912-9943-5e7c2a0aef36",
+            "sourceColumn": "wsi_originoforder",
+            "sourceLineageTag": "dc218c5d-254a-4a63-a3ae-fb1ff223b210",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "statecode",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "bf939ce9-65d6-40f6-aaea-c46f35baf0c7",
+            "sourceColumn": "statecode",
+            "sourceLineageTag": "90ce6c3f-0dc2-4ec9-af84-b130f033b18f",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "statuscode",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "8018beb8-d30b-401a-a088-12426aaf4b1d",
+            "sourceColumn": "statuscode",
+            "sourceLineageTag": "d48e5694-45e8-46dc-9225-ab51d67c2bd5",
+            "summarizeBy": "sum"
+          }
+        ],
+        "lineageTag": "58061a52-ae74-4d76-a969-83c87e735ce7",
+        "partitions": [
+          {
+            "name": "salesorder",
+            "mode": "directQuery",
+            "source": {
+              "entityName": "salesorder",
+              "expressionSource": "DirectQuery to AS - crm_funnel",
+              "type": "entity"
+            }
+          }
+        ],
+        "sourceLineageTag": "4e2c5596-ce3b-462f-9bb2-c1bd824b598f"
+      },
+      {
+        "name": "account",
+        "columns": [
+          {
+            "name": "id",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "string",
+            "isNullable": false,
+            "lineageTag": "7427e2ce-cd34-428a-83b2-dbf2fd6820ad",
+            "sourceColumn": "id",
+            "sourceLineageTag": "e21149bd-adde-4e80-9423-3abab13bf5a9",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "createdon",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "dateTime",
+            "formatString": "General Number",
+            "lineageTag": "5acffc2b-fd98-40e0-b926-b49da63b8c3e",
+            "sourceColumn": "createdon",
+            "sourceLineageTag": "b2c5d326-6480-4f27-8905-519225e06781",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "modifiedon",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "dateTime",
+            "formatString": "General Number",
+            "lineageTag": "56c7694b-b4c9-491e-bcee-edb6cbc8f110",
+            "sourceColumn": "modifiedon",
+            "sourceLineageTag": "a84578d1-5b0e-4d30-8ed8-593059c2369a",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "createdby",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "string",
+            "lineageTag": "7361f850-6aac-4852-84dd-2b6596bb1a3c",
+            "sourceColumn": "createdby",
+            "sourceLineageTag": "1e8d6cfb-861c-44b1-9898-bba6fb6a8ac9",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "originatingleadid",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "string",
+            "lineageTag": "a7a7fcb9-c38c-43ea-a60b-44b1f0425b15",
+            "sourceColumn": "originatingleadid",
+            "sourceLineageTag": "a69594e8-226d-4d8e-8124-c76fbde3e0d7",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "c9346981-33b9-4aa9-98c2-2e91de47e361",
+        "partitions": [
+          {
+            "name": "account",
+            "mode": "directQuery",
+            "source": {
+              "entityName": "account",
+              "expressionSource": "DirectQuery to AS - crm_funnel",
+              "type": "entity"
+            }
+          }
+        ],
+        "sourceLineageTag": "974b0abf-5a4e-4ffc-b0a7-49859f2c0bff"
+      },
+      {
+        "name": "dim_datetable",
+        "columns": [
+          {
+            "name": "ID",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "c554f6b5-5ddf-4ebd-bd9b-6bc795795faa",
+            "sourceColumn": "ID",
+            "sourceLineageTag": "409823b8-81f0-42c3-8ffe-f96ffe433394",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Date",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "dateTime",
+            "formatString": "General Number",
+            "isNullable": false,
+            "lineageTag": "85011c0a-960b-42e0-a63e-278fde209206",
+            "sourceColumn": "Date",
+            "sourceLineageTag": "d9df6fd1-40ca-41c8-aec6-52edcc6a4c9a",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Year",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "string",
+            "lineageTag": "a743839b-bf9b-40d0-8b2e-29a40561ee67",
+            "sourceColumn": "Year",
+            "sourceLineageTag": "be7143f8-3a38-473a-a1cc-4f25806d30f6",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Month",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "string",
+            "lineageTag": "8ca6d9a4-a7ba-4abd-b9f7-0ba1fba5d565",
+            "sourceColumn": "Month",
+            "sourceLineageTag": "c78d8869-00b1-4914-850c-38b9f1de0d8e",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "MonthYear",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "dateTime",
+            "formatString": "General Number",
+            "lineageTag": "d8ac47d7-6873-42bd-a511-5e52fabcf972",
+            "sourceColumn": "MonthYear",
+            "sourceLineageTag": "b32cea22-8f2f-49b3-857f-38cbe7a3d0c4",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Quarter",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "string",
+            "lineageTag": "262e5b01-bb6e-4662-a804-c9e0f29b78f8",
+            "sourceColumn": "Quarter",
+            "sourceLineageTag": "53b8a3b3-f512-43ae-8f39-9f09ad4d4121",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "DayOfWeek",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "string",
+            "lineageTag": "32bff118-6247-4c0e-9f6b-0da808a626e5",
+            "sourceColumn": "DayOfWeek",
+            "sourceLineageTag": "bcc0cb7e-792d-496d-b920-c379040937e3",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "EpochTime",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "cde72901-9e20-4feb-bf97-a31b3c1421c3",
+            "sourceColumn": "EpochTime",
+            "sourceLineageTag": "099a3611-406d-405f-8f01-8bb93a66148e",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Day",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "string",
+            "lineageTag": "973a2d33-3302-45c8-8e53-51c986d9af1e",
+            "sourceColumn": "Day",
+            "sourceLineageTag": "3c96b809-6064-4427-a112-7ccafe29df6e",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Date_InAYear",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "dateTime",
+            "formatString": "General Number",
+            "lineageTag": "6494663c-26e5-429f-afed-49351155be4c",
+            "sourceColumn": "Date_InAYear",
+            "sourceLineageTag": "0c0a231c-ae14-4f69-9d2d-5927680a28e4",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "MonthYear_InAYear",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "dateTime",
+            "formatString": "General Number",
+            "lineageTag": "29b89e2d-ea83-44f8-a8fd-9ce488f57b5a",
+            "sourceColumn": "MonthYear_InAYear",
+            "sourceLineageTag": "b53d331f-99c8-40da-8172-d862bc279fe8",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "20e6ebc5-d3ed-4e8f-89de-024c6f2db36b",
+        "partitions": [
+          {
+            "name": "dim_datetable",
+            "mode": "directQuery",
+            "source": {
+              "entityName": "dim_datetable",
+              "expressionSource": "DirectQuery to AS - crm_funnel",
+              "type": "entity"
+            }
+          }
+        ],
+        "sourceLineageTag": "90557551-2ba0-401d-a037-e8d14d388e78"
+      },
+      {
+        "name": "dim_salesorder_wsi_originoforder",
+        "columns": [
+          {
+            "name": "Option",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "int64",
+            "formatString": "0",
+            "isNullable": false,
+            "lineageTag": "a8d0084f-5710-48f0-a209-4f6a525929d8",
+            "sourceColumn": "Option",
+            "sourceLineageTag": "97cde98c-047c-4683-8a0c-f7e2de066d78",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "LocalizedLabel",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "string",
+            "lineageTag": "4c986f67-4106-4330-a916-1666d40c9b59",
+            "sourceColumn": "LocalizedLabel",
+            "sourceLineageTag": "ece5ab97-f411-4113-99c0-d5dc149eb1a9",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "81f25a2f-5764-47d3-9920-f6d50e577dea",
+        "partitions": [
+          {
+            "name": "dim_salesorder_wsi_originoforder",
+            "mode": "directQuery",
+            "source": {
+              "entityName": "dim_salesorder_wsi_originoforder",
+              "expressionSource": "DirectQuery to AS - crm_funnel",
+              "type": "entity"
+            }
+          }
+        ],
+        "sourceLineageTag": "3e8a26be-fed5-477c-a4ca-dc01ca35d1aa"
+      },
+      {
+        "name": "systemuser",
+        "columns": [
+          {
+            "name": "id",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "string",
+            "isNullable": false,
+            "lineageTag": "c910b11a-2383-4e63-8ef9-a46567a2343f",
+            "sourceColumn": "id",
+            "sourceLineageTag": "0ac7a03e-3099-4d74-98f7-1ae040f0dcbc",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "createdon",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "dateTime",
+            "formatString": "General Number",
+            "lineageTag": "45a60b2e-6652-47d2-8fcd-fcfbac385c55",
+            "sourceColumn": "createdon",
+            "sourceLineageTag": "964c40f2-03e3-4df9-a528-eb9a813d7922",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "modifiedon",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "dateTime",
+            "formatString": "General Number",
+            "lineageTag": "3385bf3f-db72-42e6-9986-1a1a5bfe2496",
+            "sourceColumn": "modifiedon",
+            "sourceLineageTag": "f3bc4736-745e-4a6f-bc6e-8e92b4051d47",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "createdby",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "string",
+            "lineageTag": "6de3ebb0-e989-4888-af6b-110997469cbb",
+            "sourceColumn": "createdby",
+            "sourceLineageTag": "d7a18b71-2ba8-4d91-8316-0d5f82414778",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "fullname",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Uncategorized",
+            "dataType": "string",
+            "lineageTag": "520882de-2bd9-4851-9fdc-ed6e152790af",
+            "sourceColumn": "fullname",
+            "sourceLineageTag": "73afb7bf-4528-4713-8b0f-0b4c4b946d6f",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "f8d20f22-36e1-4367-a063-f277ed90c278",
+        "partitions": [
+          {
+            "name": "systemuser",
+            "mode": "directQuery",
+            "source": {
+              "entityName": "systemuser",
+              "expressionSource": "DirectQuery to AS - crm_funnel",
+              "type": "entity"
+            }
+          }
+        ],
+        "sourceLineageTag": "f5276aa7-b5a0-4c78-bd9d-8f9cdfd169cf"
+      }
+    ]
+  }
+}

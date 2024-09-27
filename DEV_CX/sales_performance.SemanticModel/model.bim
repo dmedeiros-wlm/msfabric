@@ -1,0 +1,1672 @@
+{
+  "compatibilityLevel": 1604,
+  "model": {
+    "annotations": [
+      {
+        "name": "__PBI_TimeIntelligenceEnabled",
+        "value": "0"
+      },
+      {
+        "name": "PBIDesktopVersion",
+        "value": "2.132.7357.2 (Main)"
+      },
+      {
+        "name": "PBI_QueryOrder",
+        "value": "[\"DatabaseQuery\"]"
+      },
+      {
+        "name": "PBI_ProTooling",
+        "value": "[\"WebModelingEdit\",\"CalcGroup\"]"
+      },
+      {
+        "name": "__TEdtr",
+        "value": "1"
+      }
+    ],
+    "collation": "Latin1_General_100_BIN2_UTF8",
+    "culture": "en-US",
+    "cultures": [
+      {
+        "name": "en-US",
+        "linguisticMetadata": {
+          "content": {
+            "Language": "en-US",
+            "Version": "1.0.0"
+          },
+          "contentType": "json"
+        }
+      }
+    ],
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": true
+    },
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "discourageImplicitMeasures": true,
+    "expressions": [
+      {
+        "name": "DatabaseQuery",
+        "annotations": [
+          {
+            "name": "PBI_IncludeFutureArtifacts",
+            "value": "False"
+          }
+        ],
+        "expression": [
+          "let",
+          "    database = Sql.Database(\"N6BDJ4TQPECEFCF2BMWMFDW3AE-OYYMR74B424UXK5TDUPGBSRK7U.datawarehouse.fabric.microsoft.com\", \"eb83f5b4-733a-498b-9627-bd6bec100aab\")",
+          "in",
+          "    database"
+        ],
+        "kind": "m",
+        "lineageTag": "decf6f4f-beef-43b3-b671-a5f593a80a22"
+      }
+    ],
+    "relationships": [
+      {
+        "name": "a38aaf3e-dc4b-ecd3-633d-254f81d4c214",
+        "fromColumn": "CurrencyID",
+        "fromTable": "fact_sales_performance",
+        "toColumn": "CurrencyID",
+        "toTable": "dim_sales_currency"
+      },
+      {
+        "name": "d0c9cd31-e004-3bd8-c6d0-304e4e42170e",
+        "fromColumn": "CreatedOnDate",
+        "fromTable": "fact_sales_performance",
+        "toColumn": "Date",
+        "toTable": "Calendar"
+      },
+      {
+        "name": "2f751bde-ce53-808c-1d04-88f9535af42f",
+        "fromColumn": "StateID",
+        "fromTable": "fact_sales_performance",
+        "toColumn": "StateID",
+        "toTable": "dim_sales_state"
+      },
+      {
+        "name": "01c3a8ef-a2a2-067a-62c0-adf93bc70a2e",
+        "fromColumn": "StatusID",
+        "fromTable": "fact_sales_performance",
+        "toColumn": "StatusID",
+        "toTable": "dim_sales_status"
+      },
+      {
+        "name": "912bffe8-e8cc-89f7-f34f-bee2b4d314ff",
+        "fromColumn": "PriceListID",
+        "fromTable": "fact_sales_performance",
+        "toColumn": "PriceListID",
+        "toTable": "dim_sales_pricelist"
+      },
+      {
+        "name": "145e3fed-1dcb-a7fb-7b55-1cad1bc40a2e",
+        "fromColumn": "OriginID",
+        "fromTable": "fact_sales_performance",
+        "toColumn": "OriginID",
+        "toTable": "dim_sales_origin"
+      }
+    ],
+    "sourceQueryCulture": "en-US",
+    "tables": [
+      {
+        "name": "dim_sales_status",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "StatusID",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "SummarizeBy"
+              },
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isAvailableInMdx": false,
+            "isHidden": true,
+            "isKey": true,
+            "lineageTag": "07e79aca-6b00-4724-88f7-abc497a15956",
+            "sourceColumn": "StatusID",
+            "sourceLineageTag": "StatusID",
+            "sourceProviderType": "bigint",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Status",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "e03e9446-0288-4584-a84a-7abfa16d2513",
+            "sourceColumn": "Status",
+            "sourceLineageTag": "Status",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "4deb80b9-1752-4936-9040-72add279834a",
+        "partitions": [
+          {
+            "name": "dim_sales_status",
+            "mode": "directLake",
+            "source": {
+              "entityName": "dim_sales_status",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo",
+              "type": "entity"
+            }
+          }
+        ],
+        "sourceLineageTag": "[dbo].[dim_sales_status]"
+      },
+      {
+        "name": "dim_sales_origin",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "OriginID",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "SummarizeBy"
+              },
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isAvailableInMdx": false,
+            "isHidden": true,
+            "isKey": true,
+            "lineageTag": "88677b3b-4635-42dd-ada0-b46356e9ea31",
+            "sourceColumn": "OriginID",
+            "sourceLineageTag": "OriginID",
+            "sourceProviderType": "bigint",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Origin",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "240a33f8-4609-4a5e-b7d2-f4154f612c86",
+            "sourceColumn": "Origin",
+            "sourceLineageTag": "Origin",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "OriginCategory",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "daf12fc3-48c0-4157-ad2d-27e3d777d087",
+            "sourceColumn": "OriginCategory",
+            "sourceLineageTag": "OriginCategory",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "5aac97b4-b81c-48a7-bc04-5d6dda8115a4",
+        "partitions": [
+          {
+            "name": "dim_sales_origin",
+            "mode": "directLake",
+            "source": {
+              "entityName": "dim_sales_origin",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo",
+              "type": "entity"
+            }
+          }
+        ],
+        "sourceLineageTag": "[dbo].[dim_sales_origin]"
+      },
+      {
+        "name": "dim_sales_pricelist",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "PriceListID",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "string",
+            "isAvailableInMdx": false,
+            "isHidden": true,
+            "isKey": true,
+            "lineageTag": "d360f078-da67-4544-82a6-2801feadedf2",
+            "sourceColumn": "PriceListID",
+            "sourceLineageTag": "PriceListID",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "PriceList",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "7a4528b4-fe17-4135-89cd-41bdcd6118d5",
+            "sourceColumn": "PriceList",
+            "sourceLineageTag": "PriceList",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "ecec7aec-9d15-40db-9a71-bee959a64e21",
+        "partitions": [
+          {
+            "name": "dim_sales_pricelist",
+            "mode": "directLake",
+            "source": {
+              "entityName": "dim_sales_pricelist",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo",
+              "type": "entity"
+            }
+          }
+        ],
+        "sourceLineageTag": "[dbo].[dim_sales_pricelist]"
+      },
+      {
+        "name": "dim_sales_currency",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "CurrencyID",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "string",
+            "isAvailableInMdx": false,
+            "isHidden": true,
+            "isKey": true,
+            "lineageTag": "78b55fc6-a1a8-46a0-9899-4c158a6a7954",
+            "sourceColumn": "CurrencyID",
+            "sourceLineageTag": "CurrencyID",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Currency",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "80fda34a-02a2-4659-b74f-56bb247c0d89",
+            "sourceColumn": "Currency",
+            "sourceLineageTag": "Currency",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "b30ae6a3-07d4-45d6-b1e7-cf502f7caf42",
+        "partitions": [
+          {
+            "name": "dim_sales_currency",
+            "mode": "directLake",
+            "source": {
+              "entityName": "dim_sales_currency",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo",
+              "type": "entity"
+            }
+          }
+        ],
+        "sourceLineageTag": "[dbo].[dim_sales_currency]"
+      },
+      {
+        "name": "Time Intelligence",
+        "calculationGroup": {
+          "calculationItems": [
+            {
+              "name": "Current",
+              "expression": "SELECTEDMEASURE()",
+              "ordinal": 0
+            },
+            {
+              "name": "MTD",
+              "expression": [
+                "",
+                "    CALCULATE(",
+                "        SELECTEDMEASURE(),",
+                "        DATESMTD('Calendar'[Date])",
+                "    )"
+              ],
+              "ordinal": 2
+            },
+            {
+              "name": "QTD",
+              "expression": [
+                "",
+                "    CALCULATE(",
+                "        SELECTEDMEASURE(),",
+                "        DATESQTD('Calendar'[Date])",
+                "    )"
+              ],
+              "ordinal": 3
+            },
+            {
+              "name": "YTD",
+              "expression": [
+                "",
+                "    CALCULATE(",
+                "        SELECTEDMEASURE(),",
+                "        DATESYTD('Calendar'[Date])",
+                "    )"
+              ],
+              "ordinal": 4
+            },
+            {
+              "name": "WTD",
+              "expression": [
+                "",
+                "    VAR _Today = TODAY()",
+                "    VAR _StartOfWeek = _Today - 7",
+                "    VAR _EndOfWeek = _Today - 1",
+                "    RETURN",
+                "    CALCULATE (",
+                "        SELECTEDMEASURE(),",
+                "        DATESBETWEEN('Calendar'[Date], _StartOfWeek, _EndOfWeek)",
+                "    )"
+              ],
+              "ordinal": 1
+            },
+            {
+              "name": "MOM",
+              "expression": [
+                "",
+                "    SELECTEDMEASURE() -",
+                "    CALCULATE(",
+                "        SELECTEDMEASURE(),",
+                "        'Time Intelligence'[Time Calculation] = \"PM\"",
+                "    )"
+              ],
+              "ordinal": 9
+            },
+            {
+              "name": "MOM%",
+              "expression": [
+                "",
+                "    DIVIDE(",
+                "        CALCULATE(",
+                "            SELECTEDMEASURE(),",
+                "            'Time Intelligence'[Time Calculation]=\"MOM\"",
+                "        ),",
+                "        CALCULATE(",
+                "            SELECTEDMEASURE(),",
+                "            'Time Intelligence'[Time Calculation]=\"PM\"",
+                "        )",
+                "    )"
+              ],
+              "ordinal": 10
+            },
+            {
+              "name": "PY",
+              "expression": [
+                "",
+                "    CALCULATE(",
+                "        SELECTEDMEASURE(),",
+                "        SAMEPERIODLASTYEAR('Calendar'[Date])",
+                "    )"
+              ],
+              "ordinal": 11
+            },
+            {
+              "name": "PY MTD",
+              "expression": [
+                "",
+                "    CALCULATE(",
+                "        SELECTEDMEASURE(),",
+                "        SAMEPERIODLASTYEAR('Calendar'[Date]),",
+                "        'Time Intelligence'[Time Calculation] = \"MTD\"",
+                "    )"
+              ],
+              "ordinal": 12
+            },
+            {
+              "name": "PY QTD",
+              "expression": [
+                "",
+                "    CALCULATE(",
+                "        SELECTEDMEASURE(),",
+                "        SAMEPERIODLASTYEAR('Calendar'[Date]),",
+                "        'Time Intelligence'[Time Calculation] = \"QTD\"",
+                "    )"
+              ],
+              "ordinal": 13
+            },
+            {
+              "name": "PY YTD",
+              "expression": [
+                "",
+                "    CALCULATE(",
+                "        SELECTEDMEASURE(),",
+                "        SAMEPERIODLASTYEAR('Calendar'[Date]),",
+                "        'Time Intelligence'[Time Calculation] = \"YTD\"",
+                "    )"
+              ],
+              "ordinal": 14
+            },
+            {
+              "name": "YOY",
+              "expression": [
+                "",
+                "    SELECTEDMEASURE() -",
+                "    CALCULATE(",
+                "        SELECTEDMEASURE(),",
+                "        'Time Intelligence'[Time Calculation] = \"PY\"",
+                "    )"
+              ],
+              "ordinal": 15
+            },
+            {
+              "name": "YOY%",
+              "expression": [
+                "",
+                "    DIVIDE(",
+                "        CALCULATE(",
+                "            SELECTEDMEASURE(),",
+                "            'Time Intelligence'[Time Calculation]=\"YOY\"",
+                "        ),",
+                "        CALCULATE(",
+                "            SELECTEDMEASURE(),",
+                "            'Time Intelligence'[Time Calculation]=\"PY\"",
+                "        )",
+                "    )"
+              ],
+              "ordinal": 16
+            },
+            {
+              "name": "PW",
+              "expression": [
+                "",
+                "    VAR _Today = TODAY()",
+                "    VAR _StartOfLastWeek = _Today - 14",
+                "    VAR _EndOfLastWeek = _Today - 8",
+                "    RETURN",
+                "    CALCULATE (",
+                "        SELECTEDMEASURE(),",
+                "        DATESBETWEEN('Calendar'[Date], _StartOfLastWeek, _EndOfLastWeek)",
+                "    )"
+              ],
+              "ordinal": 5
+            },
+            {
+              "name": "PM",
+              "expression": [
+                "",
+                "    CALCULATE(",
+                "        SELECTEDMEASURE(),",
+                "        PREVIOUSMONTH('Calendar'[Date])",
+                "    )"
+              ],
+              "ordinal": 8
+            },
+            {
+              "name": "WOW",
+              "expression": [
+                "",
+                "    CALCULATE(",
+                "        SELECTEDMEASURE(),",
+                "        'Time Intelligence'[Time Calculation] = \"WTD\"",
+                "    ) -",
+                "    CALCULATE(",
+                "        SELECTEDMEASURE(),",
+                "        'Time Intelligence'[Time Calculation] = \"PW\"",
+                "    )"
+              ],
+              "ordinal": 6
+            },
+            {
+              "name": "WOW%",
+              "expression": [
+                "",
+                "    DIVIDE(",
+                "        CALCULATE(",
+                "            SELECTEDMEASURE(),",
+                "            'Time Intelligence'[Time Calculation]=\"WOW\"",
+                "        ),",
+                "        CALCULATE(",
+                "            SELECTEDMEASURE(),",
+                "            'Time Intelligence'[Time Calculation]=\"PW\"",
+                "        )",
+                "    )"
+              ],
+              "ordinal": 7
+            },
+            {
+              "name": "28D",
+              "expression": [
+                "",
+                "    CALCULATE(",
+                "        SELECTEDMEASURE(),",
+                "        DATESINPERIOD('Calendar'[Date], MAX('Calendar'[Date]), -28, DAY)",
+                "    )"
+              ],
+              "ordinal": 17
+            },
+            {
+              "name": "P28D",
+              "expression": [
+                "",
+                "    CALCULATE(",
+                "        SELECTEDMEASURE(),",
+                "        DATESINPERIOD(",
+                "            'Calendar'[Date],",
+                "            MAX('Calendar'[Date]) - 28,",
+                "            -28,",
+                "            DAY",
+                "        )",
+                "    )"
+              ],
+              "ordinal": 18
+            },
+            {
+              "name": "28D over P28D",
+              "expression": [
+                "",
+                "    CALCULATE(",
+                "        SELECTEDMEASURE(),",
+                "        'Time Intelligence'[Time Calculation] = \"28D\"",
+                "    ) -",
+                "    CALCULATE(",
+                "        SELECTEDMEASURE(),",
+                "        'Time Intelligence'[Time Calculation] = \"P28D\"",
+                "    )"
+              ],
+              "ordinal": 19
+            },
+            {
+              "name": "28D over P28D%",
+              "expression": [
+                "",
+                "    DIVIDE(",
+                "        CALCULATE(",
+                "            SELECTEDMEASURE(),",
+                "            'Time Intelligence'[Time Calculation]=\"28D over P28D\"",
+                "        ),",
+                "        CALCULATE(",
+                "            SELECTEDMEASURE(),",
+                "            'Time Intelligence'[Time Calculation]=\"P28D\"",
+                "        )",
+                "    )"
+              ],
+              "ordinal": 20
+            }
+          ],
+          "precedence": 20
+        },
+        "columns": [
+          {
+            "name": "Time Calculation",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "8aafaee5-578d-4a51-a136-3c3c9cae1480",
+            "sortByColumn": "Ordinal",
+            "sourceColumn": "Name",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Ordinal",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "5030be0b-929b-4f23-bcf8-f4d157aa9ee6",
+            "sourceColumn": "Ordinal",
+            "summarizeBy": "sum"
+          }
+        ],
+        "lineageTag": "7bd9bb03-74b9-40a4-968a-3f4456be3de5",
+        "partitions": [
+          {
+            "name": "Time Intelligence",
+            "mode": "import",
+            "source": {
+              "type": "calculationGroup"
+            }
+          }
+        ]
+      },
+      {
+        "name": "dim_sales_state",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "StateID",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isAvailableInMdx": false,
+            "isHidden": true,
+            "isKey": true,
+            "lineageTag": "69c855fe-6d8e-48b0-8b8d-91df80282267",
+            "sourceColumn": "StateID",
+            "sourceLineageTag": "StateID",
+            "sourceProviderType": "bigint",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "State",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "c28157b9-8ab1-40a2-bf39-fe1a9c3dd80a",
+            "sourceColumn": "State",
+            "sourceLineageTag": "State",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "802b12db-ee8b-45f8-a967-2ad063a15126",
+        "partitions": [
+          {
+            "name": "dim_sales_state",
+            "mode": "directLake",
+            "source": {
+              "entityName": "dim_sales_state",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo",
+              "type": "entity"
+            }
+          }
+        ],
+        "sourceLineageTag": "[dbo].[dim_sales_state]"
+      },
+      {
+        "name": "fact_sales_performance",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "CompositeKey",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "string",
+            "isAvailableInMdx": false,
+            "isHidden": true,
+            "lineageTag": "a243e275-f563-4747-b470-e58581e548b2",
+            "sourceColumn": "CompositeKey",
+            "sourceLineageTag": "CompositeKey",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "CurrencyID",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "string",
+            "isAvailableInMdx": false,
+            "isHidden": true,
+            "lineageTag": "24e641c0-f459-4dee-8062-fdac2c468d7f",
+            "sourceColumn": "CurrencyID",
+            "sourceLineageTag": "CurrencyID",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "OriginID",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isAvailableInMdx": false,
+            "isHidden": true,
+            "lineageTag": "c16366cd-824e-491c-8de0-78a1e4286004",
+            "sourceColumn": "OriginID",
+            "sourceLineageTag": "OriginID",
+            "sourceProviderType": "bigint",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "StatusID",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isAvailableInMdx": false,
+            "isHidden": true,
+            "lineageTag": "9e09901a-3be2-4335-a5f6-4fcf8e507ad9",
+            "sourceColumn": "StatusID",
+            "sourceLineageTag": "StatusID",
+            "sourceProviderType": "bigint",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "PriceListID",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "string",
+            "isAvailableInMdx": false,
+            "isHidden": true,
+            "lineageTag": "6b9240a7-d9b3-440e-8d4f-f0fe8ae6666c",
+            "sourceColumn": "PriceListID",
+            "sourceLineageTag": "PriceListID",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "TotalAmount",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"currencyCulture\":\"en-US\"}"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              },
+              {
+                "property": "FormatString"
+              }
+            ],
+            "dataType": "decimal",
+            "formatString": "\\$#,0.###############;(\\$#,0.###############);\\$#,0.###############",
+            "isAvailableInMdx": false,
+            "isHidden": true,
+            "lineageTag": "30dbbb09-8469-40c4-8962-d09d8a0c4692",
+            "sourceColumn": "TotalAmount",
+            "sourceLineageTag": "TotalAmount",
+            "sourceProviderType": "decimal(38, 2)",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "CreatedOnDate",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "mm/dd/yyyy",
+            "isAvailableInMdx": false,
+            "isHidden": true,
+            "lineageTag": "d2291d2d-bc94-43bc-ae56-abbee89c1b83",
+            "sourceColumn": "CreatedOnDate",
+            "sourceLineageTag": "CreatedOnDate",
+            "sourceProviderType": "date",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "LastUpdated",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "mm/dd/yyyy",
+            "isAvailableInMdx": false,
+            "isHidden": true,
+            "lineageTag": "a9a5a2ef-80e8-4a53-a72b-fe0de54c75b1",
+            "sourceColumn": "LastUpdated",
+            "sourceLineageTag": "LastUpdated",
+            "sourceProviderType": "datetime2",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "StateID",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isAvailableInMdx": false,
+            "isHidden": true,
+            "lineageTag": "9b68fdfe-242b-438b-a125-e81b596dc6f8",
+            "sourceColumn": "StateID",
+            "sourceLineageTag": "StateID",
+            "sourceProviderType": "bigint",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "SalesOrderID",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "string",
+            "isAvailableInMdx": false,
+            "isHidden": true,
+            "lineageTag": "132f7a51-864f-4e0d-bf50-c2d9fee06aaf",
+            "sourceColumn": "SalesOrderID",
+            "sourceLineageTag": "SalesOrderID",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "SalesOrderLineID",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "string",
+            "isAvailableInMdx": false,
+            "isHidden": true,
+            "lineageTag": "a322ed42-8be6-4888-a339-2f8c5383ac9c",
+            "sourceColumn": "SalesOrderLineID",
+            "sourceLineageTag": "SalesOrderLineID",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "44c72fea-de90-4d30-b388-21a136bb9834",
+        "measures": [
+          {
+            "name": "Sum of Total Amount",
+            "changedProperties": [
+              {
+                "property": "Name"
+              },
+              {
+                "property": "DisplayFolder"
+              },
+              {
+                "property": "FormatString"
+              }
+            ],
+            "displayFolder": "_Measures",
+            "expression": [
+              "",
+              "    SUMX(",
+              "        VALUES(fact_sales_performance[SalesOrderID]),",
+              "        CALCULATE(",
+              "            MIN(fact_sales_performance[TotalAmount])",
+              "            )",
+              "    )"
+            ],
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "lineageTag": "21e4f7bc-2ed4-4585-ad0a-ccf48219684d"
+          },
+          {
+            "name": "Total Sales WTD",
+            "changedProperties": [
+              {
+                "property": "Name"
+              },
+              {
+                "property": "DisplayFolder"
+              },
+              {
+                "property": "FormatString"
+              }
+            ],
+            "displayFolder": "_Measures",
+            "expression": [
+              "",
+              "    CALCULATE(",
+              "        [Sum of Total Amount],",
+              "        'Time Intelligence'[Time Calculation] = \"WTD\"",
+              "    )"
+            ],
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "lineageTag": "76e5a600-03d4-4414-81bf-a0db89d542ed"
+          },
+          {
+            "name": "Total Sales PW",
+            "changedProperties": [
+              {
+                "property": "DisplayFolder"
+              },
+              {
+                "property": "Name"
+              },
+              {
+                "property": "FormatString"
+              }
+            ],
+            "displayFolder": "_Measures",
+            "expression": [
+              "",
+              "    CALCULATE(",
+              "        [Sum of Total Amount],",
+              "        'Time Intelligence'[Time Calculation] = \"PW\"",
+              "    )"
+            ],
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "lineageTag": "8a340c45-45e4-4276-8501-36f7a4ccc5ac"
+          },
+          {
+            "name": "Total Sales WOW",
+            "changedProperties": [
+              {
+                "property": "DisplayFolder"
+              },
+              {
+                "property": "Name"
+              },
+              {
+                "property": "FormatString"
+              }
+            ],
+            "displayFolder": "_Measures",
+            "expression": [
+              "",
+              "    CALCULATE(",
+              "        [Sum of Total Amount],",
+              "        'Time Intelligence'[Time Calculation] = \"WOW\"",
+              "    )"
+            ],
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "lineageTag": "ef0daa91-61a1-45bb-83a6-6bf734e979b3"
+          },
+          {
+            "name": "Total Sales MOM",
+            "changedProperties": [
+              {
+                "property": "DisplayFolder"
+              },
+              {
+                "property": "Name"
+              },
+              {
+                "property": "FormatString"
+              }
+            ],
+            "displayFolder": "_Measures",
+            "expression": [
+              "",
+              "    CALCULATE(",
+              "        [Sum of Total Amount],",
+              "        'Time Intelligence'[Time Calculation] = \"MOM\"",
+              "    )"
+            ],
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "lineageTag": "2b817d3d-6280-4f6a-bad5-b8c951d6871c"
+          },
+          {
+            "name": "Total Sales YOY",
+            "changedProperties": [
+              {
+                "property": "DisplayFolder"
+              },
+              {
+                "property": "Name"
+              },
+              {
+                "property": "FormatString"
+              }
+            ],
+            "displayFolder": "_Measures",
+            "expression": [
+              "",
+              "    CALCULATE(",
+              "        [Sum of Total Amount],",
+              "        'Time Intelligence'[Time Calculation] = \"YOY\"",
+              "    )"
+            ],
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "lineageTag": "02244340-9111-40e9-8897-935a44580e0b"
+          },
+          {
+            "name": "Tooltip",
+            "changedProperties": [
+              {
+                "property": "DisplayFolder"
+              },
+              {
+                "property": "Name"
+              },
+              {
+                "property": "FormatString"
+              }
+            ],
+            "displayFolder": "_Measures",
+            "expression": [
+              "",
+              "\"This report shows revenue for open sales orders (anything that isn't canceled) for the last 4 weeks (not including today).\" & UNICHAR(10) & UNICHAR(10) & \"WoW (Week over Week): Compares the last week with the week preceding it.\" & UNICHAR(10) & UNICHAR(10) & \"MoM (Month over Month): Compares the last 4 weeks with the 4 weeks preceding it.\" & UNICHAR(10) & UNICHAR(10) & \"YoY (Year over Year): Compares the last 4 weeks with the 4 weeks same period last year.\" & UNICHAR(10) & UNICHAR(10) & \"The 'Manual' origin represents walk-ins, tickets, phone, others.\""
+            ],
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "lineageTag": "eb06b277-f058-4a77-952c-5460e17a92ae"
+          },
+          {
+            "name": "Total Sales with Currency",
+            "changedProperties": [
+              {
+                "property": "Name"
+              },
+              {
+                "property": "DisplayFolder"
+              },
+              {
+                "property": "FormatString"
+              }
+            ],
+            "displayFolder": "_Measures",
+            "expression": [
+              "",
+              "VAR TotalAmount = ",
+              "    SUMX(",
+              "        VALUES('fact_sales_performance'[SalesOrderID]),",
+              "        CALCULATE(",
+              "            MIN('fact_sales_performance'[TotalAmount])",
+              "        )",
+              "    )",
+              "VAR SelectedCurrency = ",
+              "    SELECTEDVALUE('dim_sales_currency'[Currency])",
+              "",
+              "RETURN",
+              "    IF(ISBLANK(TotalAmount), BLANK(), CONCATENATE(SelectedCurrency, FORMAT(TotalAmount, \"Standard\")))"
+            ],
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "lineageTag": "e218508c-c64b-413e-bf4b-ad4b544db155"
+          },
+          {
+            "name": "Total Sales PM",
+            "changedProperties": [
+              {
+                "property": "DisplayFolder"
+              },
+              {
+                "property": "Name"
+              },
+              {
+                "property": "FormatString"
+              }
+            ],
+            "displayFolder": "_Measures",
+            "expression": [
+              "",
+              "    CALCULATE(",
+              "        [Sum of Total Amount],",
+              "        'Time Intelligence'[Time Calculation] = \"PM\"",
+              "    )"
+            ],
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "lineageTag": "fa47099f-8ac6-4103-94b6-132006763774"
+          },
+          {
+            "name": "Total Sales MTD",
+            "changedProperties": [
+              {
+                "property": "DisplayFolder"
+              },
+              {
+                "property": "Name"
+              },
+              {
+                "property": "FormatString"
+              }
+            ],
+            "displayFolder": "_Measures",
+            "expression": [
+              "",
+              "    CALCULATE(",
+              "        [Sum of Total Amount],",
+              "        'Time Intelligence'[Time Calculation] = \"MTD\"",
+              "    )"
+            ],
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "lineageTag": "c0412874-3c68-48a3-8c19-06e8f04ae534"
+          },
+          {
+            "name": "Total Sales 30D",
+            "changedProperties": [
+              {
+                "property": "DisplayFolder"
+              },
+              {
+                "property": "Name"
+              },
+              {
+                "property": "FormatString"
+              }
+            ],
+            "displayFolder": "_Measures",
+            "expression": [
+              "",
+              "    CALCULATE(",
+              "        [Sum of Total Amount],",
+              "        'Time Intelligence'[Time Calculation] = \"28D\"",
+              "    )"
+            ],
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "lineageTag": "433dbf8b-4dd5-414c-9e50-bb25f31ab8a6"
+          },
+          {
+            "name": "Total Sales P30D",
+            "changedProperties": [
+              {
+                "property": "DisplayFolder"
+              },
+              {
+                "property": "Name"
+              },
+              {
+                "property": "FormatString"
+              }
+            ],
+            "displayFolder": "_Measures",
+            "expression": [
+              "",
+              "    CALCULATE(",
+              "        [Sum of Total Amount],",
+              "        'Time Intelligence'[Time Calculation] = \"P28D\"",
+              "    )"
+            ],
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "lineageTag": "21300d0c-96aa-4e89-baab-09c3de761521"
+          },
+          {
+            "name": "Total Sales 30D over P30D",
+            "changedProperties": [
+              {
+                "property": "DisplayFolder"
+              },
+              {
+                "property": "Name"
+              },
+              {
+                "property": "FormatString"
+              }
+            ],
+            "displayFolder": "_Measures",
+            "expression": [
+              "",
+              "    CALCULATE(",
+              "        [Sum of Total Amount],",
+              "        'Time Intelligence'[Time Calculation] = \"28D over P28D\"",
+              "    )"
+            ],
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "lineageTag": "5bfcec17-9e24-4e9d-8451-bf0045fad946"
+          },
+          {
+            "name": "Total Sales 30D over P30D %",
+            "changedProperties": [
+              {
+                "property": "DisplayFolder"
+              },
+              {
+                "property": "Name"
+              },
+              {
+                "property": "FormatString"
+              }
+            ],
+            "displayFolder": "_Measures",
+            "expression": [
+              "",
+              "    CALCULATE(",
+              "        [Sum of Total Amount],",
+              "        'Time Intelligence'[Time Calculation] = \"28D over P28D%\"",
+              "    )"
+            ],
+            "formatString": "#,0.0%;-#,0.0%;#,0.0%",
+            "lineageTag": "01c212d6-3d5c-4c52-b579-3301cd8e2fd5"
+          },
+          {
+            "name": "Total Sales WOW %",
+            "changedProperties": [
+              {
+                "property": "DisplayFolder"
+              },
+              {
+                "property": "Name"
+              },
+              {
+                "property": "FormatString"
+              }
+            ],
+            "displayFolder": "_Measures",
+            "expression": [
+              "",
+              "    CALCULATE(",
+              "        [Sum of Total Amount],",
+              "        'Time Intelligence'[Time Calculation] = \"WOW%\"",
+              "    )"
+            ],
+            "formatString": "#,0.0%;-#,0.0%;#,0.0%",
+            "lineageTag": "b07ee212-bac5-4e30-8f48-0fc74c358888"
+          },
+          {
+            "name": "Total Sales YOY %",
+            "changedProperties": [
+              {
+                "property": "DisplayFolder"
+              },
+              {
+                "property": "Name"
+              },
+              {
+                "property": "FormatString"
+              }
+            ],
+            "displayFolder": "_Measures",
+            "expression": [
+              "",
+              "    CALCULATE(",
+              "        [Sum of Total Amount],",
+              "        'Time Intelligence'[Time Calculation] = \"YOY%\"",
+              "    )"
+            ],
+            "formatString": "#,0.0%;-#,0.0%;#,0.0%",
+            "lineageTag": "d24fea68-0917-47c6-af49-8ae162bf4415"
+          },
+          {
+            "name": "Total Sales PY",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "DisplayFolder"
+              },
+              {
+                "property": "Name"
+              }
+            ],
+            "displayFolder": "_Measures",
+            "expression": [
+              "",
+              "    CALCULATE(",
+              "        [Sum of Total Amount],",
+              "        'Time Intelligence'[Time Calculation] = \"PY\"",
+              "    )"
+            ],
+            "lineageTag": "449c64fa-9ca3-4288-9576-61151931b459"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "fact_sales_performance",
+            "mode": "directLake",
+            "source": {
+              "entityName": "fact_sales_performance",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo",
+              "type": "entity"
+            }
+          }
+        ],
+        "sourceLineageTag": "[dbo].[fact_sales_performance]"
+      },
+      {
+        "name": "Calendar",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Date",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "UnderlyingDateTimeDataType",
+                "value": "Date"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "DataType"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "mm/dd/yyyy",
+            "isKey": true,
+            "lineageTag": "2067fc1f-946f-408d-a12f-d9954f3be905",
+            "sourceColumn": "Date",
+            "sourceLineageTag": "Date",
+            "sourceProviderType": "date",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "DayNum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "9e4947c2-f2e8-43f7-9824-c85b9c42fda0",
+            "sourceColumn": "DayNum",
+            "sourceLineageTag": "DayNum",
+            "sourceProviderType": "int",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "DayOfWeek",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "c19a5ba2-8591-4e79-9014-3dceab842629",
+            "sourceColumn": "DayOfWeek",
+            "sourceLineageTag": "DayOfWeek",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "DayOfWeekNum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "11b8839b-d5a1-4766-ad8b-d5f72a75af68",
+            "sourceColumn": "DayOfWeekNum",
+            "sourceLineageTag": "DayOfWeekNum",
+            "sourceProviderType": "int",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Month",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "SortByColumn"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "67f67137-4ba4-4bf1-b843-cb1e9e84d477",
+            "sortByColumn": "MonthNum",
+            "sourceColumn": "Month",
+            "sourceLineageTag": "Month",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "MonthNum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "aae315a2-a0fa-416a-a209-50c5b4643861",
+            "sourceColumn": "MonthNum",
+            "sourceLineageTag": "MonthNum",
+            "sourceProviderType": "int",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "MonthYear",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "5e131eae-7353-4f1c-bce4-75400a2b23fa",
+            "sourceColumn": "MonthYear",
+            "sourceLineageTag": "MonthYear",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Quarter",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "14f1eef4-87a2-4054-b5ae-acc8e0752414",
+            "sourceColumn": "Quarter",
+            "sourceLineageTag": "Quarter",
+            "sourceProviderType": "varchar(8000)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "QuarterNum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "0c06bcb3-98ad-4d62-a98a-b58466fa60fd",
+            "sourceColumn": "QuarterNum",
+            "sourceLineageTag": "QuarterNum",
+            "sourceProviderType": "int",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Year",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "769eb382-6b22-4fab-b1d3-b0e7d62e6e64",
+            "sourceColumn": "Year",
+            "sourceLineageTag": "Year",
+            "sourceProviderType": "int",
+            "summarizeBy": "none"
+          }
+        ],
+        "dataCategory": "Time",
+        "lineageTag": "acd53e1b-9b5c-4a5b-9356-feadf5a22243",
+        "partitions": [
+          {
+            "name": "Calendar",
+            "mode": "directLake",
+            "source": {
+              "entityName": "Calendar",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo",
+              "type": "entity"
+            }
+          }
+        ],
+        "sourceLineageTag": "[dbo].[Calendar]"
+      }
+    ]
+  }
+}

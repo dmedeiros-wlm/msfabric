@@ -1,0 +1,9 @@
+{
+  "version": "4.0",
+  "datasetReference": {
+    "byPath": {
+      "path": "../[v1] CrmFunnel.SemanticModel"
+    },
+    "byConnection": null
+  }
+}

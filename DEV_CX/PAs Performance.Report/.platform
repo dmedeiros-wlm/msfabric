@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "PAs Performance"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "66cb8d08-f322-463e-bf1e-0724957ad0dc"
+  }
+}
