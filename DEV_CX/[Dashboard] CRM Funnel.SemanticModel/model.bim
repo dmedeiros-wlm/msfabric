@@ -904,7 +904,7 @@
         ],
         "expression": [
           "let",
-          "    Source = AnalysisServices.Database(\"powerbi://api.powerbi.com/v1.0/myorg/salesAnalytics\", \"crm_funnel\"),",
+          "    Source = AnalysisServices.Database(\"powerbi://api.powerbi.com/v1.0/myorg/WP_DEV_CX\", \"crm_funnel\"),",
           "    Cubes = Table.Combine(Source[Data]),",
           "    Cube = Cubes{[Id=\"Model\", Kind=\"Cube\"]}[Data]",
           "in",
