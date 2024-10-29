@@ -19,8 +19,8 @@
 # MAGIC %%configure -f
 # MAGIC { 
 # MAGIC             "defaultLakehouse": {
-# MAGIC                 "name": 'DE_LH_100_BRONZE_WoodlandMills',
-# MAGIC                 "id": '20b75530-e6f0-4540-b8a1-5d0af00882ff',
+# MAGIC                 "name": 'DE_LH_300_GOLD_WoodlandMills',
+# MAGIC                 "id": 'e83da213-3bfb-4530-ad8c-9b9b04aa70dd',
 # MAGIC                 "workspaceId": 'ffc83076-e681-4bb9-abb3-1d1e60ca2afd'
 # MAGIC             }
 # MAGIC }
@@ -56,10 +56,10 @@ import json
 
 # CELL ********************
 
-loadBronzeNb = "DE_NB_100_BronzeLoad"
+loadGoldNb = "DE_NB_300_GoldLoad"
 incrUpsertNb = "DE_NB_CreateOrMergeToLakehouse"
 fullWriteNb = "DE_NB_GetMaxDateFromDeltaTable"
-lhBronzePath = "abfss://WP_DEV_OneLake@onelake.dfs.fabric.microsoft.com/DE_LH_100_BRONZE_WoodlandMills.Lakehouse"
+lhGoldPath = "abfss://WP_DEV_OneLake@onelake.dfs.fabric.microsoft.com/DE_LH_300_GOLD_WoodlandMills.Lakehouse"
 
 # METADATA ********************
 
@@ -77,15 +77,16 @@ tables = []
 for params in params_list:    
     # Initialize the common part of the result
     parameters = {
-        "ingestsourceschema": params["tableParams"].get("ingestsourceschema"),
-        "ingestsourcetable": params["tableParams"].get("ingestsourcetable"),
+        "sourceschema": params["tableParams"].get("sourceschema"),
+        "sourcetable": params["tableParams"].get("sourcetable"),
         "loadtype": params["tableParams"].get("loadtype"),
-        "ingestsourcedatecolumn": params["tableParams"].get("ingestsourcedatecolumn"),
-        "ingeststartdate": params["tableParams"].get("ingeststartdate"),
-        "ingestenddate": params["tableParams"].get("ingestenddate"),
-        "sinktablename": params["tableParams"].get("sinktablename"),
-        "sourcekeycolumn": params["tableParams"].get("sourcekeycolumn"), # just return it?
-        "batchloaddatetime": params["tableParams"].get("batchloaddatetime") # just return it?
+        "sourcedatecolumn": params["tableParams"].get("sourcedatecolumn"),
+        "sourcestartdate": params["tableParams"].get("sourcestartdate"),
+        "sourceenddate": params["tableParams"].get("sourceenddate"),
+        "sinktable": params["tableParams"].get("sinktable"),
+        "tableKey": params["tableParams"].get("tableKey"),
+        "tableKey2": params["tableParams"].get("tableKey2"),
+        "batchloaddatetime": params["tableParams"].get("batchloaddatetime")
     }
 
     # Combine the core result with additional information
@@ -106,7 +107,7 @@ DAG = {
 # Template for each activity
 activity_template = {
     "name": "",
-    "path": loadBronzeNb,
+    "path": loadGoldNb,
     "args": {},
     "timeoutPerCellInSeconds": 900,
     "retry": 1,
@@ -117,7 +118,7 @@ activity_template = {
 for table in tables:
     table_result = table["tableResults"]
     activity = activity_template.copy()
-    activity["name"] = f"{loadBronzeNb}_{table_result['sinktablename']}"
+    activity["name"] = f"{loadGoldNb}_{table_result['sinktable']}"
     activity["args"] = table_result
     DAG["activities"].append(activity)
 
@@ -155,6 +156,11 @@ runResults = notebookutils.notebook.runMultiple(DAG, config)
 # META   "language_group": "synapse_pyspark"
 # META }
 
+# MARKDOWN ********************
+
+# ExitValue: {"rowsread": 30490, "rowscopied": 113, "pipelinestarttime": "2024-10-24 18:36:22.922905", "pipelineendtime": "2024-10-24 18:40:10.604612"}
+
+
 # CELL ********************
 
 # Process the results to capture the exit values and statuses
@@ -170,26 +176,26 @@ incr_list = []
 full_list = []
 
 # Iterate through the tables and filter based on loadtype
-for incr_table in tables:
-    incr_result = incr_table["tableResults"]
-    activity_name = f"{loadBronzeNb}_{incr_result['sinktablename']}"
+for loaded_table in tables:
+    loaded_results = loaded_table["tableResults"]
+    activity_name = f"{loadGoldNb}_{loaded_results['sinktable']}"
     copy_stats = exit_values.get(activity_name, {})
     final_dict = {
-        "layer": "bronze",
-        "loadtype": incr_result.get("loadtype"),
-        "batchloaddatetime": incr_result.get("batchloaddatetime"),
-        "ingestsourceschema": incr_result.get("ingestsourceschema"),
-        "ingestsourcetable": incr_result.get("ingestsourcetable"),
-        "lakehousePath": lhBronzePath,
-        "tableName": incr_result.get("sinktablename"),
-        "tableKey": incr_result.get("sourcekeycolumn"),
-        "dateColumn": incr_result.get("ingestsourcedatecolumn"),
+        "layer": "gold",
+        "loadtype": loaded_results.get("loadtype"),
+        "batchloaddatetime": loaded_results.get("batchloaddatetime"),
+        "sourceschema": loaded_results.get("sourceschema"),
+        "sourcetable": loaded_results.get("sourcetable"),
+        "lakehousePath": lhGoldPath,
+        "tableName": loaded_results.get("sinktable"),
+        "tableKey": loaded_results.get("tableKey"),
+        "tableKey2": loaded_results.get("tableKey2"),
         "copyStats": copy_stats
     }
-    
-    if incr_result["loadtype"] == "incremental":
+    if loaded_results.get("loadtype") == "incremental":
+        final_dict["dateColumn"] = "LastUpdated"
         incr_list.append(final_dict)
-    elif incr_result["loadtype"] == "full":
+    elif loaded_results.get("loadtype") == "full":
         full_list.append(final_dict)
 
 # Convert the lists to JSON strings

@@ -144,19 +144,24 @@ params_list = json.loads(fullload.replace('\\\"', '"').replace('\"', '"').replac
 # Iterate through the list of parameters and perform the upsert
 results = []
 for params in params_list:
-    core_result = full_delta_load(
-        params.get("lakehousePath"),
-        params.get("tableName"),
-        params.get("dateColumn")
-    )
+    if params.get("layer") == "bronze":
+        core_result = full_delta_load(
+            params.get("lakehousePath"),
+            params.get("tableName"),
+            params.get("dateColumn")
+        )
+    else:
+        core_result = {
+            "deltalakeinserted": params["copyStats"].get("rowscopied")
+        }
     
     # Initialize the common part of the result
     tablestats = {
         **core_result,
         "loadtype": params.get("loadtype"),
         "batchloaddatetime": params.get("batchloaddatetime"),
-        "ingestsourceschema": params.get("ingestsourceschema"),
-        "ingestsourcetable": params.get("ingestsourcetable"),
+        "ingestsourceschema" if params.get("layer") == "bronze" else "sourceschema": params.get("ingestsourceschema" if params.get("layer") == "bronze" else "sourceschema"),
+        "ingestsourcetable" if params.get("layer") == "bronze" else "sourcetable": params.get("ingestsourcetable" if params.get("layer") == "bronze" else "sourcetable"),
         "loadstatus": params["copyStats"].get("loadstatus"),
         "rowsread": params["copyStats"].get("rowsread"),
         "rowscopied": params["copyStats"].get("rowscopied"),

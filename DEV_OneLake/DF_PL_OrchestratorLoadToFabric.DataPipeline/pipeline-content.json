@@ -102,6 +102,8 @@
           "secureOutput": false
         },
         "name": "Set BatchLoadEndDateTime",
+        "state": "Inactive",
+        "onInactiveMarkAs": "Succeeded",
         "dependsOn": [
           {
             "activity": "If LoadGoldLH True",
@@ -122,7 +124,7 @@
             {
               "type": "RefreshDataflow",
               "typeProperties": {
-                "dataflowId": "a8c2ad2f-a4ad-4141-af10-670d947793eb",
+                "dataflowId": "c6c63495-0b11-4610-9bc4-b9ebda48792d",
                 "workspaceId": "ffc83076-e681-4bb9-abb3-1d1e60ca2afd",
                 "notifyOption": "NoNotification"
               },
@@ -177,6 +179,7 @@
             "type": "DataWarehouseTable",
             "schema": [],
             "linkedService": {
+              "name": "DW_WH_MetadataOrchestration",
               "properties": {
                 "type": "DataWarehouse",
                 "typeProperties": {
@@ -185,8 +188,7 @@
                   "workspaceId": "ffc83076-e681-4bb9-abb3-1d1e60ca2afd"
                 },
                 "annotations": []
-              },
-              "name": "DW_WH_MetadataOrchestration"
+              }
             },
             "annotations": []
           },
@@ -468,6 +470,7 @@
             "type": "DataWarehouseTable",
             "schema": [],
             "linkedService": {
+              "name": "DW_WH_MetadataOrchestration",
               "properties": {
                 "type": "DataWarehouse",
                 "typeProperties": {
@@ -476,8 +479,7 @@
                   "workspaceId": "ffc83076-e681-4bb9-abb3-1d1e60ca2afd"
                 },
                 "annotations": []
-              },
-              "name": "DW_WH_MetadataOrchestration"
+              }
             },
             "annotations": []
           },
@@ -554,6 +556,7 @@
                 }
               },
               "linkedService": {
+                "name": "DW_WH_MetadataOrchestration",
                 "properties": {
                   "type": "DataWarehouse",
                   "typeProperties": {
@@ -563,7 +566,6 @@
                   },
                   "annotations": []
                 },
-                "name": "DW_WH_MetadataOrchestration",
                 "objectId": "8a168fbf-3cde-463b-a204-e4a4ded5f244"
               },
               "policy": {
@@ -729,6 +731,7 @@
                 }
               },
               "linkedService": {
+                "name": "DW_WH_MetadataOrchestration",
                 "properties": {
                   "type": "DataWarehouse",
                   "typeProperties": {
@@ -738,7 +741,6 @@
                   },
                   "annotations": []
                 },
-                "name": "DW_WH_MetadataOrchestration",
                 "objectId": "8a168fbf-3cde-463b-a204-e4a4ded5f244"
               },
               "policy": {
@@ -893,6 +895,7 @@
                 }
               },
               "linkedService": {
+                "name": "DW_WH_MetadataOrchestration",
                 "properties": {
                   "type": "DataWarehouse",
                   "typeProperties": {
@@ -902,7 +905,6 @@
                   },
                   "annotations": []
                 },
-                "name": "DW_WH_MetadataOrchestration",
                 "objectId": "8a168fbf-3cde-463b-a204-e4a4ded5f244"
               },
               "policy": {
@@ -947,7 +949,7 @@
       },
       "loadingestdata": {
         "type": "int",
-        "defaultValue": 0
+        "defaultValue": 1
       },
       "loadbronze": {
         "type": "int",
@@ -1021,6 +1023,9 @@
         "type": "String"
       },
       "runMultiple": {
+        "type": "Array"
+      },
+      "goldRun": {
         "type": "Array"
       }
     }

@@ -1,11 +1,12 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
   "metadata": {
-    "type": "DataPipeline",
-    "displayName": "pipeline1"
+    "type": "Notebook",
+    "displayName": "DE_NB_300_SilverToGoldDAGs",
+    "description": "New notebook"
   },
   "config": {
     "version": "2.0",
-    "logicalId": "07d0fa17-23e2-4459-b11a-0b9af7465d89"
+    "logicalId": "4a58ba66-a364-47c6-9ca7-2d2c9c6af6ab"
   }
 }

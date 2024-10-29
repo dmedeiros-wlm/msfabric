@@ -35,6 +35,7 @@ from pyspark.sql.functions import *
 from pyspark.sql import Window
 from pyspark.sql import SparkSession
 import logging
+import datetime
 
 # METADATA ********************
 
@@ -61,52 +62,70 @@ logger = logging.getLogger(__name__)
 
 # CELL ********************
 
-def upsert_to_delta(lakehousePath, tableName, tableKey, dateColumn, layer, tableKey2=None):
+def upsert_to_delta(lakehousePath, sourceschema, ingestsourceschema, tableName, tableKey, dateColumn, layer, tableKey2=None):
     logger.info(f"Upsert operation started for table {tableName}")
+
+    # Get the current date
+    current_date = datetime.datetime.now()
+
+    # Format the date components
+    year = current_date.strftime("%Y")  # yyyy
+    month = current_date.strftime("%m")  # MM
+    day = current_date.strftime("%d")    # dd
+
+    # Dynamically contruct path for accessing incremental file based on the medallion layer
+    if layer == "bronze":
+        parquetFilePath = f"{lakehousePath}/Files/Fabric/{ingestsourceschema}/{tableName}/{year}/{year}-{month}/{year}-{month}-{day}"
+    elif layer == "gold":
+        parquetFilePath = f"{lakehousePath}/Files/Fabric/DW_WH_200_SILVER_WoodlandMills/{sourceschema}/{tableName}/{year}/{year}-{month}/{year}-{month}-{day}" 
+
+    # Read and cache the DataFrame from the parquet file
+    df = spark.read.parquet(parquetFilePath).cache()
 
     # Define partition keys (tableKey and optionally tableKey2)
     partition_keys = [tableKey]
     if tableKey2:
         partition_keys.append(tableKey2)
 
-    deltaTablePath = f"{lakehousePath}/Tables/{tableName}"
-    parquetFilePath = f"{lakehousePath}/Files/incremental/{tableName}/{tableName}.parquet" if layer == "gold" else f"{lakehousePath}/Files/incremental/{tableName}"
-
-    # Read and cache the DataFrame from the parquet file
-    df = spark.read.parquet(parquetFilePath).cache()
-
     # Define a window specification to partition by tableKey and order by dateColumn descending
     window_spec = Window.partitionBy(*partition_keys).orderBy(col(dateColumn).desc())
 
-    # Filter and select only the necessary columns
+    # Filter and select only the necessary columns. If a set of keys has duplicates, keeps the most recent record!
     df2 = df.withColumn("row_number", row_number().over(window_spec)).filter(col("row_number") == 1).drop("row_number")
 
-    if tableKey2 is None:
-        mergeKeyExpr = f"t.{tableKey} = s.{tableKey}"
-    else:
-        mergeKeyExpr = f"t.{tableKey} = s.{tableKey} AND t.{tableKey2} = s.{tableKey2}"
-
-    # Perform checks and set conditions
+    # Construct delta table path and set conditions for checks
+    deltaTablePath = f"{lakehousePath}/Tables/{tableName}"
     delta_table_exists = DeltaTable.isDeltaTable(spark, deltaTablePath)
 
     if delta_table_exists:
         deltaTable = DeltaTable.forPath(spark, deltaTablePath)
+        
+        # Identify current columns in the delta table
         current_columns = set(deltaTable.toDF().columns)
+
+        # Identify new columns in the incremental dataframe
         new_columns = set(df2.columns)
-        is_schema_reset_needed = new_columns.issubset(current_columns) and current_columns.difference(new_columns)
 
-    is_primary_key_present = tableKey
+        # Identify columns to be added to df2
+        missing_columns = current_columns - new_columns
 
-    if (delta_table_exists) and (not is_schema_reset_needed) and (is_primary_key_present):
-        # Check if schema evolution is needed
-        is_schema_evolution_needed = not new_columns.issubset(current_columns)
-
-        if is_schema_evolution_needed:
-            # Append the new schema to the existing Delta table
+        # Add missing columns to df2 with null values
+        for column in missing_columns:
+            df2 = df2.withColumn(column, lit(None))
+            
+        # Only proceed with schema evolution if new columns are present
+        if new_columns != current_columns:
+            # Append schema if new columns are confirmed across multiple files
             df2.limit(0).write.format("delta").mode("append").option("mergeSchema", True).save(deltaTablePath)
 
             # Reload the existing Delta table with the new schema
             deltaTable = DeltaTable.forPath(spark, deltaTablePath)
+
+        # Define merge expression
+        if tableKey2 is None:
+            mergeKeyExpr = f"t.{tableKey} = s.{tableKey}"
+        else:
+            mergeKeyExpr = f"t.{tableKey} = s.{tableKey} AND t.{tableKey2} = s.{tableKey2}"
 
         # Update existing data and insert new data
         deltaTable.alias("t").merge(
@@ -119,6 +138,7 @@ def upsert_to_delta(lakehousePath, tableName, tableKey, dateColumn, layer, table
         operationMetrics = history.collect()[0]["operationMetrics"]
         numInserted = operationMetrics.get("numTargetRowsInserted", 0)
         numUpdated = operationMetrics.get("numTargetRowsUpdated", 0)
+
     else:
         # Create Delta table if it doesn't exist or overwrite (including schema) if it exists
         df2.write.format("delta").mode("overwrite").option("overwriteSchema", True).save(deltaTablePath)
@@ -180,6 +200,8 @@ results = []
 for params in params_list:
     core_result = upsert_to_delta(
         params.get("lakehousePath"),
+        params.get("sourceschema"),
+        params.get("ingestsourceschema"),
         params.get("tableName"),
         params.get("tableKey"),
         params.get("dateColumn"),

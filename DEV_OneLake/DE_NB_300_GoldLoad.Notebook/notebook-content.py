@@ -20,8 +20,8 @@
 # MAGIC %%configure -f
 # MAGIC { 
 # MAGIC             "defaultLakehouse": {
-# MAGIC                 "name": 'DE_LH_100_BRONZE_WoodlandMills',
-# MAGIC                 "id": '20b75530-e6f0-4540-b8a1-5d0af00882ff',
+# MAGIC                 "name": 'DE_LH_300_GOLD_WoodlandMills',
+# MAGIC                 "id": 'e83da213-3bfb-4530-ad8c-9b9b04aa70dd',
 # MAGIC                 "workspaceId": 'ffc83076-e681-4bb9-abb3-1d1e60ca2afd'
 # MAGIC             }
 # MAGIC }
@@ -35,6 +35,8 @@
 
 # CELL ********************
 
+import com.microsoft.spark.fabric
+from com.microsoft.spark.fabric.Constants import Constants
 from pyspark.sql import functions as F
 import json
 import logging
@@ -73,12 +75,12 @@ start_time = current_date.strftime('%Y-%m-%d %H:%M:%S.%f')
 
 # PARAMETERS CELL ********************
 
-# ingestsourceschema = "dataverse_woodlandmill_cds2_workspace_unqf1dbc07947a74485af950d8945cb3"
-# ingestsourcetable = "account"
-# ingestsourcedatecolumn = "modifiedon"
-# ingeststartdate = "2024-07-07T02:12:07Z"
-# ingestenddate = ""
-# sinktablename = "AccountTest"
+# sourceschema = "wlm_tech"
+# sourcetable = "tickets"
+# sourcedatecolumn = "LastUpdated"
+# sourcestartdate = "2024-10-22T22:48:36Z"
+# sourceenddate = ""
+# sinktable = "ticketsGoldTest"
 # loadtype = "incremental"
 
 # METADATA ********************
@@ -91,8 +93,9 @@ start_time = current_date.strftime('%Y-%m-%d %H:%M:%S.%f')
 # CELL ********************
 
 # Start operation by constructing base_path for read and write operations
+sourcewarehouse = "DW_WH_200_SILVER_WoodlandMills"
 base_path = "abfss://WP_DEV_OneLake@onelake.dfs.fabric.microsoft.com/"
-logger.info(f"Copy operation started for table {ingestsourcetable}")
+logger.info(f"Copy operation started for table {sourcetable}")
 
 # METADATA ********************
 
@@ -103,24 +106,24 @@ logger.info(f"Copy operation started for table {ingestsourcetable}")
 
 # CELL ********************
 
-# Set the table path for the source data
-source_path = base_path + f"{ingestsourceschema}.Lakehouse/Tables/{ingestsourcetable}"
+# Set the warehouse path for the source data
+source = f"{sourcewarehouse}.{sourceschema}.{sourcetable}"
 
-# Read data from source path
-df = spark.read.format("delta").load(source_path)
+# Read data from source
+df = spark.read.synapsesql(source)
 
-logger.info(f"Data read from {source_path}")
+logger.info(f"Data read from {source}")
 
 # Get stats for how many rows are read at source
 rows_read = df.count()
 
 # Define final data by filtering date column by start date and end date if it exists
 final_df = df.filter(
-    ((F.col(ingestsourcedatecolumn) > F.lit(ingeststartdate)) if ingeststartdate else F.lit(True)) &  # Skip filtering if ingeststartdate is null
-    ((F.col(ingestsourcedatecolumn) < F.lit(ingestenddate)) if ingestenddate else F.lit(True))        # Skip filtering if ingestenddate is null
+    ((F.col(sourcedatecolumn) > F.lit(sourcestartdate)) if sourcestartdate else F.lit(True)) &  # Skip filtering if sourcestartdate is null
+    ((F.col(sourcedatecolumn) < F.lit(sourceenddate)) if sourceenddate else F.lit(True))        # Skip filtering if sourceenddate is null
 )
 
-logger.info(f"Data filtered based on {ingestsourcedatecolumn} column")
+logger.info(f"Data filtered based on {sourcedatecolumn} column")
 
 # Get stats for how many rows will be copied to target
 rows_copied = final_df.count()
@@ -136,7 +139,7 @@ rows_copied = final_df.count()
 
 if loadtype == "incremental":
     # Set the file path for the target data
-    target_path = base_path + f"DE_LH_100_BRONZE_WoodlandMills.Lakehouse/Files/Fabric/{ingestsourceschema}/{sinktablename}/{year}/{year}-{month}/{year}-{month}-{day}/"
+    target_path = base_path + f"DE_LH_300_GOLD_WoodlandMills.Lakehouse/Files/Fabric/{sourcewarehouse}/{sourceschema}/{sinktable}/{year}/{year}-{month}/{year}-{month}-{day}/"
 
     # Overwrite new data as a parquet file
     final_df.coalesce(1).write.mode("overwrite").format("parquet").save(target_path)
@@ -145,10 +148,10 @@ if loadtype == "incremental":
 
 else:
     # Set the file path for the target data
-    target_path = base_path + f"DE_LH_100_BRONZE_WoodlandMills.Lakehouse/Tables/{sinktablename}"
+    target_path = base_path + f"DE_LH_300_GOLD_WoodlandMills.Lakehouse/Tables/{sinktable}"
 
     # Overwrite new data as a delta table
-    final_df.coalesce(1).write.mode("overwrite").format("delta").option("mergeSchema", "true").save(target_path)
+    final_df.coalesce(1).write.mode("overwrite").option("mergeSchema", "true").format("delta").save(target_path)
 
     logger.info(f"Full load data saved as delta table at {target_path}")
 

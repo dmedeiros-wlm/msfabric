@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
   "metadata": {
     "type": "Notebook",
-    "displayName": "DE_NB_GetMaxDateFromDeltaTable",
+    "displayName": "DE_NB_300_LoadGLBudgetExcel",
     "description": "New notebook"
   },
   "config": {
     "version": "2.0",
-    "logicalId": "bc1b5380-0827-4599-b496-92eb6308fe15"
+    "logicalId": "8a957a83-3a69-4bbc-9ce1-1a1a315e44a9"
   }
 }

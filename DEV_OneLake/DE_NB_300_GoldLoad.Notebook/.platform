@@ -1,11 +1,12 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
   "metadata": {
-    "type": "SemanticModel",
-    "displayName": "PBI_SM_TEST"
+    "type": "Notebook",
+    "displayName": "DE_NB_300_GoldLoad",
+    "description": "New notebook"
   },
   "config": {
     "version": "2.0",
-    "logicalId": "eb3130b2-5b5b-46e3-9a3b-b41c1da10fa5"
+    "logicalId": "7dfe0402-9057-49c1-980d-67457be3350e"
   }
 }
