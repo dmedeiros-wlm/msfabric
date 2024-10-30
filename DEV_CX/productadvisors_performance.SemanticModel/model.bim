@@ -8,7 +8,7 @@
       },
       {
         "name": "PBIDesktopVersion",
-        "value": "2.134.7426.7 (Main)"
+        "value": "2.138.7469.2 (Main)"
       },
       {
         "name": "PBI_QueryOrder",
@@ -50,6 +50,10 @@
           {
             "name": "PBI_IncludeFutureArtifacts",
             "value": "False"
+          },
+          {
+            "name": "PBI_RemovedChildren",
+            "value": "[{\"remoteItemId\":{\"analysisServicesObject\":{\"sourceName\":null,\"sourceLineageTag\":\"[dbo].[cx_touchpoint_owners]\"}},\"objectType\":\"Table\"},{\"remoteItemId\":{\"analysisServicesObject\":{\"sourceName\":null,\"sourceLineageTag\":\"[dbo].[cx_customer_touchpoints]\"}},\"objectType\":\"Table\"},{\"remoteItemId\":{\"analysisServicesObject\":{\"sourceName\":null,\"sourceLineageTag\":\"[dbo].[cx_touchpoint_agents]\"}},\"objectType\":\"Table\"},{\"remoteItemId\":{\"analysisServicesObject\":{\"sourceName\":null,\"sourceLineageTag\":\"[dbo].[cx_touchpoint_creators]\"}},\"objectType\":\"Table\"}]"
           }
         ],
         "expression": [
