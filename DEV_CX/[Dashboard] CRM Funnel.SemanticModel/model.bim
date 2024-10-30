@@ -12,11 +12,15 @@
       },
       {
         "name": "PBIDesktopVersion",
-        "value": "2.127.1327.0 (24.03)"
+        "value": "2.129.905.0 (24.05)"
       },
       {
         "name": "__TEdtr",
         "value": "1"
+      },
+      {
+        "name": "PBI_ProTooling",
+        "value": "[\"DevMode\"]"
       }
     ],
     "culture": "en-CA",

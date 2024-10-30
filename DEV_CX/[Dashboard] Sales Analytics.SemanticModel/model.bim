@@ -13,6 +13,10 @@
       {
         "name": "PBIDesktopVersion",
         "value": "2.129.905.0 (24.05)"
+      },
+      {
+        "name": "PBI_ProTooling",
+        "value": "[\"DevMode\"]"
       }
     ],
     "culture": "en-CA",
