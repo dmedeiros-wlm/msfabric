@@ -198,7 +198,7 @@
     "defaultPowerBIDataSourceVersion": "powerBI_V3",
     "expressions": [
       {
-        "name": "DirectQuery to AS - salesAnalytics",
+        "name": "DirectQuery to AS - [Dashboard] Sales Analytics",
         "annotations": [
           {
             "name": "PBI_IncludeFutureArtifacts",
@@ -207,7 +207,7 @@
         ],
         "expression": [
           "let",
-          "    Source = AnalysisServices.Database(\"powerbi://api.powerbi.com/v1.0/myorg/WP_DEV_CX\", \"salesAnalytics\"),",
+          "    Source = AnalysisServices.Database(\"powerbi://api.powerbi.com/v1.0/myorg/WP_DEV_CX\", \"[Dashboard] Sales Analytics\"),",
           "    Cubes = Table.Combine(Source[Data]),",
           "    Cube = Cubes{[Id=\"Model\", Kind=\"Cube\"]}[Data]",
           "in",

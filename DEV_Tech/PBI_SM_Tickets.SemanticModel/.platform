@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "PBI_SM_Tickets",
+    "description": "This model offers a monthly overview of ticket trends, resolution times, and performance metrics to help the technical support team optimize customer service and team efficiency.​"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "b26137f1-9568-4184-b667-f30bbc9e9a9e"
+  }
+}
